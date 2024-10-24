@@ -1,0 +1,221 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{xargs}
+\usepackage{xcolor}
+\usepackage{witharrows}
+
+\newcommand{\Follows}{\Longrightarrow\ }
+\newcommand{\sameas}{\Longleftrightarrow}
+\newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+\def\ez{\begin{flushright}\underline{ez.}\end{flushright}}
+%\[
+%   \Laplace[\cos(x)]=\int_{t=0}^{\infty}f(t)e^{-st}dt
+%\]
+
+\newcommand{\R}{\mathbb{R}} % gives blackboard R
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\inttext}{\shortintertext}
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{lemma}[2][Theorem]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][\textcolor{blue}{Tipps \& Tricks zu}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries \textcolor{blue}{#2}.}]}{\end{trivlist}}
+\newenvironment{question}[2][\textcolor{red}{Aufgabe}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries \textcolor{red}{#1}}\hskip \labelsep {\bfseries \textcolor{red}{#2}.}]}{\end{trivlist}}
+\newenvironment{remark}[2][Bemerkung]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+\title{Problem Set 5, Tips}
+\author{Vikram Damani\\
+    Analysis I}
+
+\maketitle
+Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
+
+\begin{question}{1}
+    Berechnen Sie mit Hilfe der Bernoulli-de l'Hôpital-Regel die folgenden Grenzwerte:
+    \begin{itemize}
+        \item[(a)] ($\heartsuit$) $\lim_{x\to0}\dfrac{1+\sin(x)+\cos(x)}{\tan(x)}$;
+        \item[(b)] $\lim_{x\to1}\dfrac{\arctan\frac{1-x}{1+x}}{1-x}$;
+        \item[(c)] $\lim_{x\to0}\dfrac{\left(\dfrac{1}{\cos^2(x)}-\cos(x)\right)^2}{x\cos(x)-\sin(x)}.$
+    \end{itemize}
+\end{question}
+
+\begin{problem}{1}
+Bernoulli-de l'Hôpital-Regel:
+\begin{definition}{[Bernoulli-de l'Hôpital-Regel]}
+    Seien $f$ und $g$ zwei Funktionen, die in einer Umgebung von $x_0$ definiert sind und in $x_0$ differenzierbar sind.
+    Falls $\lim_{x\to x_0}f(x)=\lim_{x\to x_0}g(x)=0$ oder $\lim_{x\to x_0}f(x)=\lim_{x\to x_0}g(x)=\pm\infty$ gilt, sofern
+    $\lim_{x\to x_0}\frac{f'(x)}{g'(x)}$ existiert, dann gilt:
+    \begin{align*}
+        \lim_{x\to x_0}\dfrac{f(x)}{g(x)}=\lim_{x\to x_0}\dfrac{f'(x)}{g'(x)}
+    \end{align*}
+\end{definition}
+\textbf{ACHTUNG}: Die Regel gilt nur, wenn alle fünf Bedingungen erfüllt sind.
+\begin{itemize}
+    \item $\lim_{x\to x_0}f(x)=\lim_{x\to{x_0}}g(x)=0 \text{ oder } \pm\infty$,
+    \item $f \text{ und } g$ sind in einer Umgebung $[a,b]\subseteq\R, \, a<x_0<b$ von $x_0$ definiert,
+    \item $f$ und $g$ sind in $[a,b]$ differenzierbar, ausser evtl.\ in $x_0$,
+    \item $g'(x)\neq0$ in $[a,b]\setminus\left\{x_0\right\}$
+    \item $\lim_{x\to x_0}\dfrac{f'(x)}{g'(x)}$ existiert.
+\end{itemize}
+\end{problem}
+
+\begin{question}{2}
+    \begin{itemize}
+        \item[(a)]Bestimmen Sie die Werte der Konstanten $a \in \R$ und $b \in \R$ so, dass
+              \begin{align*}
+                  f : \R \to \R,\, x \to ax^2 + bx
+              \end{align*}
+              im Punkt $(1, 2)$ ein globales Maximum hat.
+        \item[(b)] Seien $c, d \in \R$ so, dass $c < d$. Bestimmen Sie in Abhängigkeit von $c$ und $d$ das Maximum
+              der Funktion
+              \begin{align*}
+                  f(x) = 2x^3-9x^2+12x - 5
+              \end{align*}
+              auf dem Intervall $[c, d]$.
+    \end{itemize}
+\end{question}
+
+\begin{problem}{2}
+Ein \textit{globales Maximum} ist ein Punkt, an dem die Funktion $f(x)$ für alle $x\in\mathcal{D}(f)$ den größten Funktionswert annimmt.
+Ein \textit{lokales Maximum} ist ein Punkt, an dem die Funktion $f(x)$ für alle $x\in[a,b]\subseteq\mathcal{D}(f)$ den größten Funktionswert annimmt, jedoch nicht unbedingt den größten Funktionswert im gesamten Definitionsbereich.
+\begin{definition}{[Extremalstellen]}
+    Eine Funktion $f(x)$ hat eine Extremalstelle an der Stelle $x_0$, falls $f'(x_0)=0$.
+\end{definition}
+\begin{definition}{[Globales Maximum]}
+    Eine Funktion $f(x)$ hat ein globales Maximum an der Stelle $x_0$, falls $f(x_0)\geq f(x)$ für alle $x\in\mathcal{D}(f)$.
+\end{definition}
+\begin{definition}{[Lokales Maximum]}
+    Eine Funktion $f(x)$ hat ein lokales Maximum an der Stelle $x_0$, falls $f(x_0)\geq f(x)$ für alle $x\in[a,b]\subseteq\mathcal{D}(f)$ in einer Umgebung von $x_0$.
+\end{definition}
+\begin{lemma}{[Bedingungen für Extremalstellen]}
+    Sei $f(x)$ eine Funktion, die in $[a,b]\subseteq\mathcal{D}(f)$ differenzierbar ist.
+    Die Funktion hat in $x_0\in[a,b]$ eine Extremalstelle, falls:
+    \begin{itemize}
+        \item $f'(x_0)=0$,
+        \item $x_0=a$ oder $x_0=b$ wenn $f(a)\geq f(x)$ bzw.\ $f(b)\geq f(x) \quad\forall{}x\in[a,b]$,
+    \end{itemize}
+    Falls $f$ nicht auf $[a,b]$ differenzierbar, dann ist $x_0$ eine Extremalstelle, falls $f$ in $x_0$ definiert ist und $f(x)\leq f(x_0)$ bzw.\ $f(x)\geq f(x_0)$ für alle $x\in[a,b]$.
+\end{lemma}
+\begin{definition}{[Höhere Ableitungen]}
+    Die $n$-te Ableitung einer Funktion $f(x)$ ist definiert als:
+    \begin{align*}
+        f^{(n)}(x)=\dfrac{d^n}{dx^n}f(x)=\underbrace{\dfrac{d}{dx}(\dfrac{d}{dx}(\ldots\dfrac{d}{dx}}_{\text{n mal}}f(x)))
+    \end{align*}
+\end{definition}
+\begin{definition}{[Maxima und Minima mit höheren Ableitungen]}
+    Sei $f(x)$ eine Funktion, die in $x_0$ zweimal differenzierbar ist. Falls $f'(x_0)=0$ und $f''(x_0)>0$, dann hat $f(x)$ in $x_0$ ein lokales Minimum. Falls $f'(x_0)=0$ und $f''(x_0)<0$, dann hat $f(x)$ in
+    $x_0$ ein lokales Maximum.
+\end{definition}
+Um in (b) das Maximum zu bestimmen ist eine Fallunterscheidung notwendig, da das Intervall $[c,d]$ nicht spezifiziert ist (also beliebig gewählt werden kann).
+Wenn $d$ kleiner als die Extremalstelle ist, dann ist das Maximum in $d$. Was passiert wenn $c$ größer als die Extremalstelle ist? (Gebrauch von der $\max(x,y)$\footnote{$\max(x,y)$ gibt den grösseren Wert zurück.} Funktion erlaubt).
+\end{problem}
+
+\begin{question}{3} ($\heartsuit$) Die Funktion $m(t) = m_0e^{-\alpha{}t}$ beschreibt einen exponentiellen Zerfall der Anfangsmasse
+    $m_0$ mit Zerfallsrate $\alpha$. Anhand einer Messung soll bestimmt werden, wie gross $\alpha$ für ein neues
+    Material ist.
+
+    Zum Zeitpunkt $t_0 = 0$ beträgt die Masse $m_0 = 1024$ Gramm. Es wird gemessen,
+    wann die Restmasse unter $1$ Gramm fällt: Dies passiert nach $t_1$ Sekunden,
+    also $m(t_1) = 1$.
+    \begin{itemize}
+        \item[(a)] Bestimmen Sie $\alpha(t_1)$ als Funktion des Zeitpunkts $t_1$.
+        \item[(b)] Ab jetzt sei $t_1 = 10$ Sekunden gemessen, wobei der Messfehler $\Delta{t}$
+              maximal $\pm0.1$ Sekunden betrage. Man bestimme die maximal und minimal
+              möglichen Werte von $\alpha(t_1 + \Delta{}t)$.
+        \item[(c)] Bestimmen Sie den absoluten Fehler $\Delta\alpha$ exakt (d.h.\ ohne Linearisierung!) und
+              folgern Sie aus der Annahme $t_1 + \Delta{}t \approx t_1$, dass $\Delta\alpha$
+              ungefähr proportional zu $\Delta{t}$ und zu $\frac{1}{t_1^2}$ ist.
+        \item[(d)] Bestimmen Sie den relativen Fehler $\frac{\Delta\alpha}{\alpha}$ exakt (d.h.\ ohne Linearisierung!) und folgern Sie aus der Annahme
+              $t_1 + \Delta{t} \approx t_1$, dass $\frac{\Delta\alpha}{\alpha}$ ungefähr proportional zum relativen Messfehler
+              der Zeit ist.
+        \item[(e)] Berechnen Sie die Näherungen $d\alpha$ und $\frac{d\alpha}{\alpha}$ durch die lineare Ersatzfunktion, d.h.\ $d\alpha = \alpha'dt$.
+              Vergleichen Sie das Resultat mit den echten Fehlern. Was stellen Sie fest?
+    \end{itemize}
+\end{question}
+
+\begin{problem}{3} Fehlerrechnung:
+\begin{definition}{[Absoluter Fehler]}
+    Der absolute Fehler $\Delta{f}$ einer Funktion $f(x)$ ist definiert als:
+    \begin{align*}
+        \Delta{f}=f(x+\Delta{x})-f(x)
+    \end{align*}
+\end{definition}
+\begin{definition}{[Relativer Fehler]}
+    Der relative Fehler $\dfrac{\Delta{f}}{f}$ einer Funktion $f(x)$ ist definiert als:
+    \begin{align*}
+        \dfrac{\Delta{f}}{f}=\dfrac{f(x+\Delta{x})-f(x)}{f(x)}
+    \end{align*}
+\end{definition}
+\begin{definition}{[Linearisierung]}
+    Die Linearisierung einer Funktion $f(x)$ um den Punkt $x_0$ ist definiert als:
+    \begin{align*}
+        f(x)\approx f(x_0)+f'(x_0)(x-x_0)
+    \end{align*}
+\end{definition}
+\begin{definition}{[Linearisierter Fehler]}
+    Sei $f(x)$ eine Funktion, die in $x_0$ differenzierbar ist. Der Fehler $\Delta{f}$ der Funktion $f(x)$ ist definiert als:
+    \begin{align*}
+        d{f}=f'(x_0)d{x}
+    \end{align*}
+\end{definition}
+\textbf{BEACHTE}: $t + \Delta t \approx t$ darf man als Approximation jeweils verwenden, aber $\Delta t \approx 0$ selbst muss immer eine Grenzwertbetrachtung sein.
+\end{problem}
+
+\begin{question}{4}
+    In dieser Aufgabe wollen wir folgenden Satz beweisen und verwenden:
+    \begin{lemma}{[]} Eine stetige, in $(a, b)$ differenzierbare Funktion $f : [a, b] \to \R$ ist genau dann konstant,
+        wenn $f'(x) = 0$ für alle $x \in (a, b)$.
+    \end{lemma}
+    \begin{itemize}
+        \item[(a)] ($\heartsuit$) Zeigen Sie mittels expliziter Berechnung des Differentialquotienten, dass eine konstante Funktion überall die Ableitung $0$ hat.
+        \item[(b)] Zeigen Sie: Wenn $f'(x) = 0$ für alle $x \in (a, b)$ gilt, dann ist $f : [a, b] \to \R$ konstant.
+              Verwenden Sie dafür den Mittelwertsatz.
+        \item[(c)] ($\heartsuit$) Beweisen Sie mit dem nun bewiesenen Satz die Relation
+    \end{itemize}
+    \begin{align*}
+        \arcsin x + \arccos x = \dfrac{\pi}{2}
+    \end{align*}
+    für alle $x \in [-1, 1]$.
+\end{question}
+
+\begin{problem}{4}
+Mittelwertsatz:
+\begin{definition}{[Mittelwertsatz]}
+    Sei $f(x)$ eine Funktion, die in $[a,b]$ stetig ist und in $(a,b)$ differenzierbar ist. Dann existiert ein $c\in(a,b)$, so dass:
+    \begin{align*}
+        f'(c)=\dfrac{f(b)-f(a)}{b-a}
+    \end{align*}
+\end{definition}
+Einsetzen von $f'(x)=0$ in den Mittelwertsatz, ergibt $f(b)-f(a)=0$, also $f(b)=f(a)$. Wieso muss $f$ dann konstant sein?
+\begin{remark}{[Ableitungen von inversen Funktionen]}
+    Sei $f(x)$ eine Funktion, die in $[a,b]$ stetig ist und in $(a,b)$ differenzierbar ist mit inverse $f^{-1}$. Dann gilt:
+    \begin{align*}
+        (f^{-1})'(x)=\dfrac{1}{f'(f^{-1}(x))}
+    \end{align*}
+\end{remark}
+Die Ableitungen der trigonometrischen Funktionen können so berechnet werden, oder man kann in der Formelsammmlung nachschauen.
+\end{problem}
+\end{document}

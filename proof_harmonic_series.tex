@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{xargs}
+\usepackage{witharrows}
+\usepackage{amsthm}
+
+\newcommand{\Follows}{\Longrightarrow\ }
+\newcommand{\sameas}{\Longleftrightarrow}
+\newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+\def\ez{\begin{flushright}\underline{ez.}\end{flushright}}
+%\[
+%   \Laplace[\cos(x)]=\int_{t=0}^{\infty}f(t)e^{-st}dt
+%\]
+
+\newcommand{\R}{\mathbb{R}} % gives blackboard R
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\inttext}{\shortintertext}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+\title{Proof of Divergence Harmonic Series}
+\author{Vikram Damani\\
+        Analysis I}
+
+\maketitle
+
+\begin{question}{[Divergence of Harmonic Series]}
+        Prove that the harmonic series diverges.
+        \begin{proof}
+                \begin{spreadlines}{0.8em}
+                        (Proof by contradiction) Suppose that the harmonic series converges. Let $S$ be the sum of the harmonic series, i.e.
+                        \begin{align*}
+                                S=\sum_{n=1}^{\infty}\frac{1}{n}=1+\frac{1}{2}+\frac{1}{3}+\cdots.
+                        \end{align*}
+
+                        We may group the terms of the harmonic series into groups of 3 as follows:
+                        \begin{align*}
+                                S & =1+(\frac{1}{2}+\frac{1}{3}+\frac{1}{4})+(\frac{1}{5}+\frac{1}{6}+\frac{1}{7})+\cdots
+                        \end{align*}
+
+                        For all $x\in\R,x>1$, we have that
+                        $\frac{1}{x-1}+\frac{1}{x}+\frac{1}{x+1}>\frac{3}{x}$. This can be shown by
+                        expanding the left hand side and simplifying as follows:
+                        \begin{align*}
+                                \frac{1}{x-1}+\frac{1}{x}+\frac{1}{x+1} & =\frac{(x^2+x)+(x^2-1)+(x^2-x)}{x(x-1)(x+1)} \\
+                                                                        & =\frac{3x^2-1}{x(x^2-1)}                     \\
+                                                                        & =\frac{2x^2+(x^2-1)}{x(x^2-1)}               \\
+                                                                        & =\frac{2x}{x^2-1}+\frac{1}{x}                \\
+                                                                        & >\frac{2x}{x^2}+\frac{1}{x}                  \\
+                                                                        & =\frac{3}{x}.
+                        \end{align*}
+                        Therefore, choosing $x=3,6,9,\cdots$ we have that
+                        \begin{align*}
+                                \frac{1}{2}+\frac{1}{3}+\frac{1}{4}  & >\frac{3}{3}=\frac{1}{1} \\
+                                \frac{1}{5}+\frac{1}{6}+\frac{1}{7}  & >\frac{3}{6}=\frac{1}{2} \\
+                                \frac{1}{8}+\frac{1}{9}+\frac{1}{10} & >\frac{3}{9}=\frac{1}{3} \\
+                                \vdots
+                        \end{align*}
+                        Proceeding in this manner, we have that
+                        \begin{align*}
+                                S & =1+(\frac{1}{2}+\frac{1}{3}+\frac{1}{4})+(\frac{1}{5}+\frac{1}{6}+\frac{1}{7})+\cdots \\
+                                  & >1+\frac{1}{1}+\frac{1}{2}+\frac{1}{3}+\cdots                                         \\
+                                  & = 1 + 1 + \frac{1}{2}+\frac{1}{3}+\cdots                                              \\
+                                  & = 1 + S.                                                                              \\
+                                \therefore S > 1 + S.
+                        \end{align*}
+                        Which is clearly impossible for any finite $S$. Therefore, the harmonic series diverges.
+                \end{spreadlines}
+        \end{proof}
+\end{question}
+
+\end{document}

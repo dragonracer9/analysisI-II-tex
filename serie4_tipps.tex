@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{xargs}
+\usepackage{witharrows}
+
+\newcommand{\Follows}{\Longrightarrow\ }
+\newcommand{\sameas}{\Longleftrightarrow}
+\newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+\def\ez{\begin{flushright}\underline{ez.}\end{flushright}}
+%\[
+%   \Laplace[\cos(x)]=\int_{t=0}^{\infty}f(t)e^{-st}dt
+%\]
+
+\newcommand{\R}{\mathbb{R}} % gives blackboard R
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\inttext}{\shortintertext}
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Tipps \& Tricks zu]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Aufgabe]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+\title{Problem Set 4, Tips}
+\author{Vikram Damani\\
+    Analysis I}
+
+\maketitle
+
+\begin{question}{1}
+    Berechnen Sie $f':\mathcal{D}(f)\to\R$ für
+\end{question}
+
+\begin{problem}{1}
+Allgemeine Rechenregeln für Ableitungen:
+\begin{itemize}
+    \item Linearität:
+          \begin{align}
+              (f+g)'(x)       & =f'(x)+g'(x)                          \\
+              (c\cdot{f})'(x) & =c\cdot{f}'(x), \qquad\forall{c}\in\R
+          \end{align}
+    \item Produktregel:
+          \begin{align}
+              (f\cdot{g})'(x) =f'(x)\cdot{g}(x)+g'(x)\cdot{f}(x)
+          \end{align}
+    \item Kettenregel:
+          \begin{align}
+              (f\circ{g})'(x) =f'(g(x))\cdot{g}'(x)
+          \end{align}
+    \item Quotientenregel:
+          \begin{align}
+              \left(\frac{f}{g}\right)'(x) =\frac{f'(x)\cdot{g}(x)-g'(x)\cdot{f}(x)}{g^2(x)}
+          \end{align}
+\end{itemize}
+\end{problem}
+
+\begin{question}{2}
+    Ableitungen gerader/ungerader Funktionen
+\end{question}
+
+\begin{problem}{2}
+Die Definitionen genügen um diese Aufgabe zu lösen.
+\begin{definition}{[Gerade Funktion]}
+    Eine Funktion heisst \textit{gerade}, falls $f(x)=f(-x)$.
+\end{definition}
+\begin{definition}{[Ungerade Funktion]}
+    Eine Funktion heisst \textit{ungerade}, falls $-f(x)=f(-x)$.
+\end{definition}
+\end{problem}
+
+\begin{question}{3}
+    Es sei $P_0 = (x_0, y_0)$ ein von Ursprung verschiedener, aber sonst beliebiger Punkt der Parabel
+    $y = x^2$ und $t_0$ sei die zugehörige Tangente.
+    \begin{itemize}
+        \item[(a)] Man finde den Punkt $P_1$ auf der Parabel, dessen zugehörige Tangente $t_1$ senkrecht zu $t_0$
+              verläuft und bestimme den Schnittpunkt $S$ von $t_0$ und $t_1$ in Abhängigheit von $x_0$.
+        \item[(b)] Man finde den Punkt $P_1$ auf der Parabel, dessen zugehörige Tangente $t_1$ senkrecht zu $t_0$
+              verläuft und bestimme den Schnittpunkt $S$ von $t_0$ und $t_1$ in Abhängigheit von $x_0$.
+    \end{itemize}
+\end{question}
+
+\begin{problem}{3}
+Eine Tangente $t(x)$ an der Funktion $f(x)$ ist wie folgt definiert:
+\begin{definition}{[Tangente $t(x)$]}
+    Eine Tangnte $t(x)$ an $f(x)$ an der Stelle $x_0$ ist ene Gerade die den Graphen $\Gamma(f)$ mit Steigung $f'(x_0)$ an der Stelle $x_0$  berührt.
+    \begin{align*}
+        t: x \longmapsto y-f(x_0) & =f'(x_0)(x-x_0), \quad x\in\mathcal{D}(f)
+    \end{align*}
+    wobei $y-f(x_0)$ eine Verschiebung in $y$-Richtung und $x-x_0$ eine Verschiebung in $x$-Richtung ist.
+\end{definition}
+
+\begin{definition}{[Senkrechte Geraden]}
+    Zwei Geraden $t_0$ und $t_1$ sind senkrecht zueinander, falls ihre Steigungen $m_0$ und $m_1$ folgende Bedingung erfüllen:
+    \begin{align*}
+        m_0\cdot{m_1}=-1
+        \sameas f'(x_0)\cdot{f'(x_1)}=-1
+        \sameas f'(x_0)=-\frac{1}{f'(x_1)}
+    \end{align*}
+\end{definition}
+
+Der \textit{Schnittpunkt} $S$ zweier Geraden $t_0$ und $t_1$ ist gegeben durch die
+Lösung des Gleichungssystems:
+\begin{align*}
+    t_0(x)                        & = t_1(x)                \\
+    \sameas f(x_0)+f'(x_0)(x-x_0) & = f(x_1)+f'(x_1)(x-x_1)
+\end{align*}
+\end{problem}
+
+\end{document}

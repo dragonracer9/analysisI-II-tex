@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{xargs}
+\usepackage{witharrows}
+\usepackage{amsthm}
+
+\newcommand{\Follows}{\Longrightarrow\ }
+\newcommand{\sameas}{\Longleftrightarrow}
+\newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+\def\ez{\begin{flushright}\underline{ez.}\end{flushright}}
+%\[
+%   \Laplace[\cos(x)]=\int_{t=0}^{\infty}f(t)e^{-st}dt
+%\]
+
+\newcommand{\R}{\mathbb{R}} % gives blackboard R
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\inttext}{\shortintertext}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+\title{Short Summary of Chapter 1, Analysis I}
+\author{Vikram Damani\\
+        Analysis I}
+
+\maketitle
+
+\end{document}
