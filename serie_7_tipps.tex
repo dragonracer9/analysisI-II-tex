@@ -2,6 +2,7 @@
 
 \usepackage[margin=1in]{geometry}
 \usepackage[utf8]{inputenc}
+\usepackage{parskip}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -53,11 +54,16 @@
 \maketitle
 Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
 
-\section{Komplexe Zahlen: Rechenregeln}
-\begin{definition}{[Komplexe Zahl]}
-    
-\end{definition}
-\subsection{Rechenoperationen}
+\section{Theorie}
 
+\begin{definition}{[Fundamentalsatz der Algebra]}
+    Sei $p(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0$ ein Polynom mit Koeffizienten $a_0,a_1,\ldots,a_n\in\C$. Eine Zahl $x_0$ heißt Nullstelle von $p(x)$, falls $p(x_0)=0$.
+
+    Jedes Polynom $p(x)$ vom Grad $n\geq 1$ hat genau $n$ Nullstellen, gezählt mit Vielfachheit. Das Polynom $p(x)$ lässt sich also schreiben als
+    \begin{equation}
+        p(x)=a_n(x-x_1)(x-x_2)\ldots(x-x_n)
+    \end{equation}
+    wobei $x_1,x_2,...,x_n$ die Nullstellen von $p(x)$ sind.
+\end{definition}
 
 \end{document}
