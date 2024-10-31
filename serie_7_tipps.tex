@@ -18,6 +18,17 @@
 \newcommand{\Follows}{\Longrightarrow\ }
 \newcommand{\sameas}{\Longleftrightarrow}
 \newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arcCot}
+\DeclareMathOperator{\arccsc}{arcCsc}
+\DeclareMathOperator{\arccosh}{Arcosh}
+\DeclareMathOperator{\arcsinh}{Arsinh}
+\DeclareMathOperator{\arctanh}{Artanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth} 
 
 \def\doubleunderline#1{\underline{\underline{#1}}}
 \def\ez{\begin{flushright}\underline{ez.}\end{flushright}}
@@ -57,13 +68,20 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
 \section{Theorie}
 
 \begin{definition}{[Fundamentalsatz der Algebra]}
-    Sei $p(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0$ ein Polynom mit Koeffizienten $a_0,a_1,\ldots,a_n\in\C$. Eine Zahl $x_0$ heißt Nullstelle von $p(x)$, falls $p(x_0)=0$.
+    Sei $p(x)=a_n x^n+a_{n-1}x^{n-1}+ \cdots +a_1x+a_0$ ein Polynom mit Koeffizienten $a_0,a_1,\ldots,a_n\in\C$. Eine Zahl $x_0$ heißt Nullstelle von $p(x)$, falls $p(x_0)=0$.
 
     Jedes Polynom $p(x)$ vom Grad $n\geq 1$ hat genau $n$ Nullstellen, gezählt mit Vielfachheit. Das Polynom $p(x)$ lässt sich also schreiben als
     \begin{equation}
         p(x)=a_n(x-x_1)(x-x_2)\ldots(x-x_n)
     \end{equation}
-    wobei $x_1,x_2,...,x_n$ die Nullstellen von $p(x)$ sind.
+    wobei $x_1,x_2,\ldots,x_n$ die Nullstellen von $p(x)$ sind.
+
+    \textbf{Bemerkung:} Die Nullstellen von einem Polynom $p(x)$ mit reellen Koeffizienten $a_k\in\R$ sind nicht notwendigerweise reell. Es gilt jedoch, dass komplexe Nullstellen stets als Komplex konjugierte Paare auftreten, d.h. wenn $x_0\in\C$ eine Nullstelle von $p(x)$ ist, dann ist auch $\overline{x_0}$ eine Nullstelle von $p(x)$.
 \end{definition}
+
+\begin{remark}{[$\arcsinh$]}
+    Die Funktion $\arcsinh(x)$ ist die Umkehrfunktion von $\sinh(x)$, d.h. $\sinh(\arcsinh(x))=x$.
+    Es gilt aus der Vorlesung, dass $\arcsinh(x) = \ln(x + \sqrt{x^2 + 1})$.
+\end{remark}
 
 \end{document}
