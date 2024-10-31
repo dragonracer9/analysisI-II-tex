@@ -14,15 +14,25 @@
 \usepackage{xargs}
 \usepackage{xcolor}
 \usepackage{witharrows}
+\usepackage{commath}
+\usepackage{physics}
+
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\dt}{\mathrm{d}t}
+\newcommand{\du}{\mathrm{d}u}
+%\newcommand{\dv}{\mathrm{d}v}
+\newcommand{\dy}{\mathrm{d}y}
+\newcommand{\dz}{\mathrm{d}z}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Rm}{\mathbb{R}^m}
+\newcommand{\Rk}{\mathbb{R}^k}
+\newcommand{\und}{\text{ und }}
 
 \newcommand{\Follows}{\Longrightarrow\ }
 \newcommand{\sameas}{\Longleftrightarrow}
 \newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
-\DeclareMathOperator{\sech}{sech}
-\DeclareMathOperator{\csch}{csch}
-\DeclareMathOperator{\arcsec}{arcsec}
-\DeclareMathOperator{\arccot}{arcCot}
-\DeclareMathOperator{\arccsc}{arcCsc}
+\newcommandx{\LaplaceInv}[2][1=F(s), 2=t]{\mathscr{L}^{-1}\{#1\}(#2)}
 \DeclareMathOperator{\arccosh}{Arcosh}
 \DeclareMathOperator{\arcsinh}{Arsinh}
 \DeclareMathOperator{\arctanh}{Artanh}
