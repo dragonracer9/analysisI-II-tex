@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{xargs}
+\usepackage{xcolor}
+\usepackage{witharrows}
+
+\newcommand{\Follows}{\Longrightarrow\ }
+\newcommand{\sameas}{\Longleftrightarrow}
+\newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+\def\ez{\begin{flushright}\underline{ez.}\end{flushright}}
+%\[
+%   \Laplace[\cos(x)]=\int_{t=0}^{\infty}f(t)e^{-st}dt
+%\]
+
+\newcommand{\R}{\mathbb{R}} % gives blackboard R
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\inttext}{\shortintertext}
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{lemma}[2][Theorem]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][\textcolor{blue}{Tipps \& Tricks zu}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries \textcolor{blue}{#2}.}]}{\end{trivlist}}
+\newenvironment{question}[2][\textcolor{red}{Aufgabe}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries \textcolor{red}{#1}}\hskip \labelsep {\bfseries \textcolor{red}{#2}.}]}{\end{trivlist}}
+\newenvironment{remark}[2][Bemerkung]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+\title{Problem Set 5, Tips}
+\author{Vikram Damani\\
+    Analysis I}
+
+\maketitle
+Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
+
+\section{Theorie}
+
+\begin{definition}{[Fundamentalsatz der Algebra]}
+    Sei $p(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0$ ein Polynom mit Koeffizienten $a_0,a_1,\ldots,a_n\in\C$. Eine Zahl $x_0$ heißt Nullstelle von $p(x)$, falls $p(x_0)=0$.
+
+    Jedes Polynom $p(x)$ vom Grad $n\geq 1$ hat genau $n$ Nullstellen, gezählt mit Vielfachheit. Das Polynom $p(x)$ lässt sich also schreiben als
+    \begin{equation}
+        p(x)=a_n(x-x_1)(x-x_2)\ldots(x-x_n)
+    \end{equation}
+    wobei $x_1,x_2,...,x_n$ die Nullstellen von $p(x)$ sind.
+\end{definition}
+
+\end{document}
