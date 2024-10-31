@@ -13,7 +13,23 @@
 \usepackage{xargs}
 \usepackage{xcolor}
 \usepackage{witharrows}
+\usepackage{commath}
+\usepackage{physics}
 
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\dt}{\mathrm{d}t}
+\newcommand{\du}{\mathrm{d}u}
+%\newcommand{\dv}{\mathrm{d}v}
+\newcommand{\dy}{\mathrm{d}y}
+\newcommand{\dz}{\mathrm{d}z}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Rm}{\mathbb{R}^m}
+\newcommand{\Rk}{\mathbb{R}^k}
+\newcommand{\und}{\text{ und }}
+
+\usepackage{parskip}
+\usepackage{hyperref}
 \newcommand{\Follows}{\Longrightarrow\ }
 \newcommand{\sameas}{\Longleftrightarrow}
 \newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
@@ -46,18 +62,172 @@
         \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 
 \begin{document}
-\title{Problem Set 5, Tips}
+\title{Problem Set 6, Tips}
 \author{Vikram Damani\\
-    Analysis I}
+        Analysis I}
 
 \maketitle
-Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
+Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}. Der erste Teil befasst sich mit den Rechenregeln für komplexe Zahlen, im zweiten Teil (\ref{sec:serie6}) wird die Serie 6 behandelt.
 
 \section{Komplexe Zahlen: Rechenregeln}
 \begin{definition}{[Komplexe Zahl]}
-
+        Eine komplexe Zahl ist eine Zahl der Form $z=a+bi$, wobei $a,b\in\R$ und $i^2=-1$. $a=\Re{(z)}$ ist der Realteil und $b=\Im{(z)}$ der Imaginärteil von $z$. Die Menge der komplexen Zahlen wird mit $\C$ bezeichnet.
 \end{definition}
+
+\begin{definition}{[Konjugation]}
+        Sei $z=a+bi$ eine komplexe Zahl. Dann ist die Konjugation von $z$ die Zahl $\overline{z}=a-bi$. Es gilt $\overline{\overline{z}}=z$ und $\overline{z_1+z_2}=\overline{z_1}+\overline{z_2}$, sowie $\overline{z_1\cdot z_2}=\overline{z_1}\cdot\overline{z_2}$.
+
+        \textbf{Weitere nützliche Eigenschaften:}
+        \begin{itemize}
+                \item $z\in\R\iff z=\overline{z}$
+                \item $\Re{(z)}=\dfrac{z+\overline{z}}{2}$ und $\Im{(z)}=\dfrac{z-\overline{z}}{2i}$
+                \item  $z\cdot\overline{z}=\abs{z}^2$
+        \end{itemize}
+\end{definition}
+
+\begin{definition}{[Betrag]}
+        Sei $z=a+bi$ eine komplexe Zahl. Dann ist der Betrag von $z$ die Zahl $|z|=\sqrt{a^2+b^2}$. Der Betrag entspricht dem Abstand zwischen zwei komplexen Zahlen ($\abs{z} =\abs{z-0}$: der Abstand zu $0$). Es gilt $|z_1\cdot z_2|=|z_1|\cdot|z_2|$.
+\end{definition}
+
+\begin{definition}{[Argument]}
+        Sei $z=a+bi$ eine komplexe Zahl. Dann ist das Argument von $z$ die Zahl $\varphi=\arg{z}=\arctan{\frac{b}{a}}\in[-\pi,\pi)$. Das Argument entspricht dem Winkel vom Vektor $z$ zur Reellen Achse. Das Argument ist nicht eindeutig, d.h. $\arg{z}=\arctan{\frac{b}{a}}+2\pi k$, $k\in\Z$. Das Argument ist nur definiert, wenn $z\neq 0$.
+\end{definition}
+
+\begin{definition}{[Polarkoordinaten]}
+        Sei $z=a+bi$ eine komplexe Zahl. Dann sind die Polarkoordinaten von $z$ die Zahlen $r=|z|$ und $\varphi=\arctan{\frac{b}{a}}$. Es gilt $z=r\cdot(\cos{\varphi}+i\sin{\varphi})$. Die Polarkoordinaten sind wie das Argument nicht eindeutig, da $z=r\cdot(\cos{(\varphi+2\pi k)}+i\sin{(\varphi+2\pi k)})$ für $k\in\Z$. Konjugation in Polarkoordinaten: $\overline{z}=r\cdot(\cos{(-\varphi)}+i\sin{(-\varphi)})=r\cdot(\cos{\varphi}-i\sin{\varphi})=r\cdot e^{-i\varphi}$.
+\end{definition}
+
+\begin{definition}{[Euler'sche Formel]}
+        Sei $z=a+bi$ eine komplexe Zahl. Dann ist
+        \begin{align*}
+                z=|z|\cdot(\cos{\varphi}+i\sin{\varphi})=|z|\cdot e^{i\varphi}.
+        \end{align*}
+\end{definition}
+
 \subsection{Rechenoperationen}
 
+\begin{definition}{[Addition]}
+        Seien $z_1=a+bi$ und $z_2=c+di$ komplexe Zahlen. Dann ist die Summe $z_1+z_2=(a+c)+(b+d)i$. Die Addition ist kommutativ und assoziativ, d.h. $\forall z_1,z_2,z_3\in\C$:
+        \begin{align*}
+                z_1+z_2       & =z_2+z_1       \\
+                (z_1+z_2)+z_3 & =z_1+(z_2+z_3)
+        \end{align*}
+
+        \textbf{Beispiel:} $z_1=1+2i$ und $z_2=3+4i$. Dann ist $z_1+z_2=(1+3)+(2+4)i=4+6i$.
+\end{definition}
+
+\begin{definition}{[Subtraktion]}
+        Genauso wie bei der Addition. Seien $z_1=a+bi$ und $z_2=c+di$ komplexe Zahlen. Dann ist die Differenz $z_1-z_2=(a-c)+(b-d)i$. Es gilt $\forall z_1,z_2,z_3\in\C$:
+        \begin{align*}
+                z_1-z_2       & =-(z_2-z_1)    \\
+                (z_1-z_2)-z_3 & =z_1-(z_2+z_3)
+        \end{align*}
+\end{definition}
+
+\begin{definition}{[Multiplikation]}
+        Seien $z_1=a+bi$ und $z_2=c+di$ komplexe Zahlen. Dann ist das Produkt $z_1\cdot z_2=(ac-bd)+(ad+bc)i$ (ausmultiplizieren und Real-/Imaginärteil des Resultats zusammennehmen). Die Multiplikation ist kommutativ und assoziativ, d.h. $\forall z_1,z_2,z_3\in\C$:
+        \begin{align*}
+                z_1\cdot z_2            & =z_2\cdot z_1            \\
+                (z_1\cdot z_2)\cdot z_3 & =z_1\cdot (z_2\cdot z_3)
+        \end{align*}
+
+        \textbf{Multiplikation in Polarkoordinaten:} Seien $z_1=r_1\cdot e^{i\varphi_1}$ und $z_2=r_2\cdot e^{i\varphi_2}$ komplexe Zahlen in Polarkoordinaten. Dann ist $z_1\cdot z_2=r_1\cdot r_2\cdot e^{i(\varphi_1+\varphi_2)}$.
+
+        \textbf{Beispiele:}
+        \begin{itemize}
+                \item[(1)] $z_1=1+2i$ und $z_2=3+4i$. Dann ist $z_1\cdot z_2=(1\cdot 3-2\cdot 4)+(1\cdot 4+2\cdot 3)i=-5+10i$.
+                \item[(2)] $z_1=3\cdot e^{i\frac{\pi}{4}}$ und $z_2=2\cdot e^{i\frac{\pi}{3}}$. Dann ist $z_1\cdot z_2=3\cdot 2\cdot e^{i\left(\frac{\pi}{4}+\frac{\pi}{3}\right)}=6\cdot e^{i\frac{7\pi}{12}}$.
+        \end{itemize}
+\end{definition}
+
+\begin{definition}{[Division]}
+        Seien $z_1=a+bi$ und $z_2=c+di$ komplexe Zahlen. Dann ist der Quotient $\dfrac{z_1}{z_2}=\dfrac{a+bi}{c+di}=\dfrac{a+bi}{c+di}\cdot\dfrac{c-di}{c-di}=\dfrac{ac+bd}{c^2+d^2}+\dfrac{bc-ad}{c^2+d^2}i=\dfrac{z_1\cdot\overline{z_2}}{z_2\cdot\overline{z_2}}=\dfrac{z_1\cdot\overline{z_2}}{\abs{z_1}^2}$. Die Division ist nicht kommutativ, aber assoziativ, d.h. $\forall z_1,z_2,z_3\in\C$:
+        \begin{align*}
+                \frac{z_1}{z_2}          & \neq\frac{z_2}{z_1}       \\
+                \frac{z_1}{z_2}\cdot z_3 & =\frac{z_1\cdot z_3}{z_2}
+        \end{align*}
+
+        \textbf{Division in Polarkoordinaten:} Seien $z_1=r_1\cdot e^{i\varphi_1}$ und $z_2=r_2\cdot e^{i\varphi_2}$ komplexe Zahlen in Polarkoordinaten. Dann ist $\dfrac{z_1}{z_2}=\dfrac{r_1}{r_2}\cdot e^{i(\varphi_1-\varphi_2)}$.
+
+        \textbf{Beispiele:}
+        \begin{itemize}
+                \item[(1)] $z_1=1+2i$ und $z_2=3+4i$. Dann ist
+                      \begin{align*}
+                              \dfrac{z_1}{z_2} & =\dfrac{1+2i}{3+4i}                         \\
+                                               & =\dfrac{1+2i}{3+4i}\cdot\dfrac{3-4i}{3-4i}  \\
+                                               & =\dfrac{3+8}{3^2+4^2}+\dfrac{6-4}{3^2+4^2}i \\
+                                               & =\dfrac{11}{25}+\dfrac{2}{25}i.
+                      \end{align*}
+                \item[(2)] $z_1=3\cdot e^{i\frac{\pi}{4}}$ und $z_2=2\cdot e^{i\frac{\pi}{3}}$. Dann ist $\dfrac{z_1}{z_2}=\dfrac{3}{2}\cdot e^{i\left(\frac{\pi}{4}-\frac{\pi}{3}\right)}=1.5\cdot e^{-i\frac{\pi}{12}}$.
+        \end{itemize}
+
+\end{definition}
+
+\begin{definition}{[Potenzieren]}
+        Sei $z=a+bi=r\cdot{e}^{i\varphi}$ eine komplexe Zahl. Dann ist $z^n=(a+bi)^n=r^n\cdot{e}^{in\varphi}$. Es gilt $\forall z\in\C$:
+        \begin{align*}
+                z^0 & =1               \\
+                z^1 & =z               \\
+                z^2 & =z\cdot z        \\
+                z^3 & =z\cdot z\cdot z
+        \end{align*}
+
+        \textbf{Beispiel:} $z=1+2i$. Dann ist $z^2=(1+2i)^2=1+4i-4=1+4i-4=-3+4i$. $z^3=(1+2i)^3=1+6i-8-12i=-7-6i$.
+\end{definition}
+
+\begin{definition}{[Wurzeln]}
+        Sei $z=a+bi=r\cdot{e}^{i\varphi}$ eine komplexe Zahl. Dann ist die $n$-te Wurzel von $z$ die Zahl $w_k=\sqrt[n]{r}\cdot{e}^{i\left(\frac{\varphi+2\pi k}{n}\right)}$, $k=0,1,\ldots,n-1$.
+
+        \textbf{Beispiel:} $z=3+4i$. Dann ist $z^{\frac{1}{2}}=\sqrt{5}\cdot{e}^{i\left(\frac{\arctan{\frac{4}{3}}+2\pi k}{2}\right)}$. $z^{\frac{1}{3}}=\sqrt[3]{5}\cdot{e}^{i\left(\frac{\arctan{\frac{2}{1}}+2\pi k}{3}\right)}$.
+\end{definition}
+
+\section{Serie 6}\label{sec:serie6}
+
+\begin{question}{1}
+        Skizzieren Sie die folgenden Teilmengen der komplexen Ebene C.
+        \begin{enumerate}[label=(\alph*)]
+                \item $\{z\in\C\mid\abs{z}= 3, \Im{(z)}\geq0\}$
+                \item $\{z\in\C\mid\frac{\abs{z+2-2i}}{\abs{z+i}} = 2\}$
+                \item $\{z\in\C\mid\Im{(z)}\geq\Re{(z)}\}$
+                \item $\{z\in\C\mid (\abs{z - 3} \geq 1) \text{ und } (\abs{z - 1 - i} < 4)\}$
+                \item $\{z\in\C\mid (\abs{z - i + 3} \geq \abs{z + 2i}) \und (\Re{(z)} > 0) \und (\Im{(z)} > 0)\}$
+        \end{enumerate}
+\end{question}
+
+\begin{problem}{1}
+$z=a+ib$ definiert einen Punkt in der komplexen Ebene mit Koordinaten $(a,b)$. Wenn man also $z$ in die Bedingungen einsetzt und Imaginärteil und Realteil auf beiden Seiten der (Un-)Gleichung vergleicht, erhält man zwei separate Bedingungen für $a$ und $b$. Diese Bedingungen können dann in der komplexen Ebene skizziert werden.
+
+Was ist der Unterschied zwischen einer gleichung $\abs{z-w}=r$ und der entsprechenden Ungleichung $\abs{z-w}\leq{r}$? 
+\end{problem}
+
+\begin{question}{2}
+        Zeigen Sie die folgenden trigonometrische Beziehungen:
+
+        \begin{enumerate}[label=(\alph*)]
+                \item $\cos(3x) = \cos^3(x) - 3\sin^2(x)\cos(x)$
+                \item $\sin(3x) = 3\sin(x)\cos^2(x) - \sin^3(x)$
+        \end{enumerate}
+\end{question}
+
+\begin{problem}{2}
+Es ist einfacher mit der Euler'schen Formel zu arbeiten. Setze $z=e^{ix}=\cos(x)+i\sin(x)$ und sei $z_1=z^3=e^{i3x}=\cos(3x)+i\sin(3x)$. Ausmultiplizieren und Real-/Imaginärteil zusammennehmen.
+\end{problem}
+
+\begin{question}{3}
+        \begin{enumerate}[label=(\alph*)]
+                \item Skizzieren Sie alle vierten Wurzeln von $w$;
+                \item Gibt es eine reelle Zahl $w$, sodass die Punkte $A, B, C, D$ und $E$ gerade die
+                      fünften Wurzeln von $w$ sind? Begründen Sie!
+                \item Die Zahlen
+                      \begin{align*}
+                              z_1 = \sqrt{2}e^{i\frac{5\pi}{16}} \und z_2 = \sqrt{2}e^{-i\frac{15\pi}{16}}
+                      \end{align*}
+                      seien beides Lösungen der Gleichung $z^n = c$. Bestimmen Sie das kleinstmögliche $n \in \N$ sowie $c\in\C$.
+
+        \end{enumerate}
+\end{question}
+
+\begin{problem}{3} Grundsätzlich muss man hier für (a), (b) nur die Rechenregeln anwenden. Wie sind die Wurzeln auf der komplexen Ebene verteilt?
+\end{problem}
 
 \end{document}
