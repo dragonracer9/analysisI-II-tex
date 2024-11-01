@@ -16,8 +16,10 @@
 \usepackage{witharrows}
 \usepackage{commath}
 \usepackage{physics}
+\usepackage[hidelinks]{hyperref}
 
 \newcommand{\dx}{\mathrm{d}x}
+\newcommand{\ddx}{\frac{\mathrm{d}}{\mathrm{d}x}}
 \newcommand{\dt}{\mathrm{d}t}
 \newcommand{\du}{\mathrm{d}u}
 %\newcommand{\dv}{\mathrm{d}v}
@@ -28,6 +30,9 @@
 \newcommand{\Rm}{\mathbb{R}^m}
 \newcommand{\Rk}{\mathbb{R}^k}
 \newcommand{\und}{\text{ und }}
+\newcommand{\oder}{\text{ oder }}
+\newcommand{\bydef}{\underset{def.}{=}}
+\newcommand{\BH}{\underset{\textrm{B-H}}{=}}
 
 \newcommand{\Follows}{\Longrightarrow\ }
 \newcommand{\sameas}{\Longleftrightarrow}
@@ -70,7 +75,7 @@
 \begin{document}
 \title{Problem Set 5, Tips}
 \author{Vikram Damani\\
-    Analysis I}
+        Analysis I}
 
 \maketitle
 Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
@@ -78,20 +83,110 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
 \section{Theorie}
 
 \begin{definition}{[Fundamentalsatz der Algebra]}
-    Sei $p(x)=a_n x^n+a_{n-1}x^{n-1}+ \cdots +a_1x+a_0$ ein Polynom mit Koeffizienten $a_0,a_1,\ldots,a_n\in\C$. Eine Zahl $x_0$ heißt Nullstelle von $p(x)$, falls $p(x_0)=0$.
+        Sei $p(x)=a_n x^n+a_{n-1}x^{n-1}+ \cdots +a_1x+a_0$ ein Polynom mit Koeffizienten $a_0,a_1,\ldots,a_n\in\C$. Eine Zahl $x_0$ heißt Nullstelle von $p(x)$, falls $p(x_0)=0$.
 
-    Jedes Polynom $p(x)$ vom Grad $n\geq 1$ hat genau $n$ Nullstellen, gezählt mit Vielfachheit. Das Polynom $p(x)$ lässt sich also schreiben als
-    \begin{equation}
-        p(x)=a_n(x-x_1)(x-x_2)\ldots(x-x_n)
-    \end{equation}
-    wobei $x_1,x_2,\ldots,x_n$ die Nullstellen von $p(x)$ sind.
+        Jedes Polynom $p(x)$ vom Grad $n\geq 1$ hat genau $n$ Nullstellen, gezählt mit
+        Vielfachheit. Das Polynom $p(x)$ lässt sich also schreiben als
+        \begin{equation}
+                p(x)=a_n(x-x_1)(x-x_2)\ldots(x-x_n)
+        \end{equation}
+        wobei $x_1,x_2,\ldots,x_n$ die Nullstellen von $p(x)$ sind.
 
-    \textbf{Bemerkung:} Die Nullstellen von einem Polynom $p(x)$ mit reellen Koeffizienten $a_k\in\R$ sind nicht notwendigerweise reell. Es gilt jedoch, dass komplexe Nullstellen stets als Komplex konjugierte Paare auftreten, d.h. wenn $x_0\in\C$ eine Nullstelle von $p(x)$ ist, dann ist auch $\overline{x_0}$ eine Nullstelle von $p(x)$.
+        \textbf{Bemerkung:} Die Nullstellen von einem Polynom $p(x)$ mit reellen Koeffizienten $a_k\in\R$ sind nicht notwendigerweise reell. Es gilt jedoch, dass komplexe Nullstellen stets als Komplex konjugierte Paare auftreten, d.h. wenn $x_0\in\C$ eine Nullstelle von $p(x)$ ist, dann ist auch $\overline{x_0}$ eine Nullstelle von $p(x)$.
 \end{definition}
 
 \begin{remark}{[$\arcsinh$]}
-    Die Funktion $\arcsinh(x)$ ist die Umkehrfunktion von $\sinh(x)$, d.h. $\sinh(\arcsinh(x))=x$.
-    Es gilt aus der Vorlesung, dass $\arcsinh(x) = \ln(x + \sqrt{x^2 + 1})$.
+        Die Funktion $\arcsinh(x)$ ist die Umkehrfunktion von $\sinh(x)$, d.h. $\sinh(\arcsinh(x))=x$.
+        Es gilt aus der Vorlesung, dass $\arcsinh(x) = \ln(x + \sqrt{x^2 + 1})$.
 \end{remark}
+
+\begin{definition}{[Exponentialfunktion]}
+        Die Exponentialfunktion
+        \begin{equation}
+                \exp: \R\to\left(0,\infty\right),\,x\mapsto\exp(x)
+        \end{equation} ist definiert als
+        \begin{equation}
+                \exp(x)=\sum_{n=0}^{\infty}\frac{x^n}{n!}
+        \end{equation}
+        und erfüllt die Funktionalgleichung
+        \begin{equation}
+                \exp(x+y)=\exp(x)\exp(y)
+        \end{equation}
+        für alle $x,y\in\R$. Die Ableitung der Exponentialfunktion ist die Exponentialfunktion selbst, d.h.
+        \begin{equation}
+                \ddx{f}(x)=f(x).
+        \end{equation}
+        Die Exponentialfunktion ist stetig, streng monoton wachsend und bijektiv. Es gilt $\exp(0)=1$ und $\exp(1)=e$.
+\end{definition}
+
+\begin{definition}{[Logarithmus]}
+        Der natürliche Logarithmus ist die Umkehrfunktion der Exponentialfunktion, d.h. $\exp(\ln(x))=x$.
+        Der natürliche Logarithmus ist definiert als
+        \begin{equation}
+                \ln: \left(0,\infty\right)\to\R,\,x\mapsto\ln(x)
+        \end{equation}
+        und erfüllt die Funktionalgleichung
+        \begin{equation}
+                \ln(xy)=\ln(x)+\ln(y)
+        \end{equation}
+        für alle $x,y\in\left(0,\infty\right)$. Der natürliche Logarithmus ist stetig, streng monoton wachsend und bijektiv. Es gilt $\ln(1)=0$ und $\ln(e)=1$.
+
+        \begin{remark}{[Ableitung des Logarithmus]}
+                Die Ableitung der Umkehrfunktion $f^{-1}$ ist gegeben durch
+                \begin{equation}\label{eq:1}
+                        \ddx{f^{-1}(x)}=\frac{1}{f'(f^{-1}(x))}.
+                \end{equation}
+                Daher ist die Ableitung des natürlichen Logarithmus
+                \begin{equation}
+                        \ddx{\ln(x)}\underset{(\ref{eq:1})}{=}\frac{1}{e^{\ln(x)}}\underset{def.}{=}\frac{1}{x}.
+                \end{equation}
+        \end{remark}
+
+        \begin{remark}{[Logarithmus zur Basis $a$]}
+                Da $a^x=e^{x\ln(a)}$ gilt, ist der Logarithmus zur Basis $a$ definiert als
+                \begin{equation}
+                        \log_a: \left(0,\infty\right)\to\R,\,x\mapsto\log_a(x)=\frac{\ln(x)}{\ln(a)}.
+                \end{equation}
+                Es gilt $\log_a(1)=0$ und $\log_a(a)=1$. Die Ableitung des Logarithmus zur Basis $a$ ist
+                \begin{equation}
+                        \ddx{\log_a(x)}=\frac{1}{x\ln(a)}.
+                \end{equation}
+        \end{remark}
+\end{definition}
+
+\begin{definition}{[Landau-o]}
+        Seien $f,g: \R\to\R$ Funktionen. Dann schreiben wir $f(x)=o(g(x))$ für $x\to \infty$, falls
+        \begin{equation}
+                \lim_{x\to \infty}\frac{f(x)}{g(x)}=0.
+        \end{equation}
+
+        \begin{remark}{[Intuition]}
+                Die Schreibweise $f(x)=o(g(x))$ bedeutet, dass $f(x)$ im Vergleich zu $g(x)$ für $x\to \infty$ vernachlässigbar klein ist.
+        \end{remark}
+        \begin{remark}{[Berechnung]}
+                Um zu zeigen, dass $f(x)=o(g(x))$ für $x\to \infty$, ist es wichtig, gut mit Bernoulli-Hôpital umgehen zu können.
+        \end{remark}
+        \begin{remark}{[$\ln$, $x^k$ und $e^x$]}
+                Es gilt $\ln(x)=o(x^k)$ für $x\to\infty$ für jedes $k>0$, da
+                \begin{equation}
+                        \lim_{x\to\infty}\frac{\ln(x)}{x^k}\BH{}\lim_{x\to\infty}\frac{1/x}{kx^{k-1}}=\lim_{x\to\infty}\frac{1}{kx^k}=0.
+                \end{equation}
+                Es gilt auch $x^k=o(e^x)$ für $x\to\infty$ für jedes $k>0$, da
+                \begin{equation}
+                        \lim_{x\to\infty}\frac{x^k}{e^x}\BH{}\lim_{x\to\infty}\frac{kx^{k-1}}{e^x}\BH\lim_{x\to\infty}\frac{k(k-1)x^{k-2}}{e^x}\BH\cdots\BH\lim_{x\to\infty}\frac{k!}{e^x}=0.
+                \end{equation}
+        \end{remark}
+        \textbf{Beispiel:} Sei $f(x)=x^2$ und $g(x)=x^3$. Dann gilt $f(x)=o(g(x))$ für $x\to 0$, da
+        \begin{equation}
+                \lim_{x\to 0}\frac{x^2}{x^3}=\lim_{x\to 0}\frac{1}{x}=0.
+        \end{equation}
+\end{definition}
+
+\begin{definition}{[Landau-O]}
+        Seien $f,g: \R\to\R$ Funktionen. Dann schreiben wir $f(x)=O(g(x))$ für $x\to \infty$, falls es eine Konstante $A\in\R^{+}$ gibt, sodass
+        \begin{equation}
+                \lim_{x\to \infty}\abs{\frac{f(x)}{g(x)}}=A\neq0.
+        \end{equation}
+\end{definition}
 
 \end{document}
