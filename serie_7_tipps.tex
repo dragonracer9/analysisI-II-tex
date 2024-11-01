@@ -73,7 +73,7 @@
         \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 
 \begin{document}
-\title{Problem Set 5, Tips}
+\title{Problem Set 7, Tips}
 \author{Vikram Damani\\
         Analysis I}
 
@@ -161,7 +161,7 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
         \end{equation}
 
         \begin{remark}{[Intuition]}
-                Die Schreibweise $f(x)=o(g(x))$ bedeutet, dass $f(x)$ im Vergleich zu $g(x)$ für $x\to \infty$ vernachlässigbar klein ist.
+                Die Schreibweise $f(x)=o(g(x))$ bedeutet, dass $f(x)$ im Vergleich zu $g(x)$ für $x\to \infty$ asymptotisch vernachlässigbar klein ist.
         \end{remark}
         \begin{remark}{[Berechnung]}
                 Um zu zeigen, dass $f(x)=o(g(x))$ für $x\to \infty$, ist es wichtig, gut mit Bernoulli-Hôpital umgehen zu können.
@@ -187,8 +187,87 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
         \begin{equation}
                 \lim_{x\to \infty}\abs{\frac{f(x)}{g(x)}}=A\neq0.
         \end{equation}
+
+        \begin{remark}{[Intuition]}
+                Die Schreibweise $f(x)=O(g(x))$ bedeutet, dass $f(x)$ eine asymptotische obere Schranke von $g(x)$ für $x\to \infty$ ist.\footnote{\url{https://de.wikipedia.org/wiki/Landau-Symbole}}
+        \end{remark}
 \end{definition}
 
 \section{Tipps \& Tricks}
 
+\begin{question}{1}
+        Es sei das Gebiet
+        \begin{equation}
+                B=\left\{z\in\C\setminus\{0\}\mid\Im\left(\frac{z+2}{iz}\right)>0\right\}
+        \end{equation}
+        gegeben.
+        \begin{enumerate}[label=(\alph*)]
+                \item Skizzieren Sie das Gebiet $B$ in der komplexen Ebene.
+                \item Das Polynom $z^3+\frac{7}{2}z^2+7z+6$ hat eine komplexe Nullstelle mit Realteil
+                      gleich $-1$. Bestimmen Sie alle Nullstellen dieses Polynoms. Wie lauten die
+                      Nullstellen in Polarform?
+                \item Welche dieser Nullstellen befinden sich in $B$?
+        \end{enumerate}
+\end{question}
+
+\begin{problem}{1} Wie letzte Woche, muss man hier eine Teilmenge der komplexen Zahlen skizzieren. Umformen der Ungleichung liefert eine Ungleichung in $x$ und $y$. Diese kann man mit quadratischer Ergänzung in eine schöne Form
+        bringen.
+\begin{enumerate}[label=(\alph*)]
+        \item Einsetzen von $z=x+iy$ in die Ungleichung und Umformen ergibt eine Ungleichung in $x$ und $y$. Der Imaginärteil ist ein Bruch. Kann der Nenner negativ sein? Was beduetet das für die Ungleichung?
+        \item Da eine Komplexe Nullstelle mit Realteil $-1$ gegeben ist, ist die Nullstelle eine Zahl der Form $-1\pm{iy}$ (da Komplexe Nullstellen stets als konjugierte Paare auftreten). Polynomdivision durch diese beiden Nullstellen liefert die letze Nullstelle und ein quadratisches Polynom als Rest. Wie bestimmt man nun $y$?
+\end{enumerate}
+\end{problem}
+
+\begin{question}{2}
+        Es bezeichne $p$ ein Polynom fünften Grades mit reellen Koeffizienten. Weiter bezeichne $r_p\geq 0$ bzw. $c_p\geq 0$ die mit Vielfachheit gezählten reellen bzw.\ komplexen, nicht-reellen Nullstellen von $p$.
+        \begin{enumerate}[label=(\alph*)]
+                \item Was sind $r_p$ und $c_p$ für das Polynom $p(x)=x^5+1$?
+                \item Sei nun $p$ wieder ein allgemeines Polynom fünften Grades mit reellen
+                      Koeffizienten. Zeigen Sie, dass immer gilt: $r_p+c_p=5$.
+                \item Wieso ist $r_p=2$ und $c_p=3$ niemals möglich?
+                \item Finden Sie alle möglichen Werte von $r_p$. Geben Sie weiterhin jeweils ein
+                      Polynom $p$ an, welches genau $r_p$ mit Vielfachheit gezählte reelle
+                      Nullstellen hat.
+        \end{enumerate}
+\end{question}
+
+\begin{problem}{2} Von den Überlegungen her ist diese Aufgabe sehr ähnlich zu einer typischen Prüfungsaufgabe. Es lohnt sich daher, diese Aufgabe gut zu verstehen. Hier ist der Fundamentalsatz der Algebra sehr wichtig.        
+\end{problem}
+
+\begin{question}{3}
+        Die hyperbolischen Funktionen sinh und cosh sind wie folgt definiert:
+        \begin{equation}
+                \sinh: \R\to\R,\,x\mapsto\frac{e^x-e^{-x}}{2},\quad\cosh: \R\to\R,\,x\mapsto\frac{e^x+e^{-x}}{2}.
+        \end{equation}
+        Beweisen Sie folgende Identitäten für alle $x\in\R$:
+        \begin{enumerate}[label=(\alph*)]
+                \item $\cosh^2(x)-\sinh^2(x)=1$
+                \item $\sinh(x+y)=\sinh(x)\cosh(y)+\cosh(x)\sinh(y)$
+        \end{enumerate}
+        Beweisen Sie die folgenden Identitäten für alle $x\in\R$, an denen beide Seiten definiert sind:
+        \begin{enumerate}[label=(\alph*)]
+                \item $2\cosh^2\left(\frac{x}{2}\right)=\cosh(x)+1$
+                \item $\arccosh(x)=\ln\left(x+\sqrt{x^2-1}\right)$
+                \item $\arcsinh'(x)=\frac{1}{\sqrt{x^2+1}}$
+                \item $\arccosh'(x)=\frac{1}{\sqrt{x^2-1}}$
+        \end{enumerate}
+\end{question}
+
+\begin{problem}{3} Die Identitäten (a), (b) und (c) lassen sich durch direktes Einsetzen beweisen. (d) geht ganz analog zu der Herleitung von $\arcsinh(x)$ in der Vorlesung. Welchen Ast der Wurzelfunktion in $y\pm\sqrt{y^2-1}$ muss man hier wählen? (e) und (f) lassen sich durch die allgemeine Ableitungsregel für Umkehrfunktionen beweisen.
+\end{problem}
+
+\begin{question}{4}
+        Ordnen Sie die folgenden sechs Funktionen nach ihren Grössenordnungen, wenn $x\to +\infty$ strebt.
+        \begin{enumerate}[label=(\alph*)]
+                \item $\ln\left(\ln(x^2)\right)$
+                \item $\ln\left(e^x-x\right)$
+                \item $x^2$
+                \item $x^{1/5}$
+                \item $\ln\left(10x^{1/2}\right)$
+                \item $e^x$
+        \end{enumerate}
+\end{question}
+
+\begin{problem}{4} Hier muss man gut mit Bernoulli-Hôpital umgehen können.
+\end{problem}
 \end{document}
