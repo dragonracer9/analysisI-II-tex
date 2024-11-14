@@ -86,8 +86,9 @@
 \maketitle
 Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
 
-\section{Theorie}
+\begin{problem}{1}
 
+\end{problem}
  (Definitionen und Sätze aus den Tipps \& Tricks für Serie 5:)
 \begin{definition}{[Extremalstellen]}
         Eine Funktion $f(x)$ hat eine Extremalstelle an der Stelle $x_0$, falls $f'(x_0)=0$.
@@ -112,6 +113,8 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
 \begin{definition}{[Maxima und Minima mit höheren Ableitungen]}
         Sei $f(x)$ eine Funktion, die in $x_0$ mindestens zweimal differenzierbar ist. Falls $f'(x_0)=0$ und $f''(x_0)>0$, dann hat $f(x)$ in $x_0$ ein lokales Minimum. Falls $f'(x_0)=0$ und $f''(x_0)<0$, dann hat $f(x)$ in
         $x_0$ ein lokales Maximum.
+
+        \textbf{Achtung:} Am Rand des Definitionsbereiches sind Ableitungen nicht definiert. Es kann dort dennoch lokale Maximal- oder Minimalstellen geben!
 \end{definition}
 
 \begin{definition}{[Konkavität und Konvexität]}
@@ -195,47 +198,50 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
         \end{remark}
 \end{definition}
 
+\textbf{\textcolor{blue}{Theorie zu 2 \& 3.}}
+
 \begin{definition}{[Ebene Kurven]}
         Ebene Kurven sind ``eindimensionale'' Teilmengen des $\R^2$.
 
         Eine Kurve $C$ ist eine Menge von Punkten $(x,y)$, die auf verschiedene Weisen
         beschrieben werden können:
         \begin{enumerate}
-                \item Parametrisierung: $C=\{(x(t),y(t))\mid t\in I\subseteq\R\}$, wobei $x(t)$ und $y(t)$
-                      Funktionen sind, die $t$ auf $x$ und $y$ abbilden.
+                \item Parametrisierung: $C=\{(x(t),y(t))\mid t\in I\subseteq\R\}$, wobei $x(t)$ und
+                      $y(t)$ Funktionen sind, die $t$ auf $x$ und $y$ abbilden.
                 \item Implizite Darstellung: $C=\{(x,y)\mid F(x,y)=0\}$, wobei $F(x,y)$ eine Funktion
                       von $x$ und $y$ ist.
-                \item Explizite Darstellung: $C=\{(x,y)\subset\R^2\}$. $y$ lässt sich dann anhand (mehrerer) Funktionen von $x$ ausdrücken.
-                
-                Zum Beispiel:
-                \begin{align*}
-                        C=\{(x,y)\mid y=\pm\sqrt{1-x^2}\}, \quad \text{ein Kreis mit Radius 1.}
-                \end{align*}
-                \begin{figure}[hbt!]
-                        \centering
-                        \begin{subfigure}[][][]{0.45\textwidth}
-                                \centering
-                                \begin{tikzpicture}
-                                        \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
-                                        \draw[->] (0,-0.5) -- (0,1.5) node[above] {$y$};
-                                        \draw[thick, blue] (-1,0) arc (180:0:1) node[right, yshift=0.5cm] {$y=\sqrt{1-x^2}$};
-                                \end{tikzpicture}
-                        \end{subfigure}
-                        \begin{subfigure}[][][]{0.45\textwidth}
-                                \centering
-                                \begin{tikzpicture}
-                                        \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
-                                        \draw[->] (0,-1.5) -- (0,0.5) node[above] {$y$};
-                                        \draw[thick, blue] (-1,0) arc (-180:0:1) node[right, yshift=0.5cm] {$y=-\sqrt{1-x^2}$};
-                                \end{tikzpicture}
-                        \end{subfigure}
-                \end{figure}
+                \item Explizite Darstellung: $C=\{(x,y)\subset\R^2\}$. $y$ lässt sich dann anhand
+                      (mehrerer) Funktionen von $x$ ausdrücken.
+
+                      Zum Beispiel:
+                      \begin{align*}
+                              C=\{(x,y)\mid y=\pm\sqrt{1-x^2}\}, \quad \text{ein Kreis mit Radius 1.}
+                      \end{align*}
+                      \begin{figure}[hbt!]
+                              \centering
+                              \begin{subfigure}[][][]{0.45\textwidth}
+                                      \centering
+                                      \begin{tikzpicture}
+                                              \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
+                                              \draw[->] (0,-0.5) -- (0,1.5) node[above] {$y$};
+                                              \draw[thick, blue] (-1,0) arc (180:0:1) node[right, yshift=0.5cm] {$y=\sqrt{1-x^2}$};
+                                      \end{tikzpicture}
+                              \end{subfigure}
+                              \begin{subfigure}[][][]{0.45\textwidth}
+                                      \centering
+                                      \begin{tikzpicture}
+                                              \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
+                                              \draw[->] (0,-1.5) -- (0,0.5) node[above] {$y$};
+                                              \draw[thick, blue] (-1,0) arc (-180:0:1) node[right, yshift=0.5cm] {$y=-\sqrt{1-x^2}$};
+                                      \end{tikzpicture}
+                              \end{subfigure}
+                      \end{figure}
         \end{enumerate}
         \begin{remark}{[Von Parametrisierung zu impliziten Darstellung]}
-                Um von einer Parametrisierung zu einer impliziten Darstellung zu kommen, muss man in den Parametrisierungen $x(t)$ und $y(t)$ $t$ eliminieren. Dazu kann man z.B. die Umkehrfunktion $t(x)$ bestimmen und in $y(t)$ einsetzen.         
+                Um von einer Parametrisierung zu einer impliziten Darstellung zu kommen, muss man in den Parametrisierungen $x(t)$ und $y(t)$ $t$ eliminieren. Dazu kann man z.B. die Umkehrfunktion $t(x)$ bestimmen und in $y(t)$ einsetzen.
         \end{remark}
 \end{definition}
 
-\section{Tipps \& Tricks}
+
 
 \end{document}
