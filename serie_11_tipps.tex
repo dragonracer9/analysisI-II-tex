@@ -1,0 +1,442 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{parskip}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{xargs}
+\usepackage{xcolor}
+\usepackage{witharrows}
+\usepackage{commath}
+\usepackage{physics}
+\usepackage{tikz}
+\usetikzlibrary{patterns,hobby}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.6}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{patterns}
+\usepackage[outline]{contour} % glow around text
+\contourlength{1.0pt}
+
+\tikzset{>=latex} % for LaTeX arrow head
+\colorlet{myred}{red!85!black}
+\colorlet{myblue}{blue!80!black}
+\colorlet{mydarkred}{myred!80!black}
+\colorlet{mydarkblue}{myblue!60!black}
+\tikzstyle{xline}=[myblue,thick]
+\def\tick#1#2{\draw[thick] (#1) ++ (#2:0.09) --++ (#2-180:0.18)}
+\tikzstyle{myarr}=[myblue!50,-{Latex[length=3,width=2]}]
+\def\Nr{100}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[centerlast,small,sc]{caption}
+\usepackage{subcaption} % causes weird error with \setlength{\captionmargin}{20pt}
+\usepackage{amsthm}
+\usepackage{cancel}
+
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\ddx}{\frac{\mathrm{d}}{\mathrm{d}x}}
+\newcommand{\dt}{\mathrm{d}t}
+\newcommand{\du}{\mathrm{d}u}
+%\newcommand{\dv}{\mathrm{d}v}
+\newcommand{\dy}{\mathrm{d}y}
+\newcommand{\dz}{\mathrm{d}z}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Rm}{\mathbb{R}^m}
+\newcommand{\Rk}{\mathbb{R}^k}
+\newcommand{\und}{\text{ und }}
+\newcommand{\oder}{\text{ oder }}
+\newcommand{\bydef}{\underset{def.}{=}}
+\newcommand{\BH}{\underset{\textrm{B-H}}{=}}
+
+\newcommand{\Follows}{\Longrightarrow\ }
+\newcommand{\sameas}{\Longleftrightarrow}
+\newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
+\newcommandx{\LaplaceInv}[2][1=F(s), 2=t]{\mathscr{L}^{-1}\{#1\}(#2)}
+\DeclareMathOperator{\arccosh}{Arcosh}
+\DeclareMathOperator{\arcsinh}{Arsinh}
+\DeclareMathOperator{\arctanh}{Artanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth} 
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+\def\ez{\begin{flushright}\underline{ez.}\end{flushright}}
+%\[
+%   \Laplace[\cos(x)]=\int_{t=0}^{\infty}f(t)e^{-st}dt
+%\]
+
+\newcommand{\R}{\mathbb{R}} % gives blackboard R
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\inttext}{\shortintertext}
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{lemma}[2][Theorem]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{notation}[2][Notation]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][\textcolor{blue}{Tipps \& Tricks zu}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries \textcolor{blue}{#2}.}]}{\end{trivlist}}
+\newenvironment{question}[2][\textcolor{red}{Aufgabe}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries \textcolor{red}{#1}}\hskip \labelsep {\bfseries \textcolor{red}{#2}.}]}{\end{trivlist}}
+\newenvironment{remark}[2][Bemerkung]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+\title{Problem Set 11, Tips}
+\author{Vikram R. Damani\\
+    Analysis I}
+
+\maketitle
+Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
+
+\section{Theorie}
+
+\begin{definition}{[Bestimmtes Integral]}
+    Sei $f: [a,b] \to \R$. Dann ist die Fläche unter dem Graphen von $f$ über dem Intervall $[a,b]$ definiert als
+    \begin{align}
+        \colorbox{pink}{\mathstrut$A\triangleq\displaystyle\int_{a}^{b}f(x)dx$}
+    \end{align}
+    das \textbf{bestimmte Integral} von $f$ über das Intervall $[a,b]$.
+
+    \begin{remark}{[Bedingungen für Konvergenz]}
+        $f$ darf auf $[a,b]$ an einzelnen, isolierten Stellen unstetig sein.\footnote{Die Menge der Unstetigkeitsstellen von $f$ auf $[a,b]$ muss eine Menge mit Lebesgue-Mass Null sein.} Die Grenzen $a$ und $b$ müssen endlich sein.
+
+        Stetige Funktionen sind in der Regel integrierbar.
+    \end{remark}
+\end{definition}
+
+\begin{definition}{[Riemannsumme und Riemannintegral]}
+    Sei $f: [a,b] \to \R$ eine Funktion. Wir betrachten eine Zerlegung des Intervalls $[a,b]$ in die \textbf{Teilintervalle} $\mathbf{[x_{i-1},x_i]}$ mit \textbf{Intervallbreite}\footnote{Die Intervalle müssen nicht unbedingt regelmässig sein.} $\Delta x_k=x_k-x_{k-1}$ für $i=1,\ldots,n$ und wählen Stützpunkte $\xi_k\in[x_{k-1},x_k]$
+
+    Die \textbf{Riemannsumme} von $f$ bezüglich der Zerlegung
+    $\{x_0,x_1,\ldots,x_n\}$ und der Stützpunkte $\xi_k$ ist definiert als
+    \begin{align}
+        f(\xi_1)\Delta x_1+f(\xi_2)\Delta x_2 + \cdots + f(\xi_n)\Delta x_n & =\sum_{i=1}^{n}f(\xi_i)(x_i-x_{i-1}) \\ &\triangleq\colorbox{pink}{\mathstrut$\displaystyle\sum_{i=1}^{n}f(\xi_i)\Delta x_i$}.
+    \end{align}
+    \begin{figure}[htbp]
+        \centering
+        \begin{tikzpicture}[scale=1]
+            \def\a{1.7}
+            \def\b{5.7}
+            \def\c{3.7}
+            \def\L{0.49} % width of interval
+
+            \pgfmathsetmacro{\Va}{2*sin(\a r+1)+4} \pgfmathresult
+            \pgfmathsetmacro{\Vb}{2*sin(\b r+1)+4} \pgfmathresult
+            \pgfmathsetmacro{\Vc}{2*sin(\c r+1)+4} \pgfmathresult
+
+            \draw[->,thick] (-0.5,0) -- (7,0) coordinate (x axis) node[below] {$x$};
+            \draw[->,thick] (0,-0.5) -- (0,7) coordinate (y axis) node[left] {$y$};
+            \foreach \f in {1.7,2.2,...,6.2} {\pgfmathparse{2*sin(\f r+1)+4} \pgfmathresult
+                    \draw[fill=blue!20] (\f-\L/2,\pgfmathresult |- x axis) -- (\f-\L/2,\pgfmathresult) -- (\f+\L/2,\pgfmathresult) -- (\f+\L/2,\pgfmathresult |- x axis) -- cycle;}
+            \node at (\a-\L/2,-5pt) {\footnotesize{$a=x_0$}};
+            \node at (\b+\L/2+\L,-5pt) {\footnotesize{$b=x_n$}};
+            \draw[blue] (\c-\L/2,0) -- (\c-\L/2,\Vc) -- (\c+\L/2,\Vc) -- (\c+\L/2,0);
+            \draw[dashed] (\c,0) node[below] {\footnotesize{$\xi_i$}} -- (\c,\Vc) -- (0,\Vc) node[left] {$f(\xi_i)$};
+            \node at (\a+5*\L/2,-5pt) {\footnotesize{$x_{i-1}$}};
+            \node at (\a+7*\L/2,-5pt) {\footnotesize{$x_i$}};
+            \node at (\a+5*\L,-5pt) {\footnotesize{$x_{i+1}$}};
+            \draw[blue,thick,smooth,samples=100,domain=1.45:6.2] plot(\x,{2*sin(\x r+1)+4});
+            \filldraw[black] (\c,\Vc) circle (.03cm);
+        \end{tikzpicture}
+    \end{figure}
+
+    Eine Funktion $f: [a,b] \to \R$ heisst \textbf{Riemann-integrierbar}, falls es
+    für jede Zerlegung $\{x_0,x_1,\ldots,x_n\}$ und jede Wahl der Stützpunkte
+    $\{t_1,t_2,\ldots,t_n\}$ eine Zahl $I$ gibt, so dass
+    \begin{align}
+        \lim_{\max_{i=1,\ldots,n}(\Delta x_i)\to 0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i = \lim_{n\to\infty, \,\Delta x_i\to 0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i  =I.
+    \end{align}
+    Dann ist $I$ das bestimmte Integral von $f$ zwischen $a$ und $b$ und wir schreiben
+    \begin{align}
+        \colorbox{pink}{\mathstrut$\displaystyle\int_{a}^{b}f(x)dx=I$}.
+    \end{align}
+\end{definition}
+
+\begin{figure}[htbp]
+    \centering
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \begin{axis}[axis lines=middle,
+                axis line style = thick,
+                xlabel=$x$,
+                ylabel=$y$,
+                enlargelimits,
+                ytick=\empty,
+                xtick={1,4},
+                xticklabels={a,b}]
+
+            \path[name path=axis] (axis cs:0,0) -- (axis cs:4,0);
+
+            \addplot[name path=F,thick,blue,domain={-.2:5}] {0.5*x^2-2*x+5} node[pos=.8, above, anchor=north west]{$f+g$};
+
+            \addplot[name path=G,green,thick,domain={-.2:5}] {-0.1*x^2+2} node[pos=.1, below]{$g$};
+
+            \addplot[pattern=north west lines, pattern color=green!50]fill between[of=G and axis, soft clip={domain=1:4}]
+            ;
+            \addplot[pattern=north east lines, pattern color=blue!50]fill between[of=F and axis, soft clip={domain=1:4}]
+            ;
+            \addplot[pattern=horizontal lines, pattern color=magenta!50]fill between[of=F and G, soft clip={domain=1:4}]
+            ;
+            \node[coordinate,pin=30:{$\mathcolor{blue}{A}$}] at (axis cs:3.8,3){};
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Beispiel für eine Fläche $\mathcolor{blue}{A}=\int_{a}^{b}(f+g)\dx=\mathcolor{magenta}{\int_{a}^{b}f\dx}+\mathcolor{green}{\int_{a}^{b}g\dx}$ unter dem Graphen von $f+g$ auf dem Intervall $[a,b]$.}
+\end{figure}
+
+\begin{definition}{[Rechenregeln für Integrale]}
+    Seien $f,g: [a,b] \to \R$ stetige Funktionen und $\lambda \in \R$. Dann gelten folgende Rechenregeln:
+    \begin{enumerate}
+        \item \colorbox{pink}{$\displaystyle\int_{a}^{b}f(x)dx=-\displaystyle\int_{b}^{a}f(x)dx$} \hfill (Symmetrie)
+        \item \colorbox{pink}{$\displaystyle\int_{a}^{b}(\lambda f(x)+g(x))dx=\lambda \displaystyle\int_{a}^{b}f(x)dx+\displaystyle\int_{a}^{b}g(x)dx$} \hfill (Linearität)
+        \item \colorbox{pink}{$\displaystyle\int_{a}^{b}f(x)dx+\displaystyle\int_{b}^{c}f(x)dx=\displaystyle\int_{a}^{c}f(x)dx$} \hfill (Additivität)
+    \end{enumerate}
+\end{definition}
+
+\begin{figure}[htbp]
+    \centering
+    \def\xmax{2.2} % max x axis
+    \def\ymax{1.6} % max y axis
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        % CONSTANT
+        \begin{tikzpicture}[scale=2.0]
+            \def\a{0.17*\xmax} % first limit
+            \def\b{0.76*\xmax} % last limit
+            \def\k{0.65*\ymax} % constant value
+            \fill[myblue!10] (\a,0) rectangle (\b,\k);
+            \draw[->,thick] (0,-0.15*\ymax) -- (0,\ymax) node[left] {$y$};
+            \draw[->,thick] (-0.15*\ymax,0) -- (\xmax,0) node[right=1,below] {$x$};
+            \draw[xline,line cap=round] (0,\k) -- (0.9*\xmax,\k)
+            node[mydarkblue,left=7,above=0,scale=0.9] {$y=k$};
+            \fill[mydarkblue] (\a,\k) circle(0.04) (\b,\k) circle(0.04);
+            \draw[dashed] (\a,0) --++ (0,1.07*\k);
+            \draw[dashed] (\b,0) --++ (0,1.07*\k);
+            \tick{\a,0}{90} node[below=-2.5,scale=0.8] {\strut$a$};
+            \tick{\b,0}{90} node[below=-2.5,scale=0.8] {\strut$b$};
+            \tick{0,\k}{0} node[left=-1,scale=0.8] {$k=\xi$};
+        \end{tikzpicture}
+        \caption{Fläche unter einer konstanten Funktion auf dem Intervall $[a,b]$.}
+    \end{subfigure}
+    % \begin{subfigure}[t]{0.45\textwidth}
+    %     \centering
+    %     % LINEAR
+    %     \begin{tikzpicture}[scale=2.0]
+    %         \def\a{0.17*\xmax}  % first limit
+    %         \def\b{0.76*\xmax}  % last limit
+    %         \def\k{\ymax/\xmax} % slope coefficient
+    %         \fill[myblue!10] (\a,0) -- (\a,\k*\a) -- (\b,\k*\b) |- cycle;
+    %         \draw[->,thick] (0,-0.15*\ymax) -- (0,\ymax+0.1) node[left] {$y$};
+    %         \draw[->,thick] (-0.15*\ymax,0) -- (\xmax+0.1,0) node[right=1,below] {$x$};
+    %         \draw[xline,line cap=round]
+    %         (-0.1*\ymax,-0.1*\k*\ymax) -- (0.9*\xmax,0.9*\k*\xmax)
+    %         node[mydarkblue,above left=-3,scale=0.9] {$y=kx$};
+    %         \fill[mydarkblue]
+    %         (\a,\k*\a) circle(0.04) (\b,\k*\b) circle(0.04);
+    %         \draw[dashed] (\a,0) --++ (0,1.25*\k*\a);
+    %         \draw[dashed] (\b,0) --++ (0,1.10*\k*\b);
+    %         \tick{\a,0}{90} node[below=-2,scale=0.8] {\strut$a$};
+    %         \tick{\b,0}{90} node[below=-2,scale=0.8] {\strut$b$};
+    %     \end{tikzpicture}
+    %     \caption{filler}
+    % \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        % SINE
+        \def\xmax{3} % max x axis
+        \begin{tikzpicture}[scale=2.0]
+            \message{^^JSine}
+            \def\ymax{1.0} % max y axis
+            \def\T{0.9*\xmax} % period
+            \def\A{0.88*\ymax} % amplitude
+            \fill[myblue!10,samples=\Nr,smooth,variable=\x,domain=0:\T/2]
+            plot(\x,{\A*sin(360/(\T)*\x});
+            \draw[->,thick] (0,-\ymax+0.25) -- (0,\ymax+0.1) node[left] {$y$};
+            \draw[->,thick] (-0.15*\ymax,0) -- (\xmax,0) node[right=1,below] {$x$};
+            \draw[xline,samples=\Nr,smooth,variable=\x,domain=0:0.8*\xmax]
+            plot(\x,{\A*sin(360/(\T)*\x)});
+            \draw[dashed] (0,2*\A/pi) --++ (0.53*\T,0);
+            \draw[dashed] (0.5*\T,0) --++ (0,2.4*\A/pi);
+            \tick{\T/2,0}{90} node[left=1,below=-2,scale=0.8] {\strut$\pi$}; %{\strut\contour{white}{$\pi$}};
+            \tick{\T,0}{90} node[right=2,below=-2,scale=0.8] {\strut$2\pi$}; %{\strut\contour{white}{$2\pi$}};
+            \tick{0,2*\A/pi}{0} node[left=-1,scale=0.8] {$\dfrac{2}{\pi}=\xi$};
+            \node[above right=-2,mydarkblue,scale=0.9] at (0.3*\T,\A) {$y=\sin x$};
+        \end{tikzpicture}
+        \caption{Fläche unter einer Sinusfunktion auf dem Intervall $[0,\pi]$. Die Fläche beträgt $2 = \xi(b-a)$.}
+    \end{subfigure}
+    % \begin{subfigure}[t]{0.45\textwidth}
+    %     \centering
+    %     % SINE^2, COSINE^2
+    %     \begin{tikzpicture}[scale=2.0]
+    %         \def\T{0.60*\xmax} % period
+    %         \def\A{0.88*\ymax} % amplitude
+    %         \fill[myblue!10,samples=\Nr,smooth,variable=\x,domain=0:\T]
+    %         plot(\x,{\A*sin(360/(\T)*\x)^2});
+    %         \fill[myred!50,opacity=0.2,samples=\Nr,smooth,variable=\x,domain=0:\T]
+    %         (0,0) -- plot(\x,{\A*cos(360/(\T)*\x)^2}) |- cycle;
+    %         \draw[->,thick] (0,-0.15*\ymax) -- (0,\ymax+0.1) node[left] {$y$};
+    %         \draw[->,thick] (-0.15*\ymax,0) -- (\xmax+0.1,0) node[right=1,below] {$x$};
+    %         \draw[xline,samples=\Nr,smooth,variable=\x,domain=0:0.94*\xmax]
+    %         plot(\x,{\A*sin(360/(\T)*\x)^2});
+    %         \draw[xline,myred,samples=\Nr,smooth,variable=\x,domain=0:0.94*\xmax]
+    %         plot(\x,{\A*cos(360/(\T)*\x)^2});
+    %         \draw[dashed] (0,\A/2) --++ (0.96*\xmax,0); %1.05*\T
+    %         \draw[dashed] (\T,0) --++ (0,1.1*\A);
+    %         \tick{\T/2,0}{90} node[left=1,below=-2,scale=0.8] {\strut$\pi$};
+    %         \tick{\T,0}{90} node[right=0,below=-2,scale=0.8] {\strut$2\pi$};
+    %         \tick{1.5*\T,0}{90} node[right=0,below=-2,scale=0.8] {\strut$3\pi$};
+    %         \tick{0,\A/2}{0} node[left=-1,scale=0.8] {$\dfrac{1}{2}$};
+    %         \node[above right=0,mydarkblue,scale=0.9] at (0.23*\T,\A) {$y=\sin^2x$};
+    %         \node[above right=0,mydarkred,scale=0.9] at (0.99*\T,\A) {$y=\cos^2x$};
+    %     \end{tikzpicture}
+    % \end{subfigure}
+    \caption{Integrale einiger Funktionen und Anwendung des Mittelwertsatzes der Integralrechnung.}
+\end{figure}
+
+\begin{definition}{[Stammfunktion]}
+    Sei $f: I \to \R$ eine Funktion. Eine Funktion $F: I \to \R$ heisst \textbf{Stammfunktion} von $f$, falls $F$ auf $I$ differenzierbar ist und
+    \begin{align}
+        F'(x)=f(x) \text{ für alle } x \in I.
+    \end{align}
+
+    \begin{remark}{[Viele Stammfunktionen]}
+        Sei $F$ eine Stammfunktion von $f$. Dann ist auch $F+c$ eine Stammfunktion von $f$ für jede Konstante $c\in\R$.
+    \end{remark}
+\end{definition}
+
+\begin{definition}{[Mittelwertsatz der Integralrechnung]}
+    Sei $f: [a,b] \to \R$ stetig. Dann existiert ein $\xi \in (a,b)$, so dass
+    \begin{align}
+        \colorbox{pink}{\mathstrut$\displaystyle\int_{a}^{b}f(x)dx=f(\xi)(b-a)$}.
+    \end{align}
+\end{definition}
+
+\begin{lemma}{[Hauptsatz der Differential- und Integralrechnung]}
+    Sei $f: [a,b] \to \R$ eine stetige Funktion. Dann ist die Funktion $F: [a,b] \to \R$ definiert durch
+    \begin{align}
+        \colorbox{pink}{$\displaystyle F_a(x)=\int_{a}^{x}f(t)dt$}
+    \end{align}
+    eine Stammfunktion von $f$. Es gilt also
+    \begin{align}
+        \colorbox{pink}{$\displaystyle F_a'(x)=f(x) \text{ für alle } x \in [a,b].$}
+    \end{align}
+    $F_a$ ist unabhänging von der Wahl des unteren Integrationslimits $a$.
+
+    \begin{proof}
+        Sei $x \in [a,b]$. Dann ist die Funktion $F$ auf $[a,x]$ stetig und auf $(a,x)$ differenzierbar. Nach dem Hauptsatz der Differential- und Integralrechnung gilt
+        \begin{align*}
+            F'(x) & =\lim_{h \to 0}\frac{F(x+h)-F(x)}{h}                             \\
+                  & =\lim_{h \to 0}\frac{\int_{a}^{x+h}f(t)dt-\int_{a}^{x}f(t)dt}{h} \\
+                  & =\lim_{h \to 0}\frac{\int_{x}^{x+h}f(t)dt}{h}                    \\
+                  & =\lim_{h \to 0}\frac{f(x+\theta h)h}{h}=f(x),
+        \end{align*}
+        wobei $\theta \in (0,1)$ ist.
+    \end{proof}
+\end{lemma}
+
+\begin{definition}{[Unbestimmtes Integral]}
+    Sei $f: I \to \R$ eine Funktion. Dann ist die Menge aller Stammfunktionen von $f$ definiert als
+    \begin{align}
+        \colorbox{pink}{\mathstrut$\displaystyle\int f(x)dx = F(x)+c$}.
+    \end{align}
+    Das ``$+c$'' (die \textbf{Integrationskonstante}) ist nötig um die ganze Menge der Stammfunktionen zu beschreiben.
+\end{definition}
+
+\begin{definition}{[Integrale Berechnen]}
+    Sei $F$ eine Stammfunktion von $f$. Dann gilt
+    \begin{align}
+        \colorbox{pink}{\mathstrut$\displaystyle\int_{a}^{b}f(x)dx=F(b)-F(a)$}.
+    \end{align}
+    \textbf{Notation:}
+    Das Integral von $f$ über das Intervall $[a,b]$ wird auch als
+    \begin{align}
+        \colorbox{pink}{\mathstrut$\displaystyle\int_{a}^{b}f(x)dx\triangleq F(x)\Big\vert_a^b\triangleq \left[F(x)\right]_a^b$}
+    \end{align}
+    geschrieben.
+
+    \textbf{Beispiel:}
+    \begin{enumerate}
+        \item $\displaystyle\int_{0}^{1}x^2dx=\left[\frac{x^3}{3}\right]_0^1=\frac{1}{3}$
+        \item Allgemein gilt
+              $\displaystyle\int_{a}^{b}x^ndx=\left[\frac{x^{n+1}}{n+1}\right]_a^b=\frac{b^{n+1}-a^{n+1}}{n+1}$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}{[Partielle Integration]}
+    Seien $u(x)$ und $v(x)$ differenzierbare Funktionen. Dann gilt
+    \begin{align}
+        \colorbox{pink}{\mathstrut$\displaystyle\int u(x)v'(x)dx=u(x)v(x)-\displaystyle\int u'(x)v(x)dx$}.
+    \end{align}
+    \textbf{Herleitung:} Mit der Produktregel gilt
+    \begin{align*}
+        \ddx(u(x)v(x))  =u(x)v'(x)+u'(x)v(x) \Follows u(x)v'(x)=\ddx(u(x)v(x))-u'(x)v(x) \\
+    \end{align*}
+    und somit
+    \begin{align*}
+        \displaystyle\int u(x)v'(x)dx=\displaystyle\int \ddx(u(x)v(x))dx-\displaystyle\int u'(x)v(x)dx=u(x)v(x)-\displaystyle\int u'(x)v(x)dx.
+    \end{align*}
+
+    \textbf{Tricks:}
+    \begin{enumerate}
+        \item ``Nach dem Integral $I$ auflösen''.
+        \item 2x partielle Integration und dann nach $I$ auflösen.
+        \item Mit $1$ multiplizieren.
+        \item Wähle $u(x)$ oder $v(x)$ so, dass nach (mehrmaligem) Ableiten die Funktion
+              verschwindet.
+    \end{enumerate}
+
+    \textbf{Beispiel:}
+    \begin{align*}
+        \displaystyle\int x\sin x\dx & =-x\cos x+\displaystyle\int \cos x\dx=-x\cos x+\sin x+c
+    \end{align*}
+\end{definition}
+
+\begin{definition}{[Substitution]}
+    Sei $f: I \to \R$ eine Funktion und $g: J \to I$ eine differenzierbare Funktion. Dann gilt
+    \begin{align}
+        \colorbox{pink}{\mathstrut$\displaystyle\int f(g(x))g'(x)\dx=\displaystyle\int f(u)\du$}
+    \end{align}
+    wobei $u=g(x)$.
+
+    \textbf{Herleitung:}
+    \begin{align*}
+        \frac{\dd{u}}{\dd{x}}=g'(x) \Follows \dd{u}=g'(x)\dx \Follows \dx=\frac{1}{g'(x)}\du \\
+        \int f(g(x))g'(x)\dx=\int f(u)g'(x)\frac{1}{g'(x)}\du=\int f(u)\du
+    \end{align*}
+
+    Bei bestimmten Integralen muss auch das Intervall angepasst werden.
+    \begin{align}
+        \colorbox{pink}{\mathstrut$\displaystyle\int_{a}^{b}f(g(x))g'(x)\dx=\displaystyle\int_{g(a)}^{g(b)}f(u)\du$}
+    \end{align}
+
+    \textbf{Bemerkung:} Manchmal ist es nötig, allgemeiner $h(u)=g(x)$ zu setzen und dann $h'(u)\du=g'(x)\dx$ zu verwenden.
+
+    \textbf{Beispiel:}
+    \begin{align*}
+        \displaystyle\int x\cos(x^2)dx & =\frac{1}{2}\displaystyle\int \cos(u)du=\frac{1}{2}\sin(u)+c=\frac{1}{2}\sin(x^2)+c
+    \end{align*}
+\end{definition}
+
+\end{document}
