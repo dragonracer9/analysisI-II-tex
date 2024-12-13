@@ -1,0 +1,215 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{parskip}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{xargs}
+\usepackage{xcolor}
+\usepackage{witharrows}
+\usepackage{commath}
+\usepackage{physics}
+\usepackage{tikz}
+\usetikzlibrary{patterns,hobby}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.6}
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[centerlast,small,sc]{caption}
+\usepackage{subcaption} % causes weird error with \setlength{\captionmargin}{20pt}
+
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\ddx}{\frac{\mathrm{d}}{\mathrm{d}x}}
+\newcommand{\dt}{\mathrm{d}t}
+\newcommand{\du}{\mathrm{d}u}
+%\newcommand{\dv}{\mathrm{d}v}
+\newcommand{\dy}{\mathrm{d}y}
+\newcommand{\dz}{\mathrm{d}z}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Rm}{\mathbb{R}^m}
+\newcommand{\Rk}{\mathbb{R}^k}
+\newcommand{\und}{\text{ und }}
+\newcommand{\oder}{\text{ oder }}
+\newcommand{\bydef}{\underset{def.}{=}}
+\newcommand{\BH}{\underset{\textrm{B-H}}{=}}
+
+\newcommand{\Follows}{\Longrightarrow\ }
+\newcommand{\sameas}{\Longleftrightarrow}
+\newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
+\newcommandx{\LaplaceInv}[2][1=F(s), 2=t]{\mathscr{L}^{-1}\{#1\}(#2)}
+\DeclareMathOperator{\arccosh}{Arcosh}
+\DeclareMathOperator{\arcsinh}{Arsinh}
+\DeclareMathOperator{\arctanh}{Artanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth} 
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+\def\ez{\begin{flushright}\underline{ez.}\end{flushright}}
+%\[
+%   \Laplace[\cos(x)]=\int_{t=0}^{\infty}f(t)e^{-st}dt
+%\]
+
+\newcommand{\R}{\mathbb{R}} % gives blackboard R
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\inttext}{\shortintertext}
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{lemma}[2][Theorem]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][\textcolor{blue}{Tipps \& Tricks zu}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries \textcolor{blue}{#2}.}]}{\end{trivlist}}
+\newenvironment{question}[2][\textcolor{red}{Aufgabe}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries \textcolor{red}{#1}}\hskip \labelsep {\bfseries \textcolor{red}{#2}.}]}{\end{trivlist}}
+\newenvironment{remark}[2][Bemerkung]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+\title{Problem Set 10, Tips}
+\author{Vikram Damani\\
+    Analysis I}
+
+\maketitle
+Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
+
+\section{Theorie}
+
+\begin{definition}{[(Recap) Konvergenzbereich]}
+    Der Konvergenzbereich einer Potenzreihe
+    \begin{align*}
+        \sum_{n=0}^{\infty}a_n(x-x_0)^n
+    \end{align*}
+    ist das Intervall $I=(-\rho+x_0, x_0+\rho)$, in dem die Potenzreihe konvergiert. Die Randpunkte $x_0+\rho$ und $x_0-\rho$ müssen separat betrachtet werden, da die Konvergenz an diesen Punkten nicht garantiert ist.\footnote{Beispiel aus der Vorlesung: $\sum_{k=1}^{\infty}\frac{1}{k}x^k$ hat Konvergenzbereich $[-1,1)$, Kap. 8.5, (15.11.2024). Siehe auch \url{https://de.wikipedia.org/wiki/Konvergenzradius}}
+
+    \begin{figure}[htbp!]
+        \centering
+        \begin{tikzpicture}
+            \draw[very thick,-{latex}] (0,0) -- (6,0) node[below]{$x$};
+            \foreach \x/\l in {1/-\rho,3/{},5/+\rho}
+            \draw (\x,3pt) -- (\x,-3pt) node[below]{$x_0\l$};
+            \draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=4ex}]
+            (1,0) -- (5,0) node[midway,yshift=-3em]{Konvergenzbereich};
+        \end{tikzpicture} %source: https://tex.stackexchange.com/questions/435557/tikzpicture-horizontal-curly-brace
+    \end{figure} % wildest thing about that source is that i googled "draw braces tikz" and somehow the figure was related to convergence radii AND in german.
+    % i love the internet.
+
+    Der Konvergenzradius $\rho$ ist gegeben durch
+    \begin{align*}
+        \rho=\lim_{n\to\infty}\abs{\frac{a_{n}}{a_{n+1}}}
+    \end{align*}
+    falls der Grenzwert existiert.
+\end{definition}
+
+\begin{definition}{[Potenzreihen mit Mittelpunkt $x_0$]}
+    Durch die übliche Koordinatentransformation $x\leadsto x-x_0$ kann man jede Potenzreihe in eine Potenzreihe um den Mittelpunkt $x_0=0$ umschreiben:
+    \begin{align*}
+        \sum_{n=0}^{\infty}a_n (x-x_0)^n, \quad a_n\in\R
+    \end{align*}
+    Der Konvergenzberiech der Potenzreihe ist dann ein (offenes/halboffenes/geschlossenses) Intervall mit Mittelpunkt $x_0$.
+\end{definition}
+
+\begin{lemma}{[Eindeutigkeit von Potenzreihen]}
+    Stellen zwei Potenzreihen mit selbem Mittelpunkt
+    xo die selbe Funktion dar, dann stimmen ihre Koeffizienten überein.
+\end{lemma}
+
+\begin{definition}{[Taylorpolynom]}
+    Das $n$-te Taylorpolynom von $f(x)$ um den Entwicklungspunkt $a$ ist gegeben durch
+    \begin{align*}
+        T_n(x)=\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k
+    \end{align*}
+
+    \textbf{Bemerkung:} Das $n$-te Taylorpolynom ist eine Approximation $n$-ten Grades der Funktion $f(x)$ um den Entwicklungspunkt $a$. Je grösser $n$, desto genauer ist die Approximation und desto breiter ist der Beriech mit guter Approximation.
+\end{definition}
+
+\textit{Durch die Annahme, dass eine Funktion durch ein Polynom ``unendlichen Grades'' (also eine Potenzreihe) genau dargestellt weden kann, kommt man zu folgendem erstaunlichen Ergebnis:}
+
+\begin{definition}{[Taylorreihe]}
+    Sei $f(x)$ eine glatte Funktion, d.h eine Funktion, die unendlich oft differenzierbar ist. Dann heisst
+    \begin{align*}
+        T(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(x-a)^n
+    \end{align*}
+    die Taylorreihe von $f(x)$ um den Entwicklungspunkt $a$.
+
+    \textbf{Bemerkung:} \textit{Meistens} stellt die Taylorreihe die Funktion $f(x)$ im Konvergenzbereich dar, d.h. $f(x)=T(x)$ für $x$ im Konvergenzbereich.
+\end{definition}
+
+\textbf{Beispiele:} Die bereits (in der Vorlesung) gefundenen Potenzreihen
+\begin{spreadlines}{0.8em}
+    \begin{enumerate}[label=(\roman*)]
+        \item $\dfrac{1}{1-x}=\displaystyle\sum_{n=0}^{\infty}x^n$
+        \item $e^x=1+x+\dfrac{x^2}{2!}+\dfrac{x^3}{3!}+\cdots$
+        \item $\cos x=1-\dfrac{x^2}{2!}+\dfrac{x^4}{4!}-\dfrac{x^6}{6!}+\cdots$
+        \item $\sin x=x-\dfrac{x^3}{3!}+\dfrac{x^5}{5!}-\dfrac{x^7}{7!}+\cdots$
+        \item $\ln(1+x)=\displaystyle\int_0^x \dfrac{1}{1+t} \mathrm{~d} t=x-\dfrac{x^2}{2}+\dfrac{x^3}{3}-\dfrac{x^4}{4}+\cdots$
+        \item $\arctan x=\displaystyle\int_0^x \dfrac{1}{1+t^2} \mathrm{~d} t=x-\dfrac{x^3}{3}+\dfrac{x^5}{5}-\dfrac{x^7}{7}+\cdots$
+        \item $(1+x)^{\alpha}=\displaystyle\sum_{n=0}^{\infty}\binom{\alpha}{n}x^n$ ($\alpha\in\R$, $\rho\geq 1$ für alle $\alpha$)
+    \end{enumerate}
+\end{spreadlines}
+stellen jeweils ihre Funktion im Konvergenzbereich dar und sind deshalb auch die zugehörige Taylorreihe an der Stelle $x_0=0$.
+
+\begin{remark}{[Gerade und Ungerade Funktionen]}
+    Die Taylorreihe einer geraden Funktion ($f(x)=f(-x)$) enthält nur gerade Potenzen von $x$.
+
+    Analog enthält die Taylorreihe einer ungeraden Funktion ($f(-x)=-f(x)$) nur
+    ungerade Potenzen von $x$.
+\end{remark}
+
+\section{Tipps \& Tricks}
+
+\begin{question}{1b}
+    [Berechnen Sie die Taylorreihe um $x_0 = 0$ der folgenden Funktionen $f$.]
+    \begin{equation}
+        f(x)=x^2 \ln \left(1+x^4\right)
+    \end{equation}
+\end{question}
+
+\begin{problem}{1b}
+Die Funktion $f(x)$ ist ein Produkt von $x^2$ und $\ln(1+x^4)$. Die Taylorreihe eines Produkts ist das Produkt der Taylorreihen der Faktoren. Die Taylorreihe von $x^2$ ist bekannt, die von $\ln(1+x^4)$ kann durch die Potenzreihe von $\ln(1+x)$ und einer geiegneten Substitution gefunden werden.
+\end{problem}
+
+\begin{question}{2}
+    Bestimmen Sie die Taylorreihe um $x_0=0$ der Funktion
+    \begin{equation}
+        x \longmapsto \int_0^x \frac{1-e^{-t^2}}{t^2} \mathrm{~d} t .
+    \end{equation}
+\end{question}
+
+\begin{problem}{2}
+Durch Berechnung der Taylorreihe des Integranden und gliedweises Integrieren lässt sich die Gesamt-Taylorreihe der Funktion ermitteln.
+
+Die Taylorreihe von $\frac{1-e^{-t^2}}{t^2}$ kann durch die Taylorreihe von $e^{x}$ und einer geeigneten Substitution, sowie gliedweises dividieren durch $t^2$ gefunden werden.
+\end{problem}
+
+\begin{question}{3}
+    Entwickeln Sie die Funktion
+    \begin{equation}
+        f(x)=\frac{2}{1-x+x^2-x^3}
+    \end{equation}
+    in eine Potenzreihe $\sum_{n=0}^{\infty} a_n x^n$ und bestimmen Sie deren Konvergenzradius.
+
+    \textit{Hinweis:} Führen Sie zunächst eine Partialbruchzerlegung von $f(x)$ durch.
+\end{question}
+
+\begin{problem}{3}
+$1-x+x^2-x^3$ ist ein Polynom 3. Grades, das man in zwei Faktoren $(a+b)(c+d)=1-x+x^2-x^3$ zerlegen kann. Mit diesen Faktoren kann man die Partialbruchzerlegung durchführen.  Daraus ergeben sich dann zwei Brüche, deren Potenzreihen berechnet werden können. Die Potenzreihe von $f(x)$ ist somit die Summe der Potenzreihen der beiden Brüche.
+\end{problem}
+
+\end{document}

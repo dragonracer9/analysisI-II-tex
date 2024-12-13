@@ -82,9 +82,9 @@
         \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 
 \begin{document}
-\title{Problem Set 8, Tips}
+\title{Problem Set 9, Tips}
 \author{Vikram Damani\\
-        Analysis I}
+    Analysis I}
 
 \maketitle
 Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
@@ -94,7 +94,8 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
 \begin{definition}{[Zykloide]}
     Die Zykloide ist die Kurve, die ein Punkt auf einem Kreis beschreibt, der auf einer anderen Kurve abrollt.
 
-    Die Kurve ist die Summe aus zwei Bewegungen: Die Bewegung des Mittelpunks des Kreises und die Bewegung des Punktes auf dem Kreis.
+    Die Kurve ist die Summe aus zwei Bewegungen: Die Bewegung des Mittelpunks des
+    Kreises und die Bewegung des Punktes auf dem Kreis.
 
     \begin{figure}[htbp!]
         \centering
@@ -104,15 +105,14 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
             \def\r{1} % radius
             \def\c{1.4} % center
             \coordinate (C) at (\c, \r);
-          
-          
+
             \draw[-latex] (O) -- (A) node[anchor=south] {$y$};
             \draw[-latex] (O) -- (2.6*pi,0) node[anchor=west] {$x$};
-            \draw[red,domain=-0.5*pi:2.5*pi,samples=50, line width=1] 
-                 plot ({\x - sin(\x r)},{1 - cos(\x r)});
+            \draw[red,domain=-0.5*pi:2.5*pi,samples=50, line width=1]
+            plot ({\x - sin(\x r)},{1 - cos(\x r)});
             \draw[blue, line width=1] (C) circle (\r);
             \draw[] (C) circle (\r);
-          
+
             % coordinate x 
             \def\x{0.4} % coordinate x
             \def\y{0.83} % coordinate y
@@ -121,107 +121,104 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
             \coordinate (X) at (\x, 0 );
             \coordinate (Y) at (0, \y );
             \coordinate (XY) at (\x, \y );
-          
+
             \node[anchor=north] at (X) {$x$} ;
-          
+
             % draw center of circle
             \draw[fill=blue] (C) circle (1pt);
-          
+
             % draw radius of the circle
             \draw[] (C) -- node[anchor=south] {\; $a$} (XY);
-          
+
             % bottom of circle, radius to the bottom
             \coordinate (B) at (\c, 0);
             \draw[] (C) -- (B) node[anchor=north] {$a \, t$};
-          
+
             % projections of point XY
             \draw[dotted] (XY) -- (X);
             \draw[dotted] (XY) -- (Y) node[anchor=east, xshift=1mm] {$\quad y$};
-          
+
             % arc theta
             % start arc
             \coordinate (S) at (\c, 0.4);
             \draw[->] (S) arc (-90:-165:0.6);
             \node[xshift=-2mm, yshift=-2mm] at (C) {\scriptsize $t$};
-          
+
             % arc above
             \coordinate (AA) at (\xa, \ya);
             \draw[-latex, rotate=25] (AA) arc (-220:-260:1.3);
-          
+
             % arc below
             \def\xb{2.5} % coordinate x for arc bottom
             \def\yb{0.8} % coordinate y for arc bottom
             \coordinate (AB) at (\xb, \yb);
             \draw[-latex, rotate=-10] (AB) arc (-5:-45:1.3);
-          
-          
-          
+
             % XY dot
             \draw[fill=black] (XY) circle (1pt);
-          
-          
+
             % top label
             \coordinate (T) at (pi, 2);
             \node[anchor=south] at (T)  {$(\pi a, 2 a )$} ;
             \draw[fill=black] (T) circle (1pt);
-          
+
             % equations
             \coordinate (E) at ( 4,1.2);
             \coordinate (F) at ( 4,0.9);
             \node[] at (E) {\scriptsize $x=a(t - \sin t)$};
             \node[] at (F) {\scriptsize $y=a(1 - \cos t)$};
-          
+
             % label 2pi a
             \coordinate (TPA) at (2*pi, 0);
             \node[anchor=north] at (TPA) {$2 \pi a$};
-          
-          
-            \end{tikzpicture}
+
+        \end{tikzpicture}
         \caption{Zykloide}
     \end{figure}
-%% CITATION: https://tex.stackexchange.com/a/275450
+    %% CITATION: https://tex.stackexchange.com/a/275450
 
-
-    Wir betrachten einen Kreis mit Radius $a$. Der Kreismittelpunkt bewegt sich hier auf einer Geraden: 
+    Wir betrachten einen Kreis mit Radius $a$. Der Kreismittelpunkt bewegt sich
+    hier auf einer Geraden:
     \begin{align*}
-        x(t) &= at\\
-        y(t) &= a
+        x(t) & = at \\
+        y(t) & = a
     \end{align*}
     Der Punkt auf dem Kreis bewegt sich dann auf der Zykloide:
     \begin{align*}
-        x(t) &= a(t - \sin t)\\
-        y(t) &= a(1 - \cos t)\\\\
+        x(t) & = a(t - \sin t)              \\
+        y(t) & = a(1 - \cos t)              \\\\
         \sameas \begin{pmatrix}
-            x(t)\\
-            y(t)
-        \end{pmatrix}
-        &= \begin{pmatrix}
-            at\\
-            a
-        \end{pmatrix}
+                    x(t) \\
+                    y(t)
+                \end{pmatrix}
+             & = \begin{pmatrix}
+                     at \\
+                     a
+                 \end{pmatrix}
         - a\begin{pmatrix}
-            \sin t\\
-            \cos t
-        \end{pmatrix}\\
-        &= \vec{m}(t)-a\begin{pmatrix}
-            \sin t\\
-            \cos t
-        \end{pmatrix}
+               \sin t \\
+               \cos t
+           \end{pmatrix}                   \\
+             & = \vec{m}(t)-a\begin{pmatrix}
+                                 \sin t \\
+                                 \cos t
+                             \end{pmatrix}
     \end{align*}
     Hier ist $\vec{m}(t)$ der Vektor, der die Bewegung des Kreismittelpunkts beschreibt.
 
-    Allgemeiner gilt für einen Kreis mit Radius $a$, wenn der Punkt nicht auf dem Kreis liegt, sondern auf einem Abstand $b$ vom Kreismittelpunkt:
+    Allgemeiner gilt für einen Kreis mit Radius $a$, wenn der Punkt nicht auf dem
+    Kreis liegt, sondern auf einem Abstand $b$ vom Kreismittelpunkt:
     \begin{align*}
-        x(t) &= at - b\sin(t) \\
-        y(t) &= a - b\cos(t) 
+        x(t) & = at - b\sin(t) \\
+        y(t) & = a - b\cos(t)
     \end{align*}
     \begin{align*}
-        \text{Falls }&b<a: \text{ Verkürzte Zykloide}\\
-        \text{Falls }&b>a: \text{ Verlängerte Zykloide}
+        \text{Falls } & b<a: \text{ Verkürzte Zykloide}   \\
+        \text{Falls } & b>a: \text{ Verlängerte Zykloide}
     \end{align*}
 
     \begin{remark}{[Mehr als Geraden]}
-            Wie vorher erwähnt, ist die Zykloide die Kurve die durch die Bewegung eines Punktes auf einem Kreis entsteht, der auf einer anderen Kurve abrollt. Hieberi muss die andere Kurve nicht unbedingt eine Gerade sein, sondern kann auch eine beliebige Kurve sein. Dann ist $\vec{m}(t)$ (die Bewegung des Kreismittelpunkts) gegeben durch die Kurve auf der der Kreis abrollt.
+        Wie vorher erwähnt ist die Zykloide die Kurve die durch die Bewegung eines Punktes auf einem Kreis entsteht, der auf einer anderen Kurve abrollt. Hiebei muss die andere Kurve nicht unbedingt eine Gerade sein, sondern kann auch eine beliebige Kurve sein.
     \end{remark}
 \end{definition}
 
@@ -230,39 +227,190 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                xmin=-1,xmax=5,
-                ymin=-1,ymax=4.5,
-            xtick={3,4},
-            xticklabels={$x_1$,$x_2$},
-            ytick={4,3.5},
-            yticklabels={$y_1$,$y_2$},
-            xlabel={$x$},  
-            ylabel={$y$},
-            axis lines=middle]
-            \draw [thick] (axis cs:-1,2) to [ curve through ={(axis cs:1,4)  . . (axis cs:3,4) . . (axis cs:4,3.5)  }] (axis cs:5.5,3.3);
-            \draw [thick, color=red,->] (axis cs:3,4) -- (axis cs:4,3.5) node[anchor=south west] {\scriptsize $\vec{v_2}-\vec{v_1}$};
-            \draw[dashed] (axis cs:3,4) -- (axis cs:3,0) ;
-            \draw[dashed] (axis cs:4,3.5) -- (axis cs:4,0) ;
-            \draw[dashed] (axis cs:3,4) -- (axis cs:0,4) ;
-            \draw[dashed] (axis cs:4,3.5) -- (axis cs:0,3.5);
-            \draw[thick,color=blue,->] (axis cs:0,0) -- (axis cs:3,4) node[anchor=south east] {\scriptsize $\vec{v_1}$};
-            \draw[thick,color=blue,->] (axis cs:0,0) -- (axis cs:4,3.5) node[anchor=north west] {\scriptsize $\vec{v_2}$};
-        \end{axis}
+                    xmin=-1,xmax=5.5,
+                    ymin=-1,ymax=4.5,
+                    xtick={3,4},
+                    xticklabels={$x_1$,$x_2$},
+                    ytick={4,3.5},
+                    yticklabels={$y_1$,$y_2$},
+                    xlabel={$x$},
+                    ylabel={$y$},
+                    axis lines=middle]
+                \draw [thick] (axis cs:-1,2) to [ curve through ={(axis cs:1,4)  . . (axis cs:3,4) . . (axis cs:4,3.5)  }] (axis cs:5.5,3.3);
+                \draw [thick, color=red,->] (axis cs:3,4) -- (axis cs:4,3.5) node[anchor=south west] {\scriptsize $\vec{v}=\vec{v_2}-\vec{v_1}$};
+                \draw[dashed] (axis cs:3,4) -- (axis cs:3,0) ;
+                \draw[dashed] (axis cs:4,3.5) -- (axis cs:4,0) ;
+                \draw[dashed] (axis cs:3,4) -- (axis cs:0,4) ;
+                \draw[dashed] (axis cs:4,3.5) -- (axis cs:0,3.5);
+                \draw[thick,color=blue,->] (axis cs:0,0) -- (axis cs:3,4) node[anchor=south east] {\scriptsize $\vec{v_1}$};
+                \draw[thick,color=blue,->] (axis cs:0,0) -- (axis cs:4,3.5) node[anchor=north west] {\scriptsize $\vec{v_2}$};
+            \end{axis}
         \end{tikzpicture}
     \end{figure}
     Die Richtung der Tangente an eine ebene Kurve $(x(t), y(t))$ an der Stelle $t_0$ ist gegeben durch:
     \begin{align*}
         \begin{pmatrix}
-            \dot{x}(t_0)\\
+            \dot{x}(t_0) \\
             \dot{y}(t_0)
         \end{pmatrix}
     \end{align*}
-    Die Richtung des Vektors $\vec{v}$ ist also gegeben durch die Ableitung der Kurve an der Stelle $t_0$.
+
+    \textbf{Begründung:}
+    \begin{align*}
+        \vec{v} & = \vec{v_2} - \vec{v_1}          \\
+                & = \begin{pmatrix}
+                        x_2 \\
+                        y_2
+                    \end{pmatrix} - \begin{pmatrix}
+                                        x_1 \\
+                                        y_1
+                                    \end{pmatrix} \\
+    \end{align*}
+    Wenn nun $x_2\to x_1$, also $t_2\to t_1$, dann erhalten wir einen Vektor, der die Kurve tangential in $t_1$ berührt.
     
+    Da aber die Länge des Vektors $\vec{v}$ auch gegen Null geht, normieren wir ihn mit $t_2-t_1$, um die Richtung zu erhalten:
+    \begin{align*}
+        \lim_{t_2\to t_1} \frac{\vec{v}}{t_2-t_1} & = \lim_{t_2\to t_1}\frac{1}{t_2-t_1} \begin{pmatrix}
+                                                                                             x(t_2) - x(t_1) \\
+                                                                                             y(t_2) - y(t_1)
+                                                                                         \end{pmatrix} \\
+                                                  & =\lim_{t_2\to t_1} \begin{pmatrix}
+                                                                           \frac{x_2-x_1}{t_2-t_1} \\
+                                                                           \frac{y_2-y_1}{t_2-t_1}
+                                                                       \end{pmatrix}           \\
+                                                  & =\begin{pmatrix}
+                                                         \dot{x}(t_1) \\
+                                                         \dot{y}(t_1)
+                                                     \end{pmatrix}
+    \end{align*}
+
     Die Steigung der Tangente ist gegeben durch
     \begin{align*}
-        \frac{\dot{y}(t_0)}{\dot{x}(t_0)}
+        m(t)=\frac{\dot{y}(t)}{\dot{x}(t)}
     \end{align*}
 \end{definition}
+
+\begin{definition}{[Krümmung]}
+    Die Krümmung einer Kurve $(x(t), y(t))$ ist ein Mass dafür, wie stark die Kurve ``gebogen'' ist. Die Krümmung ist rotationsinvariant, d.h.\ sie ändert sich nicht durch Drehungen der Kurve, und sie ist unabhängig von der Parametrisierung. (Es wäre einfach anzunehmen, dass die Krümmung die Ableitung der Steigung ist, also die zweite Ableitung einer Funktion, aber das ist nicht der Fall: Die zweite Ableitung einer Funktion ist z.B.\ nicht rotationsunabhängig.)
+
+    Die Krümmung ist gegeben durch
+    \begin{align*}
+        k(t) & =\frac{\Delta \alpha}{\Delta s}
+        \intertext{also die Änderung des Winkels $\alpha$ pro Bogenlänge $\Delta s$.}
+             & = \frac{\dot{x}\ddot{y}-\ddot{x}\dot{y}}{\sqrt{\dot{x}^2+\dot{y}^2}^3}
+    \end{align*}
+    \begin{remark}{[Kurvenrichtung]} Bedeutung des Vorzeichen von $k(t)$:
+        \begin{enumerate}
+            \item $k(t) < 0 \, \sameas \alpha$ wächst mit $s\,\sameas$ Rechtskurve wenn $t$ wächst.
+            \item $k(t) > 0 \, \sameas \alpha$ fällt wenn $s\text{ wächst}\,\sameas$ Linkskurve wenn $t$ wächst.
+            \item Ein Punkt mit $k(t) = 0$ und Vorzeichenwechsel von $k(t)$ ist ein Wendepunkt.
+            \item An Punkten mit grossem $\abs{k(t)}$ ist die Kurve ``eng'', während bei
+                  ``weiten'' Kurven $\abs{k(t)}$ klein ist.\footnote{Source: Lecture notes,
+                      Analysis I, HS 2024 (11.11.24), Kapitel II., S. 48}
+        \end{enumerate}
+    \end{remark}
+\end{definition}
+
+\begin{definition}{[Krümmungskreis]}
+    Der Krümmungskreis einer Kurve $(x(t), y(t))$ an der Stelle $t_0$ ist der Kreis, der am besten die Kurve an der Stelle $t_0$ approximiert. Der Krümmungskreis hat den Radius $r(t_0)=\frac{1}{k(t_0)}$ und den Mittelpunkt
+    \begin{spreadlines}{0.8em}
+        \begin{align*}
+            z(t) & = \begin{pmatrix}
+                         x(t_0) \\
+                         y(t_0)
+                     \end{pmatrix}+\frac{1}{k(t_0)}\underbrace{\frac{\vec{n}(t_0)}{\norm{\vec{n}(t_0)}}}_{\substack{\text{Einheitsnormalen-} \\\text{vektor}}} \\
+                 & =\underbrace{\begin{pmatrix}
+                                        x(t_0) \\
+                                        y(t_0)
+                                    \end{pmatrix}}_{\substack{\text{Ortsvektor}                                                                  \\\text{der Kurve bei $t_0$}}}+\underbrace{\frac{1}{k(t_0)}}_{\text{Radius}}\underbrace{\frac{1}{\sqrt{\dot{x}^2+\dot{y}^2}}}_{\substack{\text{Normierung}\\\text{des Normalenvektors}}}\begin{pmatrix}
+                -\dot{y}(t_0) \\
+                \dot{x}(t_0)
+            \end{pmatrix}\\
+                 & =\frac{\dot{x}^2+\dot{y}^2}{\dot{x}\ddot{y}-\ddot{x}\dot{y}}\begin{pmatrix}
+                                                                                   -\dot{y} \\
+                                                                                   \dot{x}
+                                                                               \end{pmatrix}
+        \end{align*}
+    \end{spreadlines}
+    Da der Normalenvektor allgemein nicht Einheitslänge hat, normieren wir ihn, um den Einheitsnormalenvektor zu erhalten.
+\end{definition}
+
+\begin{definition}{[Folge der Partialsummen]}
+    Sei $(a_n)_{n\in\N}$ eine Folge mit entsprechender Reihe $\sum_{0}^{\infty}a_n$. Die Folge der Partialsummen ist die Folge $(s_n)_{n\in\N}$, wobei
+    \begin{align*}
+        s_n & =\sum_{k=1}^{n}a_k
+    \end{align*}
+    Die Folge $(s_n)_{n\in\N}$ ist die Folge der Summen der ersten $n$ Glieder der Folge $(a_n)_{n\in\N}$.
+
+    Falls die Folge der Partialsummen $s_n\xrightarrow{n \to \infty} s\in\R$
+    konvergiert, so konvergiert auch die Reihe
+    $\sum_{0}^{\infty}a_k\xrightarrow{}s$.
+
+    \begin{remark}{} Falls die Folge der Partialsummen konvergiert, ist $a_n$ eine Nullfolge, d.h.\ $\lim_{n\to\infty}a_n=0$.
+    \end{remark}
+\end{definition}
+
+\begin{remark}{[Wichtige Reihen]} Hier sind einige wichtige Reihen und deren Partialsummen:
+    \begin{enumerate}
+        \item Hamonische Reihe:
+              \begin{align*}
+                  \sum_{n=1}^{\infty}\frac{1}{n} & =\infty \quad \text{divergiert}
+              \end{align*}
+              Proof: see proof\_harmonic\_series.pdf
+        \item Alternierende harmonische Reihe:
+              \begin{align*}
+                  \sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n} \quad\text{konvergiert}
+              \end{align*}
+              \begin{remark}{[Leibniz-Kriterium]}
+                  Es gilt für alternierende Reihen (Vorzeichen wechseln) mit \textit{monoton} fallenden Gliedern ($\abs{a_n}<\abs{a_{n-1}}$), dass die Reihe konvergiert. Das heisst, wenn $a_n$ monoton fallend ist und $\lim_{n\to\infty}a_n=0$, dann konvergiert die Reihe $\sum_{0}^{\infty}a_n$.
+              \end{remark}
+        \item Geometrische Reihe: $a_n=x^n$
+              \begin{spreadlines}{0.8em}
+                  \begin{align*}
+                      s_n                  & = \sum_{k=0}^{n}x^k =\frac{1-x^{n
+                      +1}}{1-x}                                                         \\
+                      \lim_{n\to\infty}s_n & = \frac{1}{1-x}\quad \text{für } \abs{x}<1
+                  \end{align*}
+              \end{spreadlines}
+        \item Alternierende geometrische Reihe: $a_n=(-1)^n x^n = (-x)^n$
+              \begin{align*}
+                  \sum_{k=0}^{\infty}(-x)^k & = \frac{1}{1+x} \quad \text{für } \abs{x}<1
+              \end{align*}
+        \item Allgemein mit Funktionen:
+              \begin{align*}
+                  \sum_{n=0}^{\infty}f(n)^n & =\frac{1}{1-f(n)} \quad \text{für } \abs{f(n)}<1
+              \end{align*}
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}{[Potenzreihen]}
+    Eine Reihe der Form
+    \begin{align*}
+        \sum_{n=0}^{\infty}a_n x^n, \quad a_n\in\R
+    \end{align*}
+    heisst Potenzreihe. Die Menge aller $x\in\R$, für die die Potenzreihe konvergiert, heisst Konvergenzberiech der Potenzreihe und ist in diesem Fall ein Intervall mit Mittelpunkt $0$. Das Intervall kann offen, geschlossen oder halboffen sein. Dieses Intervall kann auch unendlich sein, d.h.\ $(-\infty, \infty)$, wenn die Potenzreihe für alle $x\in\R$ konvergiert.
+
+    Die grösste Zahl $\rho$ für die die Potenzreihe konvergiert, heisst
+    Konvergenzradius der Potenzreihe. Der Konvergenzradius ist gegeben durch
+    \begin{align*}
+        \rho=\lim_{n\to\infty}\abs{\frac{a_{n+1}}{a_n}}
+    \end{align*}
+    falls der Grenzwert existiert.
+\end{definition}
+
+\begin{question}{3c}
+    Berechnen Sie für die folgenden Potenzreihen den Konvergenzbereich $(x_0 - \rho, x_0 + \rho)$:
+    \begin{itemize}
+        \item $\sum_{n=0}^{\infty}\frac{9^n}{n}x^{2n}$
+    \end{itemize}
+\end{question}
+
+\begin{problem}{3c)}
+Hier lässt sich der Konvergenzradius nicht direkt durch den Quotienten von $a_{n+1}$ und $a_n$ bestimmen, da alle ungeraden Koeffizienten der Potenzreihe Null sind. Stattdessen substituieren wir $y=x^2$ und erhalten die Potenzreihe
+\begin{align*}
+    \sum_{n=0}^{\infty}\frac{9^n}{n}y^n
+\end{align*}
+Nun können wir den Konvergenzradius für $y$ bestimmen und aus dem Zusammenhang $y=x^2$ lässt sich dann der Konvergenzbereich für $x$ bestimmen.
+\end{problem}
 
 \end{document}
