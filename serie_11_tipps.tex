@@ -117,7 +117,7 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
     \begin{align}
         \colorbox{pink}{\mathstrut$A\triangleq\displaystyle\int_{a}^{b}f(x)dx$}
     \end{align}
-    das \textbf{bestimmte Integral} von $f$ über das Intervall $[a,b]$.
+    das \textbf{bestimmte Integral} von $f$ von $a$ bis $b$.
 
     \begin{remark}{[Bedingungen für Konvergenz]}
         $f$ darf auf $[a,b]$ an einzelnen, isolierten Stellen unstetig sein.\footnote{Die Menge der Unstetigkeitsstellen von $f$ auf $[a,b]$ muss eine Menge mit Lebesgue-Mass Null sein.} Die Grenzen $a$ und $b$ müssen endlich sein.
@@ -161,12 +161,11 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
             \filldraw[black] (\c,\Vc) circle (.03cm);
         \end{tikzpicture}
     \end{figure}
-
-    Eine Funktion $f: [a,b] \to \R$ heisst \textbf{Riemann-integrierbar}, falls es
+    Eine Funktion $f: [a,b] \to \R$ heisst \textbf{Riemann-integrierbar}, falls sich die Summe
     für jede Zerlegung $\{x_0,x_1,\ldots,x_n\}$ und jede Wahl der Stützpunkte
-    $\{t_1,t_2,\ldots,t_n\}$ eine Zahl $I$ gibt, so dass
+    $\{\xi_1,\xi_2,\ldots,\xi_n\},\,\,\xi_i\in[x_{i-1},x_i]$ einem festen Grenzwert $I$ annähert, vorausgesetzt, die Zerlegung ist hinreichend fein. Im Grenzwert $n\to\infty$ und $\Delta x_i\to 0$ gilt
     \begin{align}
-        \lim_{\max_{i=1,\ldots,n}(\Delta x_i)\to 0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i = \lim_{n\to\infty, \,\Delta x_i\to 0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i  =I.
+        \lim_{n\to\infty,\,\max_{i=1,\ldots,n}(\Delta x_i)\to 0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i = \lim_{n\to\infty, \,\Delta x_i\to 0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i  =I.
     \end{align}
     Dann ist $I$ das bestimmte Integral von $f$ zwischen $a$ und $b$ und wir schreiben
     \begin{align}
@@ -350,9 +349,11 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
             F'(x) & =\lim_{h \to 0}\frac{F(x+h)-F(x)}{h}                             \\
                   & =\lim_{h \to 0}\frac{\int_{a}^{x+h}f(t)dt-\int_{a}^{x}f(t)dt}{h} \\
                   & =\lim_{h \to 0}\frac{\int_{x}^{x+h}f(t)dt}{h}                    \\
-                  & =\lim_{h \to 0}\frac{f(x+\theta h)h}{h}=f(x),
+                  \inttext{Nach dem Mittelwertsatz der Integralrechnung gibt es ein $\theta \in (x,x+h)$ so dass}
+                  & =\lim_{h \to 0}\frac{f(\theta)h}{h}\\
+                  &=\lim_{h \to 0}\frac{f(x+\phi h)h}{h}=f(x). 
         \end{align*}
-        wobei $\theta \in (0,1)$ ist.
+        wobei $\phi \in (0,1)$.
     \end{proof}
 \end{lemma}
 
@@ -438,5 +439,13 @@ Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{b
         \displaystyle\int x\cos(x^2)dx & =\frac{1}{2}\displaystyle\int \cos(u)du=\frac{1}{2}\sin(u)+c=\frac{1}{2}\sin(x^2)+c
     \end{align*}
 \end{definition}
+
+\textbf{Allgemeie Integrationstricks:}
+\begin{enumerate}
+    \item Symmetrien ausnutzen. \textbf{Beispiel:} $\displaystyle\int_{-a}^{a}f(x)dx=0$ für ungerade Funktionen $f$.
+    \item Linearität und Additivität ausnutzen.
+    \item Partialbruchzerlegung und Polynomdivision verwenden um Brüche zu vereinfachen. \\[5pt]\textbf{Beispiel:} $\displaystyle\int \frac{1}{x^2-1}dx=\displaystyle\int \frac{1}{2}\left(\frac{1}{x-1}-\frac{1}{x+1}\right)dx$.
+    \item Trigonometrische und Hyperbolische Identitäten verwenden.
+\end{enumerate}
 
 \end{document}

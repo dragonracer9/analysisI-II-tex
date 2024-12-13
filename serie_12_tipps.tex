@@ -1,0 +1,206 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{parskip}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{xargs}
+\usepackage{xcolor}
+\usepackage{witharrows}
+\usepackage{commath}
+\usepackage{physics}
+\usepackage{tikz}
+\usetikzlibrary{patterns,hobby}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.6}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{patterns}
+\usepackage[outline]{contour} % glow around text
+\contourlength{1.0pt}
+
+\tikzset{>=latex} % for LaTeX arrow head
+\colorlet{myred}{red!85!black}
+\colorlet{myblue}{blue!80!black}
+\colorlet{mydarkred}{myred!80!black}
+\colorlet{mydarkblue}{myblue!60!black}
+\tikzstyle{xline}=[myblue,thick]
+\def\tick#1#2{\draw[thick] (#1) ++ (#2:0.09) --++ (#2-180:0.18)}
+\tikzstyle{myarr}=[myblue!50,-{Latex[length=3,width=2]}]
+\def\Nr{100}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[centerlast,small,sc]{caption}
+\usepackage{subcaption} % causes weird error with \setlength{\captionmargin}{20pt}
+\usepackage{amsthm}
+\usepackage{cancel}
+
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\ddx}{\frac{\mathrm{d}}{\mathrm{d}x}}
+\newcommand{\dt}{\mathrm{d}t}
+\newcommand{\du}{\mathrm{d}u}
+%\newcommand{\dv}{\mathrm{d}v}
+\newcommand{\dy}{\mathrm{d}y}
+\newcommand{\dz}{\mathrm{d}z}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Rm}{\mathbb{R}^m}
+\newcommand{\Rk}{\mathbb{R}^k}
+\newcommand{\und}{\text{ und }}
+\newcommand{\oder}{\text{ oder }}
+\newcommand{\bydef}{\underset{def.}{=}}
+\newcommand{\BH}{\underset{\textrm{B-H}}{=}}
+
+\newcommand{\Follows}{\Longrightarrow\ }
+\newcommand{\sameas}{\Longleftrightarrow}
+\newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
+\newcommandx{\LaplaceInv}[2][1=F(s), 2=t]{\mathscr{L}^{-1}\{#1\}(#2)}
+\DeclareMathOperator{\arccosh}{Arcosh}
+\DeclareMathOperator{\arcsinh}{Arsinh}
+\DeclareMathOperator{\arctanh}{Artanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth} 
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+\def\ez{\begin{flushright}\underline{ez.}\end{flushright}}
+%\[
+%   \Laplace[\cos(x)]=\int_{t=0}^{\infty}f(t)e^{-st}dt
+%\]
+
+\newcommand{\R}{\mathbb{R}} % gives blackboard R
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\inttext}{\shortintertext}
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{lemma}[2][Theorem]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{notation}[2][Notation]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][\textcolor{blue}{Tipps \& Tricks zu}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries \textcolor{blue}{#2}.}]}{\end{trivlist}}
+\newenvironment{question}[2][\textcolor{red}{Aufgabe}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries \textcolor{red}{#1}}\hskip \labelsep {\bfseries \textcolor{red}{#2}.}]}{\end{trivlist}}
+\newenvironment{remark}[2][Bemerkung]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+\title{Problem Set 12, Tips}
+\author{Vikram R. Damani\\
+    Analysis I}
+
+\maketitle
+Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
+
+\section{Tipps \& Tricks}
+\begin{problem}{(1), (2a)}
+Die Fläche, die von einer in Polarkoordinaten gegeben Kurve $\rho=f(\varphi)$ eingeschlossen wird ist gegeben durch die Sektorfläche $\frac{1}{2}\int_0^{2\pi}\rho^2(\varphi)\dt$.
+\end{problem}
+
+\begin{problem}{(2b)}
+$b$ ist der zweifache Abstand vom ersten Punkt mit einer horizontalen Tangente an die x-Achse.
+
+\textbf{Recall}: $\vec{t}=\frac{\dot{\vec{r}}(t)}{\norm{\dot{\vec{r}}(t)}}$ und die Steigung der Tangente ist gegeben durch $m=\frac{\dot{y(t)}}{\dot{x}(t)}$.
+
+\textit{Hinweis: Versuche $x(\varphi)=f(\rho,\varphi)$ und $y(\varphi)=g(\rho,\varphi)$ zu bestimmen und die Ableitung von $y(t)$ zu berechnen.}
+\end{problem}
+
+\begin{problem}{(3)}
+Eine Anwendung des Hauptsatzes der Infinitesimalrechnung, der Bogenlägenformel und der Tangentensteigung.
+\end{problem}
+
+\begin{problem}{(4)}
+Finde eine Parametrisierung $x(t) = f(t)$, $y(t) = g(t)$ im ersten Quadranten, die die implizite Gleichung $\sqrt{\abs{x}}+\sqrt{\abs{y}}=1$ erfüllt. Dann kann man die Fläche im ersten Quadranten durch die Formel $\int_0^{t_1} y(t)\dot{x}(t)\dt$ berechnen.
+\end{problem}
+
+\section{Theorie}
+
+\begin{definition}{[Rekursive Integralformeln]}
+    Es seien die Integrale
+    \begin{align}
+        \begin{split}
+            I_n & =\int_0^{\pi/2}\sin^n(x)\dx    \\
+            J_n & =\int_{0}^{\pi/2}\cos^n(x)\dx.
+        \end{split}
+    \end{align} Dann gilt:
+    \begin{align}
+        \begin{split}
+            I_n & =\frac{n-1}{n}I_{n-2} \\
+            J_n & = I_n.
+        \end{split}
+        \inttext{und}
+        \begin{split}
+            I_0 & =\frac{\pi}{2} \\
+            I_1 & =1.
+        \end{split}
+    \end{align}
+
+    \begin{proof}
+        Durch partielle Integration und Anwendung der Rekursionsformel für $I_n$ und $J_n$.
+    \end{proof}
+
+    \begin{remark}{[Rekursives Log-Integral]}
+        Es lässt sich analog zeigen, dass gilt
+        \begin{align}
+            L_n & =\int_{1}^{e}\ln^n(x)\dx \\
+                & =(n-1)(L_{n-2}-L_{n-1})  \\
+                & =e-nL_{n-1}
+        \end{align}
+        Wobei die erste Rekursionsformel durch partielle Integration von $\ln^n=\ln\cdot\ln^{n-1}$ und die zweite durch partielle Integration von $ \ln^n=1\cdot\ln^n$ bestimmt wird.
+    \end{remark}
+\end{definition}
+
+\begin{remark}{[Integration von rationalen Funktionen]}
+    Durch \textbf{Polynomdivision} (wenn der Grad des Zählers grösser ist als der Grad des Nenners) oder durch \textbf{Partialbruchzerlegung} (wenn der Grad des Nenners grösser ist als der Grad des Zählers) lassen sich rationale Funktionen so vereinfachen, dass sie entweder direkt integrierbar sind oder mit den $\log$ oder $\arctan$ Tricks integriert werden können:
+    \begin{align*}
+        \int \frac{u'(x)}{u(x)}\dx & = \ln(u(x))+c                       \\
+        \int  \frac{1}{x^2+a^2}\dx & = \frac{1}{a}\arctan(\frac{x}{a})+c
+    \end{align*}
+\end{remark}
+
+\begin{definition}{[Integrale ebener Kurven]}
+    Die Fläche zwischen einer ebenen Kurve und der x-Achse ist gegeben durch
+    \begin{align}
+        I=\int_{t_1}^{t_2}y(t)\dot{x}(t)\dt
+    \end{align}
+
+    Man erhält diese Formel durch eine ähnliche Methode der Betrachtung einer
+    Riemannschen Summe wie bei Integralen von Funktionen.
+\end{definition}
+
+\begin{definition}{[Sektorfläche (pos.~falls links)]}
+    Die von einer ebenen Kurve und den beiden Radien $\rho_1=\rho(\varphi_1)$ und $\rho_2=\rho(\varphi_2)$ eingeschlossene Fläche ist gegeben durch
+    \begin{align}
+        A & =\frac{1}{2}\int_{t_1}^{t_2}\dot{x}y-\dot{y}x\dt            \\
+          & = \frac{1}{2}\int_{\varphi_1}^{\varphi_2}\rho^2(\varphi)\dt
+    \end{align}
+    in jeweils Kart.-/Polarkoordinaten.\footnote{Gute Illustrationen hierzu finden sich in  \url{https://n.ethz.ch/\~brunnerg/Analysis\%20I/Serie\%2010.pdf}}
+\end{definition}
+
+\begin{definition}{[Bogenlänge]}
+    Die Bogenlänge einer ebenen Kurve ist gegeben durch
+    \begin{align}
+        L & =\int_{t_1}^{t_2}\sqrt{\dot{x}^2+\dot{y}^2}\dt        \\
+          & =\int_{\varphi_1}^{\varphi_2}\sqrt{\rho^2+(\rho')^2}\dt
+    \end{align}
+\end{definition}
+
+\end{document}
