@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{parskip}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{xargs}
+\usepackage{xcolor}
+\usepackage{witharrows}
+\usepackage{commath}
+\usepackage{physics}
+\usepackage{tikz}
+\usetikzlibrary{patterns,hobby}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.6}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{patterns}
+\usepackage[outline]{contour} % glow around text
+\contourlength{1.0pt}
+
+\tikzset{>=latex} % for LaTeX arrow head
+\colorlet{myred}{red!85!black}
+\colorlet{myblue}{blue!80!black}
+\colorlet{mydarkred}{myred!80!black}
+\colorlet{mydarkblue}{myblue!60!black}
+\tikzstyle{xline}=[myblue,thick]
+\def\tick#1#2{\draw[thick] (#1) ++ (#2:0.09) --++ (#2-180:0.18)}
+\tikzstyle{myarr}=[myblue!50,-{Latex[length=3,width=2]}]
+\def\Nr{100}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[centerlast,small,sc]{caption}
+\usepackage{subcaption} % causes weird error with \setlength{\captionmargin}{20pt}
+\usepackage{amsthm}
+\usepackage{cancel}
+
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\ddx}{\frac{\mathrm{d}}{\mathrm{d}x}}
+\newcommand{\dt}{\mathrm{d}t}
+\newcommand{\du}{\mathrm{d}u}
+%\newcommand{\dv}{\mathrm{d}v}
+\newcommand{\dy}{\mathrm{d}y}
+\newcommand{\dz}{\mathrm{d}z}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Rm}{\mathbb{R}^m}
+\newcommand{\Rk}{\mathbb{R}^k}
+\newcommand{\und}{\text{ und }}
+\newcommand{\oder}{\text{ oder }}
+\newcommand{\bydef}{\underset{def.}{=}}
+\newcommand{\BH}{\underset{\textrm{B-H}}{=}}
+
+\newcommand{\Follows}{\Longrightarrow\ }
+\newcommand{\sameas}{\Longleftrightarrow}
+\newcommandx{\Laplace}[2][1=f(t), 2=s]{\mathscr{L}\{#1\}(#2)}
+\newcommandx{\LaplaceInv}[2][1=F(s), 2=t]{\mathscr{L}^{-1}\{#1\}(#2)}
+\DeclareMathOperator{\arccosh}{Arcosh}
+\DeclareMathOperator{\arcsinh}{Arsinh}
+\DeclareMathOperator{\arctanh}{Artanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth} 
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+\def\ez{\begin{flushright}\underline{ez.}\end{flushright}}
+%\[
+%   \Laplace[\cos(x)]=\int_{t=0}^{\infty}f(t)e^{-st}dt
+%\]
+
+\newcommand{\R}{\mathbb{R}} % gives blackboard R
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\inttext}{\shortintertext}
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{lemma}[2][Theorem]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\flushright{$\square$}\end{trivlist}}
+\newenvironment{notation}[2][Notation]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][\textcolor{blue}{Tipps \& Tricks zu}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries \textcolor{blue}{#2}.}]}{\end{trivlist}}
+\newenvironment{question}[2][\textcolor{red}{Aufgabe}]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries \textcolor{red}{#1}}\hskip \labelsep {\bfseries \textcolor{red}{#2}.}]}{\end{trivlist}}
+\newenvironment{remark}[2][Bemerkung]{\begin{trivlist}
+        \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+\title{Problem Set 13, Tips}
+\author{Vikram R. Damani\\
+    Analysis I}
+
+\maketitle
+Aufgaben in \textcolor{red}{rot} markiert, Tipps \& Tricks in \textcolor{blue}{blau}.
+
+\section{Tipps \& Tricks}
+
+
+\section{Theorie}
+
+
+\end{document}
