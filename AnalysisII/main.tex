@@ -1,0 +1,30 @@
+\documentclass[justified,nobib]{tufte-book}
+
+\let\cleardoublepage\clearpage
+
+\input{settings/settings}
+\input{settings/commands}
+
+\setboolean{manuscript}{true}
+
+\title{Analysis I/II}
+\author{Vikram Damani}
+\date{FS 2025}
+\publisher{DMATH/DMAVT/DMATL}
+\input{pages/titlepage}
+
+\begin{document}
+  \frontmatter\pagenumbering{roman}
+
+  \maketitle
+
+  \tableofcontents
+
+  \mainmatter\setcounter{page}{1}\pagenumbering{arabic}
+
+  \part{Analysis I}\label{part1}
+  
+
+  \part{Analysis II}\label{part2}
+  
+\end{document}

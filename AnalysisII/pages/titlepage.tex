@@ -1,0 +1,17 @@
+\makeatletter
+\renewcommand{\maketitlepage}{%
+\setlength{\parindent}{0pt}
+    \cleardoublepage{%
+        \begin{fullwidth}%
+        \ifthenelse{\boolean{manuscript}}{\phantom{abc}}{\fontsize{14}{14}\selectfont\par\noindent\@date\par}%
+        \vspace{1.5in}\fontsize{48}{56}\selectfont\par\noindent\@title\par%
+        \vspace{0.2in}\fontsize{20}{18}\selectfont\par\noindent\textit{\@author}\par%
+        \vfill
+        %\includegraphics[scale=1.25]{figures/ETH_logo.pdf}\\[10pt]
+        \footnotesize{\@publisher}%
+        \end{fullwidth}%
+    }%
+    \thispagestyle{empty}%
+    \clearpage
+}
+\makeatother
