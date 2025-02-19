@@ -62,7 +62,7 @@ Ableitungen (d.h Ableitungen in jeweils x-Koordinaten- oder
 y-Koordinaten-Richtung) definieren.
 
 \begin{thmb}{\emph{\np{[Partielle Ableitungen].}}}
-        Die Partielle Ableitung einer Funktion mit mehreren Argumenten ist die Ableitung dieser Funktion nach \emph{einer} Variable. Die \r{Partielle Ableitungen von $f(x,y)$ nach $x$ an der Stelle $(x_0,y_0)$} ist gegeben durch
+        Die Partielle Ableitung einer Funktion mit mehreren Argumenten ist die Ableitung dieser Funktion nach \emph{einer} Variable. Die \r{Partielle Ableitung von $f(x,y)$ nach $x$ an der Stelle $(x_0,y_0)$} ist gegeben durch
         \begin{align}
                 \pdv{f}{x}(x_0,y_0)=\lim_{\r{\Delta x\to0}}\frac{f(\r{x_0+\Delta x},\b{y_0})-f(\r{x_0},\b{y_0
                         })}{\r{\Delta x}}
@@ -77,6 +77,10 @@ y-Koordinaten-Richtung) definieren.
 
 Die Partiellen Ableitungen $\pdv{f}{x}$ und $\pdv{f}{y}$ sind wieder Funktionen
 in $x$ und $y$.
+
+\begin{rmk}{Berechnung}{Berechnung}
+        Es folgt aus der Definition, dass 
+\end{rmk}
 
 \begin{rmk}{Notation}{Notation}
         Je nach Autor wird eine partielle Ableitung auf verschiedene Weise geschrieben. Hier eine kurze Liste
@@ -138,31 +142,40 @@ untersuchen. Die zweite Ableitung von $f$ nach $x$ wird wie folgt gebildet
 \begin{figure}[htbp!]
         \centering
         \begin{tikzpicture}[
-                > = stealth, % arrow head style
-                shorten > = 1pt, % don't touch arrow head to node
-                auto,
-                node distance = 3cm, % distance between nodes
-                semithick % line style
-                ]
-            
+                        %> = stealth, % arrow head style
+                        %shorten > = 1pt, % don't touch arrow head to node
+                        auto, node distance = 3cm, semithick ]% distance between nodes% line style
+
                 \node[] (y1) at (-2,-2) {$\r{\dfrac{\partial f}{\partial x}}\overset{?}{=}\psi$};
                 \node[] (y2) at (2,-2) {$\r{\dfrac{\partial f}{\partial y}}\overset{?}{=}\varphi$};
                 \node[] (x1) at (0,0) {$\r f$};
                 \node[] (z1) at (0,-4) {$\dfrac{\partial^2 f}{\partial x\partial y}$};
-                
+
                 \path[->,red] (x1) edge  node[above left] {\r{(?)}} (y1);
                 \path[->,red] (x1) edge  node[above right] {\r{(?)}} (y2);
                 \path[->] (y1) edge  node[above left] {} (z1);
                 \path[->] (y2) edge  node[above right] {} (z1);
-            
-                \end{tikzpicture}
+
+        \end{tikzpicture}
 \end{figure}
 
 Anhand bekannten partiellen Ableitungen lässt sich die ursprüngliche Funktion
 unter folgender Bedingung rekonstruieren
 
-\begin{thmb}{\emph{\np{[Integrabilitätsbedingung].}}}
-\end{thmb}
+\begin{thmb}{\emph{\np{[Integrabilitätsbedingung (IB)].}}}
+        \begin{align}
+                \varphi_y\equiv\psi_x
+        \end{align}
+\end{thmb}\vspace*{1em}
+
+\begin{fct}
+        Erfüllen zwei stetig diff'bare funktionen die Integrabilitätsbedingung $\varphi_y\equiv\psi_x$ in einem achsenparallelen Rechteck, dann gibt es eine Funktion $f$ mit
+        \begin{align}
+                f_y=\varphi\text{ und }f_x=\psi
+        \end{align}
+\end{fct}
+
+\section{Tipps}
 
 \end{document}
 
