@@ -79,7 +79,7 @@ Die Partiellen Ableitungen $\pdv{f}{x}$ und $\pdv{f}{y}$ sind wieder Funktionen
 in $x$ und $y$.
 
 \begin{rmk}{Berechnung}{Berechnung}
-        Es folgt aus der Definition, dass 
+        Jeder, der in einer Dimension ableiten kann, kann auch Funktionen in mehreren Variablen partiell ableiten. Eine partielle Ableitung nach einer Variablen ist per Definition genau analog zu einer Ableitung in einer Dimension, wobei alle anderen Variablen konstant gehalten werden.
 \end{rmk}
 
 \begin{rmk}{Notation}{Notation}
@@ -175,7 +175,32 @@ unter folgender Bedingung rekonstruieren
         \end{align}
 \end{fct}
 
+\begin{defn}{\b{[Lineare Ersatzfunktion]}}
+        Die lineare Ersatzfunktion an der Stelle $(x_0,y_0)$ einer Funktion $f:\R^2\to\R$ in zwei Variablen ist gegeben durch
+        \begin{align}
+                t_f(x,y)=\underbrace{f_x(x_0,y_0)(x-x_0)}_{\text{Spannt $t_f$ in $x$-Richtung auf}}+\underbrace{f_y(x_0,y_0)(y-y_0)}_{\text{Spannt $t_f$ in $y$-Richtung auf}}+\underbrace{f(x_0,y_0)}_{\text{Stützpunkt}}
+        \end{align}
+\end{defn}
+
+Wie bei Funktionen in einer Variablen können wir auch für Funktionen in höheren
+Dimensionen ein lokales Koordinatensystem in $(x_0,y_0f(x_0,y_0))$ definieren,
+in dem die lineare Ersatzfunktion wie folgt neu definiert ist\vspace*{0.3em}
+
+\begin{thmb}{\np{\textit{[Totales Differential].}}}
+        \begin{align}
+                df = f_x(x_0,y_0)\,dx+f_y(x_0,y_0)\,dy
+        \end{align}
+\end{thmb}\vspace*{1em}
+
+\begin{fct}
+        Sei $\Delta f=f(x+\Delta x,y+\Delta y)-f(x_0,y_0)$. Für kleine $\Delta x = dx$ und $\Delta y = dy$ ist die Approximation $\Delta f \approx df$ gut.
+\end{fct}
+
+Wir können also den wirklichen absoluten Fehler durch Linearisierung näherungsweise bestimmen, wenn der Messfehler der Variablen klein ist.
+
 \section{Tipps}
+
+
 
 \end{document}
 
