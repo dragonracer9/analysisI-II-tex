@@ -196,11 +196,28 @@ in dem die lineare Ersatzfunktion wie folgt neu definiert ist\vspace*{0.3em}
         Sei $\Delta f=f(x+\Delta x,y+\Delta y)-f(x_0,y_0)$. Für kleine $\Delta x = dx$ und $\Delta y = dy$ ist die Approximation $\Delta f \approx df$ gut.
 \end{fct}
 
-Wir können also den wirklichen absoluten Fehler durch Linearisierung näherungsweise bestimmen, wenn der Messfehler der Variablen klein ist.
+Wir können also den wirklichen absoluten Fehler durch Linearisierung
+näherungsweise bestimmen, wenn der Messfehler der Variablen klein ist.
 
 \section{Tipps}
+\setcounter{nexc}{1}
 
+\begin{nexercise}{Aufgabe 2}{1}
+        Wir betrachten die folgende Liste von Funktionen
 
+        \begin{varwidth}{\textwidth}
+                \begin{enumerate}[label=(\alph*)]
+                        \item $f(x,y)=\sin(x-y)(-x^2+y^2)$
+                        \item $g(x,y)=(x-y)e^{-x^2+y^2}$
+                        \item $h(x,y)=\cos(x)+\cos(y)$
+                        \item $l(x,y)=(x^2-y^2)xy.$
+                \end{enumerate}
+        \end{varwidth}
+\end{nexercise}
+
+\begin{tips}{1}
+        Hier ist es wichtig, sowohl die Symmetrien der Funktionen als auch die Periodizität in Richtung der $x$- und $y$-Achsen zu betrachten. Die Funktion $l$ lässt sich faktorisieren, was Berechnung der Niveaulinen evtl.\ vereinfacht.
+\end{tips}
 
 \end{document}
 

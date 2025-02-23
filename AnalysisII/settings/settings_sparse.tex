@@ -35,6 +35,7 @@
 \usepackage[parfill]{parskip}
 \usepackage{centernot}
 \usepackage{needspace}
+\usepackage{varwidth}
 
 
 %--------Graphics/Images--------
@@ -61,6 +62,8 @@
 \newtheorem{defn}[thm]{Definition}
 
 %\numberwithin{equation}{chapter}
+
+\newcounter{exs}
 
 \Crefname{thm}{Theorem}{Theorems}
 
@@ -109,9 +112,9 @@
 
 %--------Exercises-------------
 \newtcbtheorem
-  [use counter*=thm,crefname={Problem}{Problems},Crefname={Problem}{Problems}]%
+  [use counter*=exs,crefname={Aufgabe}{Problems},Crefname={Aufgabe}{Problems}]%
   {exc}
-  {Problem}
+  {Aufgabe}
   {%
     before skip=10pt,after skip=10pt,
     left=0.2cm,right=0.2cm,top=0cm,
@@ -277,8 +280,8 @@
 
 
 \newtheorem{nexc}{}
-\crefname{nexc}{Problem}{Problems}
-\Crefname{nexc}{Problem}{Problems}
+\crefname{nexc}{Aufgabe}{Problems}
+\Crefname{nexc}{Aufgabe}{Problems}
 
 \NewDocumentCommand{\excheading}{}{\needspace{6\baselineskip}\section*{Problems}}
 
@@ -286,7 +289,7 @@
   % Reserve enough space for exactly two lines (heading + one line).
   \needspace{2\baselineskip}%
   \begin{nexc}%
-  \hyperref[solution:#2]{\textbf{#1.}}\label{exercise:#2}%
+  \hyperref[solution:#2]{\b{\textbf{#1.}}}\label{exercise:#2}%
   % Possibly force them into the same paragraph:
   \par\nobreak
   % or \nolinebreak, if you prefer to keep them in one paragraph.
@@ -300,4 +303,4 @@
 \NewDocumentCommand{\exerciserefmark}{mo}{\hyperref[exercise:#1]{\circled{\normalfont\textbf{?}}}\exerciseref{#1}[#2]}
 
 %--------Solutions-------------
-\NewDocumentEnvironment{solution}{m}{\paragraph{\normalfont{\textbf{Solution to \cref{exercise:#1}.}}}\label{solution:#1}}{}
+\NewDocumentEnvironment{tips}{m}{\paragraph{\normalfont{\textbf{Tipps zu \cref{exercise:#1}.}}}\label{solution:#1}}{}
