@@ -37,8 +37,8 @@
 
 
 %--------Symbols--------
-\renewcommand{\vec}[1]{\mathbold{#1}}
-\newcommand{\mat}[1]{\mathbold{#1}}
+%\renewcommand{\vec}[1]{\mathbold{#1}}
+%\newcommand{\mat}[1]{\mathbold{#1}}
 \newcommand{\rvec}[1]{\mathbf{#1}}
 %\newcommand{\set}[1]{#1}
 \newcommand{\spa}[1]{\mathcal{#1}}
@@ -266,3 +266,30 @@
 \newcommand{\C}{\mathbb{C}}
 
 \newcommand{\inttext}{\shortintertext}
+
+% The following example defines \colorboxed as wrapper around amsmath's \boxed to set the frame color. It uses package xcolor for the color support to save the current color . before changing the color for the frame. Inside the box, the previous saved color is restored. This avoids a white background of \fcolorbox, since there is no "transparent" color.
+
+% The macro also supports an optional argument for specifying the color model.
+
+% Definition of \boxed in amsmath.sty:
+% \newcommand{\boxed}[1]{\fbox{\m@th$\displaystyle#1$}}
+
+
+% Syntax: \colorboxed[<color model>]{<color specification>}{<math formula>}
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+    \colorlet{cb@saved}{.}%
+    \color#1{#2}%
+    \boxed{%
+      \color{cb@saved}%
+      #3%
+    }%
+  \endgroup
+}
