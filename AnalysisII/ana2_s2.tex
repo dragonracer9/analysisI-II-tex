@@ -11,7 +11,7 @@
 \begin{document}
 \title{\vspace*{-2.5em}Problem Set 2, Summary \& Tips}
 \author{Vikram R. Damani\\
-        Analysis~II}
+    Analysis~II}
 
 \maketitle
 
@@ -30,23 +30,24 @@
 
 \begin{thmb}{\np{\emph{[Extrema]}}.}
     Der Punkt $(x_0,y_0)\in D(f)$ ist eine
-        \begin{enumerate}[label=(\alph*), topsep=0pt, itemsep=0.15em]
-                \item \textbf{\p{Globale} \g{Maximal}stelle} falls \p{für alle} $\p{(x,y)\in D(f)}$: \[f(x_0,y_0)\geq f(x,y)\]
-                \item \textbf{\p{Globale} \r{Minimal}stelle} falls \p{für alle $(x,y)\in D(f)$}: \[f(x_0,y_0)\leq f(x,y)\]
-                \item \textbf{\co{Lokale} \g{Maximal}stelle} falls es eine Kreisscheibe $\Delta(x_0,y_0)$ gibt, so dass \co{für alle $(x,y)\in D(f)\cap\Delta(x_0,y_0)$}: \[f(x_0,y_0)\geq f(x,y)\]
-                \item \textbf{\co{Lokale} \r{Minimal}stelle} falls es eine Kreisscheibe $\Delta(x_0,y_0)$ gibt, so dass \co{für alle $(x,y)\in D(f)\cap\Delta(x_0,y_0)$}: \[f(x_0,y_0)\leq f(x,y)\]
-        \end{enumerate}
+    \begin{enumerate}[label=(\alph*), topsep=0pt, itemsep=0.15em]
+        \item \textbf{\p{Globale} \g{Maximal}stelle} falls \p{für alle} $\p{(x,y)\in D(f)}$: \[f(x_0,y_0)\geq f(x,y)\]
+        \item \textbf{\p{Globale} \r{Minimal}stelle} falls \p{für alle $(x,y)\in D(f)$}: \[f(x_0,y_0)\leq f(x,y)\]
+        \item \textbf{\co{Lokale} \g{Maximal}stelle} falls es eine Kreisscheibe $\Delta(x_0,y_0)$ gibt, so dass \co{für alle $(x,y)\in D(f)\cap\Delta(x_0,y_0)$}: \[f(x_0,y_0)\geq f(x,y)\]
+        \item \textbf{\co{Lokale} \r{Minimal}stelle} falls es eine Kreisscheibe $\Delta(x_0,y_0)$ gibt, so dass \co{für alle $(x,y)\in D(f)\cap\Delta(x_0,y_0)$}: \[f(x_0,y_0)\leq f(x,y)\]
+    \end{enumerate}
 \end{thmb}\vspace*{1em}
 
 \begin{defn}{\b{[Beschränktes Gebiet].}}
-Ein Gebiet $D$ ist \emph{beschränkt}, falls es einen (möglicherweise sehr grossen) Kreis $\Delta_r$ mit Radius $r$ gibt, so dass $D\subseteq\Delta_r$.
+    Ein Gebiet $D$ ist \emph{beschränkt}, falls es einen (möglicherweise sehr grossen) Kreis $\Delta_r$ mit Radius $r$ gibt, so dass $D\subseteq\Delta_r$.
 \end{defn}
 
 \begin{thmb}{\np{\textit{[Maximum und Minimum]}}.}
     Ist $D(f)$ \emph{beschränkt} und $f$ \emph{stetig}, so hat $f$ je eine \p{globale} \g{Maximal}- und \r{Minimal}stelle.
 \end{thmb}
 
-Man findet (lokale) Extremalstellen von Funktionen in mehreren Variablen auf die gleiche Weise wie bei Funktionen in einer Variablen.
+Man findet (lokale) Extremalstellen von Funktionen in mehreren Variablen auf
+die gleiche Weise wie bei Funktionen in einer Variablen.
 
 \begin{thmb}{\np{\textit{[Finden von Extrema]}}.}
     Ist $(x_0,y_0)$ eine \co{lokale} Extremalstelle von $f$, dann gilt
@@ -59,9 +60,10 @@ Man findet (lokale) Extremalstellen von Funktionen in mehreren Variablen auf die
 
 \begin{rmk}{Achtung!}{Warning} Es folgt aus~\ref{it:3}\ alleine noch nicht, dass $(x_0,y_0)$ extremal ist. Es könnte auch ein Sattelpunkt sein.
 
-Zum Finden \emph{aller} Extrema müssen alle Stellen vom Typ~\ref{it:1} und~\ref{it:2} untersucht werden.
+    Zum Finden \emph{aller} Extrema müssen alle Stellen vom Typ~\ref{it:1}
+    und~\ref{it:2} untersucht werden.
 
-\textsl{This is nothing new, we already had these three criteria in Analysis I for finding the extrema of functions with one variable.}
+    \textsl{This is nothing new, we already had these three criteria in Analysis I for finding the extrema of functions with one variable.}
 \end{rmk}
 
 Die Kettenregel lässt sich ebenfalls verallemeinern.
@@ -69,16 +71,50 @@ Die Kettenregel lässt sich ebenfalls verallemeinern.
 \begin{thmb}{\np{\textit{[Verallgemeinerte Kettenregel]}}.}
     Sei $F(t)=f(x(t),y(t))=f(\vec{r}\,(t))$. Dann gilt
     \begin{align}
-        F'(t)=\pd{}{t}f(\vec{r}(t))&=f_x(x(t),y(t))\pd{x}{t}+f_y(x(t),y(t))\pd{y}{t}\\
-        &=\begin{pmatrix}
-            f_x\\f_y
-        \end{pmatrix}\cdot\begin{pmatrix}
-            \dot{x}\\\dot{y}
-        \end{pmatrix}\\
-        &=\colorboxed{nice_purple}{grad(f)\cdot\dot{\vec{r}}\,(t)}
+        F'(t)=\pd{}{t}f(\vec{r}(t)) & =f_x(x(t),y(t))\pd{x}{t}+f_y(x(t),y(t))\pd{y}{t}          \\
+                                    & =\begin{pmatrix}
+                                           f_x \\f_y
+                                       \end{pmatrix}\cdot\begin{pmatrix}
+                                                             \dot{x} \\\dot{y}
+                                                         \end{pmatrix}                       \\
+                                    & =\colorboxed{nice_purple}{grad(f)\cdot\dot{\vec{r}}\,(t)}
         %&=\colorbox{pink}{\mathstrut$grad(f)\cdot\dot{\vec{r}}\,(t)$}
     \end{align}
+\end{thmb}\vspace*{1em}
+
+\begin{fct}
+    Man kann die verallg.\ Kettenregel anwenden um die Steigung an implizit gegebenen Kurven im $\R^2$ (wie z.B.\ Niveaulinien) zu berechnen.
+\end{fct}
+
+\begin{thmb}{\np{\textit{[Tangentensteigung an Kurven]}}}
+    Die Tangentensteigung an die Kurve $K: f(x,y)=0$ an der Stelle $(x_0,y_0)$ ist
+    \begin{align}
+        \varphi'(x_0)=-\frac{f_x(x_0,y_0)}{f_y(x_0,y_0)}
+    \end{align}
 \end{thmb}
+
+We have discussed functions in two variables at length now. It is therefore
+only natural that we extend our discussion once more to functions in higher
+dimensions.
+
+\begin{thmb}{\np{\textit{[Funktionen in drei Variablen]}}}
+    Sei $\mathbf{V}=\R\times\R\times\R=\R^2$. Dann ist
+    \begin{align}
+        &\begin{aligned}
+            f\colon\quad \mathbf{V} & \longrightarrow\R   \\
+            (x,y)              & \longmapsto f(x,y)
+        \end{aligned}\\
+        &\text{bzw.}\ \:\vec{r}\,\longmapsto f(\vec{r}),
+    \end{align}
+    eine Funktion in 3 Variablen.
+\end{thmb}\vspace*{1em}
+
+\begin{defn}{\b{[Niveaufläche]}}
+    Für ein $C\in\R$ ist die Menge
+    \begin{align}
+        \left\{(x,y,z)\in\R^3\colon f(x,y,z)=C\right\}
+    \end{align}
+\end{defn}
 
 %OLD MCDONALD HAD A FARM $e_r$-$e_r$-O
 
@@ -88,26 +124,26 @@ Die Kettenregel lässt sich ebenfalls verallemeinern.
 \setcounter{nexc}{1}
 
 \begin{nexercise}{Aufgabe 2}{1}
-        Wir betrachten die folgende Liste von Funktionen
+    Wir betrachten die folgende Liste von Funktionen
 
-        \begin{varwidth}{\textwidth}
-                \begin{enumerate}[label=(\alph*)]
-                        \item $f(x,y)=\sin(x-y)(-x^2+y^2)$
-                        \item $g(x,y)=(x-y)e^{-x^2+y^2}$
-                        \item $h(x,y)=\cos(x)+\cos(y)$
-                        \item $l(x,y)=(x^2-y^2)xy.$
-                \end{enumerate}
-        \end{varwidth}
+    \begin{varwidth}{\textwidth}
+        \begin{enumerate}[label=(\alph*)]
+            \item $f(x,y)=\sin(x-y)(-x^2+y^2)$
+            \item $g(x,y)=(x-y)e^{-x^2+y^2}$
+            \item $h(x,y)=\cos(x)+\cos(y)$
+            \item $l(x,y)=(x^2-y^2)xy.$
+        \end{enumerate}
+    \end{varwidth}
 \end{nexercise}
 
 \begin{tips}{1}
-        Hier ist es wichtig, sowohl die Symmetrien der Funktionen als auch die Periodizität in Richtung der $x$- und $y$-Achsen zu betrachten. Die Funktion $l$ lässt sich faktorisieren, was Berechnung der Niveaulinen evtl.\ vereinfacht.
+    Hier ist es wichtig, sowohl die Symmetrien der Funktionen als auch die Periodizität in Richtung der $x$- und $y$-Achsen zu betrachten. Die Funktion $l$ lässt sich faktorisieren, was Berechnung der Niveaulinen evtl.\ vereinfacht.
 \end{tips}
 
 \end{document}
 
 \begin{defn}{Funktionen in mehreren Variablen}
-        Eine Funktion $f: D \to \R$ mit $D \subseteq \R^n$ ist eine Abbildung, die jedem $x \in D$ genau ein $f(x) \in \R$ zuordnet.
+    Eine Funktion $f: D \to \R$ mit $D \subseteq \R^n$ ist eine Abbildung, die jedem $x \in D$ genau ein $f(x) \in \R$ zuordnet.
 \end{defn}
 
 \footnote{Plot contour.png - Wikimedia Commons. (n.d.). Retrieved February 16, 2025, from https://commons.wikimedia.org/wiki/File:Plot_contour.png}
