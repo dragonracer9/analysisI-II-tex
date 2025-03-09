@@ -1,0 +1,302 @@
+\documentclass[12pt]{article}
+
+\input{settings/settings_sparse.tex}
+\input{settings/commands.tex}
+%
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[a4paper, top=1in, bottom=1.3in, rmargin=1.5in, left=1.4in, marginparwidth=80pt]{geometry}
+
+
+\begin{document}
+\title{\vspace*{-2.5em}Problem Set 2, Summary \& Tips}
+\author{Vikram R. Damani\\
+    Analysis~II}
+
+\maketitle
+
+\section{Tipps}
+
+\section{Theorie}
+
+\subsection{Fuktionen in 3 Variablen}
+
+\begin{thmb}{\np{\textit{[Funktionen in drei Variablen]}}}
+    Sei $\mathbf{V}=\R\times\R\times\R=\R^3$. Dann ist
+    \begin{align}
+         & \begin{aligned}
+               f\colon\quad \mathbf{V} & \longrightarrow\R  \\
+               (x,y)                   & \longmapsto f(x,y)
+           \end{aligned}    \\
+         & \text{bzw.}\ \:\vec{r}\,\longmapsto f(\vec{r}),
+    \end{align}
+    eine Funktion in 3 Variablen.
+\end{thmb}
+
+Im Allgemeinen unterscheiden sich Funktionen in 3 Variablen nicht wesentlich
+von Funktionen in 2 Variablen.\vspace*{1em}
+
+\begin{defn}{\b{[Niveaufläche]}}
+    Für ein $C\in\R$ ist die Menge
+    \begin{align}
+        \left\{(x,y,z)\in\R^3\colon f(x,y,z)=C\right\}
+    \end{align}
+\end{defn}
+
+\begin{defn}{\b{{[Lineare Funktionen in 3D]}}}
+    Eine Funktion der Form
+    \begin{align}
+        f(x,y,z)=ax+by+cz+d, \quad a,b,c,d\in\R
+    \end{align}
+    ist eine lineare Funktion.
+\end{defn}\vspace*{1em}
+
+\begin{ntn}
+    Bei Funktionen in höheren Dimensionen schreiben wir die Argumente oft in Vektorschreibweise, d.h.\ wir schreiben
+    \begin{align}
+        f(\vec{x})\defeq f(x,y,z), \quad x\in\R^3
+    \end{align}
+    Sofern dies nicht zu Verwirrung führt, schreiben wir
+    \begin{align}
+        \vec{x}\defeq(x,y,z) \text{ und } \vec{x}_0\defeq(x_0,y_0,z_0).
+    \end{align}
+\end{ntn}
+
+\begin{defn}{} \begin{align*}
+        \dfrac{1}{\abs{\vec{r}\,}}=\dfrac{1}{\sqrt[3]{x^2+y^2+z^2}}, \quad \vec{r}\neq\vec{0}
+    \end{align*}
+\end{defn}
+
+\begin{defn}{\b{{[Partielle Ableitung]}}}
+    \begin{align}
+        \pdv{f}{x}(x_0,y_0,z_0)=f_x(x_0,y_0,z_0)=\lim_{\r{\Delta x\to0}}\frac{f(\r{x_0+\Delta x},\b{y_0,z_0})-f(\r{x_0},\b{y_0,z_0
+            })}{\r{\Delta x}}
+    \end{align}
+    Analog $f_y,f_z$.
+\end{defn}\vspace*{1em}
+
+\begin{ntn}
+    Sofern es klar ist, schreiben wir $f_x\defeq f_x(x_0,y_0,z_0)$
+\end{ntn}
+
+\begin{thmb}{\np{\emph{[Satz von Schwartz]}}}
+    In der Regel spielt die Reihenfolge von Partiellen Ableitungen keine Rolle
+\end{thmb}
+
+\begin{figure}[htbp!]
+    \centering
+    \begin{tikzpicture}[
+            > = stealth, % arrow head style
+            %shorten > = 1pt, % don't touch arrow head to node
+            auto, node distance = 5cm, semithick ]% distance between nodes% line style
+
+        \node[] (x1) at (0,0) {$\r f$};
+        \node[] (y1) at (-2,-2) {$\varphi$};
+        \node[] (y2) at (2,-2) {$\chi$};
+        \node[] (y3) at (0,-2) {$\psi$};
+        \node[] (m1) at (-1,-3) {$\varphi_y=\psi_x$};
+        \node[] (m2) at (1,-3) {$\psi_z=\chi_y$};
+        \node[] (z1) at (0,-4) {$\varphi_z=\chi_x$};
+
+        \path[->,red] (x1) edge  node[above left] {\r{(?)}} (y1);
+        \path[->,red] (x1) edge  node[above right] {\r{(?)}} (y2);
+        \path[->,red] (x1) edge  node[left] {\r{(?)}} (y3);
+
+        \path[->] (y1) edge  node[above left] {} (m1);
+        \path[->] (y2) edge  node[above right] {} (m2);
+        \path[->] (y3) edge  node[above left] {} (m1);
+        \path[->] (y3) edge  node[above right] {} (m2);
+
+        \path[->,bend right=50] (y1) edge  node[above right] {} (z1);
+        \path[->,bend left=50] (y2) edge  node[above right] {} (z1);
+
+    \end{tikzpicture}
+\end{figure}
+
+\begin{thmb}{\np{\emph{[IB]}}}
+    Sind $\varphi,\psi,\chi$ auf einem achsenparallelen Quader definierte Funktionen in 3 Variablen mit
+    \begin{align}
+        \varphi_y\equiv\psi_x\text{ und }\varphi_z\equiv\chi_x\text{ und }\psi_z\equiv\chi_y
+    \end{align}
+    dann gibt es eine Funktion $f$ mit\
+    \begin{align}
+        f_x=\varphi\text{ und }f_y=\psi\text{ und }f_x=\chi
+    \end{align}
+\end{thmb}\vspace*{1em}
+
+\begin{defn}{\b{[Gradient]}}
+    Der Gradient von $f$ ist
+    \begin{align}
+        grad(f)=\vec\nabla\cdot f=\begin{pmatrix}
+                                      f_x \\f_y\\f_z
+                                  \end{pmatrix}
+    \end{align}
+    wobei $\vec\nabla=\begin{pmatrix}
+            \pdv{}{x} \\[3pt]\pdv{}{y}\\[3pt]\pdv{}{z}
+        \end{pmatrix}$.
+\end{defn}\vspace*{1em}
+
+\begin{ntn}
+    Es wird oft $\grad{f}$ statt $\vec{\nabla}\cdot{f}$ geschrieben. Diese Notation führt auch zu weniger Verwirrung bei Skalarprodukten ($\grad{f}\cdot\vec{r}$ statt $\vec{\nabla}\cdot{f}\cdot\vec{r}$)
+\end{ntn}\vspace*{0.5em}
+
+\begin{defn}{\b{[Verallgemeinerte Kettenregel]}} Sei $F(t)=f(\vec{r}(t))$. Dann ist
+    \begin{align}
+        F'(t)=f_x\,\dot{x}+f_y\,\dot{y}+f_z\,\dot{z}=\vec{\nabla}f\cdot\,\dot{\vec{r}}\,(t)
+    \end{align}
+\end{defn}
+
+\begin{defn}{\b{[Richtungsableitung]}} Die Richtungsableitung von $f$ an der Stelle $\vec{r}_0$ in Richtung $\vec{e}$ (der Einheitsvektor in die gewünschte Richtung) ist
+    \begin{align}
+        D_{\vec{e}}f(\vec(r)_0)=grad(f(\vec{r}_0))\cdot\vec{e}
+    \end{align}
+\end{defn}
+
+\begin{thm}{\p{[Grösste Richtungsableitung]}} Der Gradient $\vec{\nabla}\cdot{f}(\vec{r}_0)$ ist die gösste Richtungsableitung von $f$ an der Stelle $\vec{r}_0$ und zeigt in Richtung des grössten Anstiegs.
+\end{thm}\vspace*{0.7em}
+
+\begin{thm}{\p{[Richtung des Gradienten]}} Der Gradient steht senkrecht auf der Niveaufläche und Tangentialebene von $f$ an der Stelle $\vec{r}_0$.
+
+    Für die Tangentialebene gilt also allgemein
+    \begin{align}
+        \colorboxed{antiquefuchsia}{T\colon\;(\vec{r}-\vec{r}_0)\cdot\grad{f}=0}
+    \end{align}
+\end{thm}
+
+\begin{thmb}{\np{\emph{[Lineare Ersatzfunktion]}}}
+    Die lineare Ersatzfunktion von $f$ an der Stelle $\vec{r_0}$ ist gegeben durch
+    \begin{align}
+        l(\vec{r})=f(\vec{r}_0)+\grad{f}\cdot(\vec{r}_0)(\vec{r}-\vec{r}_0)
+    \end{align}
+\end{thmb}
+
+\subsection{Koordinatentransformation}
+
+\begin{defn}{\b{[Zylinderkoordinaten]}}
+    Wir definieren die Koordinatentransformation zu Zylinderkoordinaten wie folgt
+    \begin{align}
+        \begin{tabular}{ccc}\toprule
+            $x(\rho,\phi)=\rho\cos(\phi)$ &  & $\rho=\sqrt{x^2+y^2}$        \\[5pt]
+            $y(\rho,\phi)=\rho\sin(\phi)$ &  & $\phi=\arctan{\dfrac{y}{x}}$ \\ \bottomrule
+        \end{tabular}
+    \end{align}
+
+    Dann ist die Transformation
+    \begin{align}
+        \widetilde{f}(\rho,\varphi) & =f(x(\rho,\varphi),y(\rho,\varphi))
+    \end{align}
+
+    \begin{rmk}{}{} Für ein festes $\rho$ (bzw.\ $\varphi$) ist
+        \begin{align*}
+            \rho\longmapsto(x(\rho,\varphi),y(\rho,\varphi))
+        \end{align*} (bzw.\ $\varphi\longmapsto(x(\rho,\varphi),y(\rho,\varphi))$)
+        die parametrisierung einer ebenen Kurve in der xy-Ebene mit Parameter $\rho$ (bzw.\ $\varphi$)
+    \end{rmk}
+
+    \begin{thmb}
+        Wendet man die verallgemeinerte Kettenregel auf $\widetilde{f}$ an, so erhält man
+        \begin{align}
+             & \begin{tabular}{ccc}\toprule
+                   $x_\rho(\rho,\varphi)=\cos(\phi)$ &  & $y_\rho=\sin(\varphi)$        \\[5pt]
+                   $x_\varphi=-\rho\sin(\varphi)$    &  & $y_\varphi=\rho\cos(\varphi)$ \\ \bottomrule
+               \end{tabular}
+        \end{align}\vspace*{-0.3em}
+        \begin{align}
+             & \colorboxed{antiquefuchsia}{\begin{aligned}
+                                                   \implies\widetilde{f}_\rho & =\grad{f}\cdot\begin{pmatrix}
+                                                                   x_\rho \\y_\rho
+                                                               \end{pmatrix}         \\
+                                                                              & =f_x \cos(\varphi)+f_y \sin(\varphi)
+                                               \end{aligned}}
+            \intertext{und}
+             & \colorboxed{antiquefuchsia}{\begin{aligned}
+                                                   \implies\widetilde{f}_\varphi & =\grad{f}\cdot\begin{pmatrix}
+                                                                      x_\varphi \\y_\varphi
+                                                                  \end{pmatrix}            \\
+                                                                                 & =-f_x \rho\cos(\varphi)+f_y \rho\cos(\varphi)
+                                               \end{aligned}}
+        \end{align}
+        wobei in $f_x$ und $f_y$ jeweils $(x(\rho,\varphi),y(\rho,\varphi))$ eingesetzt werden muss.
+
+        Kompakter geschrieben gilt also
+        \begin{align}
+            \begin{pmatrix}\widetilde{f}_\rho & \widetilde{f}_\varphi\end{pmatrix} & =(\grad{f})^\top\cdot\underbrace{\begin{pmatrix}                                                                     x_\rho & x_\varphi \\
+                                                                                    y_\rho & y_\varphi
+                                                                                                                          \end{pmatrix}}_{\defeq M}\label{eq:Kompakter}
+        \end{align}
+    \end{thmb}
+\end{defn}\vspace*{1em}
+
+\begin{defn}{\b{[Umkehrtransformation]}}
+    Multipliziert man~\eqref{eq:Kompakter} mit $M^{-1}$ von rechts, erhält man
+    \begin{align}
+        \begin{pmatrix}\widetilde{f}_\rho & \widetilde{f}_\varphi\end{pmatrix} \cdot M^{-1} = (\grad{f})^\top=\begin{pmatrix}
+                                                                                                                  f_\rho & f_\varphi
+                                                                                                              \end{pmatrix}
+    \end{align}
+\end{defn}
+
+\begin{defn}{\b{[Laplace Operator]}}
+    \begin{align}
+        \Delta{f}\defeq f_{xx}+f_{yy}
+    \end{align}
+    In Polarkoordinaten gilt
+    \begin{align}
+        \Delta\widetilde{f}\defeq{f}_{xx}+f_{yy}=\widetilde{f}_{\rho\rho}+\frac{1}{\rho}f_\rho+\frac{1}{\rho^2}f_{\varphi\varphi}
+    \end{align}
+\end{defn}
+
+\begin{rmk}{}{}
+    $\Delta f$ is entirely equivalent to writing $\nabla^2 f=\nabla\cdot\grad{f}$
+\end{rmk}
+
+\subsection{Gebietsintegrale}
+
+\begin{thmb}{\np{\emph{[Gebietsintegrale]}}}
+    Zur Berechnung von Volumina zwischen der xy-Ebene und dem Graphen einer Funktion $f$ führen wir das Gebietsintegral ein.
+
+    Das Gebietsintegral $V$ der Funktion $f$ über das Gebiet
+    \begin{align}
+        B & =\left\{(x,y)\in\R^2:\:x\in\left[\alpha,\beta\right],\,y\in\left[\gamma(x),\delta(x)\right]\right\} \\
+          & =\left\{(x,y)\in\R^2:\:y\in\left[\gamma,\delta\right],\,x\in\left[\alpha(y),\beta(y)\right]\right\}
+    \end{align}
+    ist gegeben durch
+    \begin{align}
+        V & =\iint_B f\underbrace{dA}_{\text{Flächenelement von }B}                                \\
+          &= \colorboxed{antiquefuchsia}{\int_{\alpha}^{\beta}\underbrace{\int_{\gamma(x)}^{\delta(x)}f(x,y)\dy}_{=F(x)}\,\dx } \\
+          & =\int_{\alpha}^{\beta}F(x)\,\dx                                                        \\[5pt]
+          & =\colorboxed{antiquefuchsia}{\int_{\gamma}^{\delta}\underbrace{\int_{\alpha(y)}^{\beta(y)}f(x,y) \dx}_{=G(y)}\,\dy} \\
+          & =\int_{\alpha}^{\beta}G(y)\,\dx
+    \end{align}
+    Die Integrationsreihenfolge kann also vertauscht werden, wobei die Integrationsgrenzen entsprechend angepasst werden müssen.
+\end{thmb}
+
+\begin{figure}[htbp!]
+    \centering
+    \begin{tikzpicture}
+        \draw [blue!50!cyan, pattern=north east lines, pattern color=blue!50!cyan, thick] %dashed,
+        plot [smooth cycle, tension=0.5, domain=0:320, samples=5] (\x:{2+rand/2}) node[below right] {$B$};
+        % \draw[->, thick] (-2.5,0)--(2.5,0) node[right]{$x$};
+        % \draw[->, thick] (0,-2.5)--(0,2.5) node[above]{$y$};
+    \end{tikzpicture} %// TODO: check this shape is reasonable
+    \caption{Ein allgemeines geschlossenes Gebiet im $\R^2$}
+\end{figure}
+
+\end{document}
+
+\begin{defn}{Funktionen in mehreren Variablen}
+    Eine Funktion $f: D \to \R$ mit $D \subseteq \R^n$ ist eine Abbildung, die jedem $x \in D$ genau ein $f(x) \in \R$ zuordnet.
+\end{defn}
+
+\begin{tikzpicture}
+
+    \begin{axis}[
+            %axis background/.style={fill=green!10},
+            %3d box=complete*,
+            grid=major,
+            %colorbar % show key
+        ]
+        \addplot3[surf] {{sin(deg(x)) * y*(1-y)}};
+    \end{axis}
+
+\end{tikzpicture}

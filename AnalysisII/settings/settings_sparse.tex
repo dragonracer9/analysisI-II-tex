@@ -60,6 +60,7 @@
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{fct}[thm]{Fact}
+\newtheorem{ntn}[thm]{Notation}
 
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
@@ -104,9 +105,9 @@
     breakable,
     toprule at break=0.2cm,
     sharp corners,
-    colback=gray!20,
+    colback=green!10,
     coltitle=black,
-    colframe=gray!20,
+    colframe=green!10,
     fonttitle=\bfseries,
     parbox=false,
     halign=justify,
@@ -182,6 +183,25 @@
     parbox=false,
     halign=justify,
 }
+
+%-------QED-at-end-of-env---
+
+% Define a macro for changing the QED symbol at the
+% end of environments. This command allows for the
+% use of \qedhere to insert the QED into, e.g., 
+% equations or lists. 
+\newcommand{\setEnvironmentQed}[2]{
+  % #1: Environment name
+  % #2: QED Symbol. Must be OK in text or math mode. 
+  %     Use \ensuremath, if math is desired.
+  \AtBeginEnvironment{#1}{%
+    \pushQED{\qed}\renewcommand{\qedsymbol}{#2}%
+  }
+  \AtEndEnvironment{#1}{\popQED}
+}
+
+\setEnvironmentQed{defn}{\ensuremath{\blacksquare}}
+%\setEnvironmentQed{thm}{\ensuremath{\blacksquare}}
 
 %--------Colors-------------
 \definecolor{blue}{RGB}{02,106,253}
