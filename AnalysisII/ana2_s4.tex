@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+
+\input{settings/settings_sparse.tex}
+\input{settings/commands.tex}
+%
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[a4paper, top=1in, bottom=1.3in, rmargin=1.5in, left=1.4in, marginparwidth=80pt]{geometry}
+
+
+\begin{document}
+
+\title{\vspace*{-2.5em}Problem Set 2, Summary \& Tips}
+\author{Vikram R. Damani\\
+    Analysis~II}
+
+\maketitle
+
+\section{Tipps}
+
+\section{Theorie}
+
+\begin{thmb}{\np{\emph{[Flächenelement in Polarkoordinaten]}}}
+    Das Flächenelement $\dF$ lässt sich in Polarkoordinaten $(\rho,\varphi)$ schreiben als
+    \begin{align}
+        \begin{aligned}
+            \dF & =\dx\,\dy=\dy\,\dx                                                  \\
+                & \colorboxed{antiquefuchsia}{=\rho\,\drho\,\dphi=\rho\,\dphi\,\drho}
+        \end{aligned}
+    \end{align}
+\end{thmb}\vspace*{1em}
+
+\begin{thmb}{\np{\emph{[Volumenintegrale]}}}
+    Sei $\mathbf{B}\subseteq\R^3$ und
+    \begin{align}
+         & \begin{aligned}
+               f\colon\quad \mathbf{B} & \longrightarrow\R        \\
+               \vec{r}                 & \longmapsto f(\vec{r}\,)
+           \end{aligned} \\
+    \end{align}
+    eine Funktion in 3 Variablen.
+
+    Das Volumenintegral $V$ der Funktion $f$ über das Gebiet $\mathbf{B}$ ist
+    gegeben durch
+    \begin{align}
+        V & =\iiint_B \dV
+    \end{align}
+    In kartesischen Koordinaten gilt $\dV=\dx\,\dy\,\dz$
+\end{thmb}
+
+\begin{rmk}{}{}
+    Wie bei Flächenintegralen liegt die Schwierigkeit hier eher beim Bestimmen der Integrationsgrenzen statt beim eigentlichen Integrieren.
+\end{rmk}
+
+\subsection{Koordinatentransformation}
+
+Sei eine Koordinatentransformation gegeben
+\begin{align}
+    \begin{tabular}{ccc}
+        $x=x(u,v)$ &  & $y=y(u,v)$
+    \end{tabular}
+\end{align}
+
+Wie verhält sich der Flächeninhalt von unserem infinitesimalen
+Flächen-/Volumenelement unter dieser Transformation?
+%Also
+% \begin{align*}
+%     \dF=\dx\,\dy=\;???
+% \end{align*}
+
+\input{vol_elem_graphic2d.tex} % credit to https://tex.stackexchange.com/questions/622658/how-can-i-draw-an-infinitesimal-portion-of-a-surface
+
+\begin{thmb}{\np{\emph{[Jacobi-Determinante (2D)]}}}
+    Das Flächenelement $\dF$ unter einer Koordinatentransformation $\vec{r}(u,v)$ ist gegeben durch
+    \begin{align}
+        \colorboxed{antiquefuchsia}{\dF=\abs{\det{\mathbf{J}}}\du\,\dve}
+    \end{align}
+    mit der Jacobi Matrix
+    \begin{align}
+        \colorboxed{antiquefuchsia}{\mathbf{J}=\begin{pmatrix}
+                                                       x_u & x_v \\
+                                                       y_u & y_v
+                                                   \end{pmatrix}}
+    \end{align}
+    Für das Gebietsintegral gilt dann
+    \begin{align}
+        V=\iint_B f(x,y)\,\dF = \iint_{\widetilde{B}} \widetilde{f}(u,v)\abs{\det{\mathbf{J}}} \,\du\,\dve
+    \end{align}
+    mit $\widetilde{f}(u,v)=f(x(u,v),y(u,v))$ und $\widetilde{B}=\vec{r}\,(B)$.
+\end{thmb}
+
+\input{vol_elem_graphic3d.tex}
+
+\begin{thmb}{\np{\emph{[Jacobi-Determinante (3D)]}}}
+    Das Volumenelement $\dV$ unter einer Koordinatentransformation $\vec{r}(u,v,w)$ ist gegeben durch
+    \begin{align}
+        \colorboxed{antiquefuchsia}{\dF=\abs{(\vr_u\times\vr_v)\cdot\vr_w}\,\du\,\dve\,\dw=\abs{\det{\mathbf{J}}}\du\,\dve\,\dw}
+    \end{align}
+    mit der Jacobi Matrix
+    \begin{align}
+        \colorboxed{antiquefuchsia}{\mathbf{J}=\begin{pmatrix}
+                                                       x_u & x_v & x_w \\
+                                                       y_u & y_v & y_w \\
+                                                       z_u & z_v & z_w
+                                                   \end{pmatrix}}
+    \end{align}
+    Für das Gebietsintegral gilt dann
+    \begin{align}
+        V=\iiint_B f(x,y,z)\,\dV = \iiint_{\widetilde{B}} \widetilde{f}(u,v,w)\abs{\det{\mathbf{J}}} \,\du\,\dve\,\dw
+    \end{align}
+    mit $\widetilde{f}(u,v)=f(x(u,v,w),y(u,v,w),z(u,v,w))$ und $\widetilde{B}=\vr\,(B)$.
+\end{thmb}
+
+\begin{thm}{\r{[Volumenelement in Kugelkoordinaten]}}
+Das Volumenelement in Kugelkoordinaten ist gegeben durch
+\begin{align}
+    \dV=r^2\sin(\theta)\,\dr\,\dphi\,\dtheta
+\end{align}
+\end{thm}
+
+\end{document}
+
+\begin{defn}{Funktionen in mehreren Variablen}
+    Eine Funktion $f: D \to \R$ mit $D \subseteq \R^n$ ist eine Abbildung, die jedem $x \in D$ genau ein $f(x) \in \R$ zuordnet.
+\end{defn}
+
+\begin{tikzpicture}
+
+    \begin{axis}[
+            %axis background/.style={fill=green!10},
+            %3d box=complete*,
+            grid=major,
+            %colorbar % show key
+        ]
+        \addplot3[surf] {{sin(deg(x)) * y*(1-y)}};
+    \end{axis}
+
+\end{tikzpicture}

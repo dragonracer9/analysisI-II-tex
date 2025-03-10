@@ -1,0 +1,269 @@
+\begin{figure}[!htb]
+  \centering
+
+  \makeatletter
+  \define@key{x sphericalkeys}{radius}{\def\myradius{#1}}
+  \define@key{x sphericalkeys}{theta}{\def\mytheta{#1}}
+  \define@key{x sphericalkeys}{phi}{\def\myphi{#1}}
+  \tikzdeclarecoordinatesystem{x spherical}{% %%%rotation around x
+    \setkeys{x sphericalkeys}{#1}%
+    \pgfpointxyz{\myradius*cos(\mytheta)}{\myradius*sin(\mytheta)*cos(\myphi)}{\myradius*sin(\mytheta)*sin(\myphi)}}
+
+  %along y axis
+  \define@key{y sphericalkeys}{radius}{\def\myradius{#1}}
+  \define@key{y sphericalkeys}{theta}{\def\mytheta{#1}}
+  \define@key{y sphericalkeys}{phi}{\def\myphi{#1}}
+  \tikzdeclarecoordinatesystem{y spherical}{% %%%rotation around x
+    \setkeys{y sphericalkeys}{#1}%
+    \pgfpointxyz{\myradius*sin(\mytheta)*cos(\myphi)}{\myradius*cos(\mytheta)}{\myradius*sin(\mytheta)*sin(\myphi)}}
+
+  %along z axis
+  \define@key{z sphericalkeys}{radius}{\def\myradius{#1}}
+  \define@key{z sphericalkeys}{theta}{\def\mytheta{#1}}
+  \define@key{z sphericalkeys}{phi}{\def\myphi{#1}}
+  \tikzdeclarecoordinatesystem{z spherical}{% %%%rotation around x
+    \setkeys{z sphericalkeys}{#1}%
+    \pgfpointxyz{\myradius*sin(\mytheta)*cos(\myphi)}{\myradius*sin(\mytheta)*sin(\myphi)}{\myradius*cos(\mytheta)}}
+
+  \makeatother
+
+  \begin{subfigure}[t]{0.5\textwidth}
+    \begin{tikzpicture}[scale=1.2]
+      \draw[fill=yellow] (0.2,0.2)coordinate(aa)  rectangle (2,3)coordinate(bb);
+      \draw[-latex] (0,0) -- (2.5,0) node[above](xx){$\vv{x}$};
+      \draw[-latex] (0,0) coordinate(oo) -- (0,3.3) node[right](yy){$\vv{y}$};
+
+      \draw[dashed] (oo-|aa)node[below]{$X_1$} --(aa);
+      \draw[dashed] (oo|-aa)node[left]{$Y_1$} --(aa);
+      \draw[dashed] (oo-|bb)node[below](X2){$X_2$} --(aa-|bb);
+      \draw[dashed] (oo|-bb)node[left](Y2){$Y_2$} --(aa|-bb);
+      \node[fill=gray] (P) at (1.2,1.3){+};
+      \node[above=0em of P] {$\mathrm{d}x$};
+      \node[right=0em of P] {$\mathrm{d}y$};
+      \draw[dashed] (P.center) --(P.center|-oo)node[below]{$x$};
+      \draw[dashed] (P.center) --(oo|-P.center)node[left]{$y$};
+
+      \node[fit=(xx) (Y2) (X2)](cadre){};
+      \node[below=0em of cadre]{$\dF= \mathrm{d} x \cdot \mathrm{d} y$};
+    \end{tikzpicture}
+    \subcaption{$\dF$ in kartesischen Korrdinaten}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\textwidth}
+    \begin{tikzpicture}[scale=1.25]
+      \draw [dashed] (0,0) coordinate(oo) -- (15:1.5cm)coordinate(aa) --(15:3cm)coordinate(bb);
+      \draw [dashed] (0,0) coordinate(oo) -- (75:1.5cm)coordinate(aa1) --(75:3cm)coordinate(bb1);
+      \draw[fill=yellow] (aa) arc (15:75:1.5cm) -- (bb1) arc (75:15:3cm) --(aa);
+      \draw[-latex] (0,0) -- (3.5,0) node[above]{$\vv{x}$};
+      \draw[-latex] (0,0) coordinate(oo) -- (0,3) node[right]{$\vv{y}$};
+
+      \draw [-latex] (2.5,0) arc(0:15:2.5cm);
+      \path (0,0) -- (60:.9cm)node[above right=0em]  {$\varphi_2$} ;
+      \draw [-latex] (1,0) arc (0:75:1cm);
+      \path (0,0) -- (5:2.5cm)node[right]  {$\varphi_1$} ;
+      \draw[dashed] (1.5,0) node[below]{$R_1$}arc (0:15:1.5cm);
+      \draw[dashed] (3,0) node[below](R2){$R_2$}arc (0:15:3cm);
+
+      \draw[fill=gray] (35:2cm) coordinate(aa) arc (35:43:2cm)coordinate(bb) --(43:2.5) arc (43:35:2.5) -- (35:2cm) ;
+      \draw[dashed] (0,0) -- (aa);
+      \draw[dashed] (0,0) --(bb);
+      \node (P) at (39:2.25){+};
+      \node[above right=0.125em of P]{$r\cdot\mathrm{d}\varphi$};
+      \draw[dashed] (0,0) --(P.center)node[right]{$P$};
+      \node[above left=0em of P]{$\mathrm{d}r$};
+      \draw[latex-latex] (46:2cm) -- (46:2.5cm);
+      \draw[latex-latex] (35:2.7cm) arc (35:43:2.7cm);
+      \draw[dashed] (2.25,0) node[below]{$r$}arc (0:39:2.25cm);
+      \draw [-latex] (1.7,0) arc (0:38:1.7cm);
+      \path (0,0) -- (6:1.7cm)node[right]  {$\varphi$} ;
+
+      \node[fit=(xx) (yy) (R2)](cadre){};
+      \node[below=0em of cadre]{$\mathrm{d} F=r\cdot \mathrm{d} \varphi \cdot \mathrm{d} r$};
+    \end{tikzpicture}
+    \subcaption{$\dF$ in Polarkoordinaten}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.45\textwidth}
+    \begin{tikzpicture}[scale=2.7]
+      \begin{scope}[canvas is zx plane at y=0]
+        %\draw (0,0) circle (1cm);
+        \draw (0,0)coordinate(O) -- (1,0) (0,0) -- (0,1);
+        \coordinate (Z0) at (0:0.5);
+        \draw[fill=green!30,opacity=0.3] (0,0) -- (10:1)coordinate(A1) arc (10:110:1) coordinate(A2)-- (0,0);
+        \foreach \aa in {10,15,20,...,110}{
+            \coordinate (A\aa) at (\aa:1);
+          }
+      \end{scope}
+
+      \begin{scope}[canvas is zx plane at y=0.9]
+        \draw[fill=green!30,opacity=0.3] (0,0) -- (10:1)coordinate(B1) arc (10:110:1) coordinate(B2)-- (0,0);
+        \foreach \aa in {10,15,20,...,110}{
+            \coordinate (B\aa) at (\aa:1);
+          }
+
+      \end{scope}
+
+      \begin{scope}[canvas is zx plane at y=0.4]
+        \foreach \aa in {30,32,34,...,42}{
+            \coordinate (C\aa) at (\aa:1);
+          }
+          \coordinate (out1) at (30:1.5);
+          \coordinate (out2) at (42:1.5);
+
+        \draw[dashed](0,0)-- (0:1.5);
+        \coordinate (Z4) at (0:0.5);
+        \draw[dashed](0,0) -- (C30) coordinate[pos=2];% (ff) -- (ff);
+        \draw[dashed,color=red] (C30) -- (out1); %??
+        \draw[dashed](0,0) -- (C42) coordinate[pos=2];% (ff) -- (ff);
+        \draw[dashed,color=red] (C42) -- (out2); %??
+        \draw[-latex] (0:1.5) arc (0:30:1.5) node[pos=0.6,below]{$\varphi$};
+        \draw[latex-latex] (30:1.6) arc (30:40:1.6)node[pos=0.5,below]{$\mathrm{d}\,\varphi$};
+      \end{scope}
+
+      \begin{scope}[canvas is zx plane at y=0.65]
+        \foreach \aa in {30,32,34,...,42}{
+            \coordinate (D\aa) at (\aa:1);
+          }
+        \draw[dashed](0,0)coordinate(Z6) -- (D30);
+        \draw[dashed](0,0) -- (D42);
+        \coordinate (Z6) at (0:0.5);
+      \end{scope}
+
+      \draw[-latex] (0,0,0) -- (1.1,0,0) node[above](yy){$\vv{y_0}$};
+      \draw[-latex] (0,0,0) -- (0,1.1,0) node[above](zz){$\vv{z_0}$};
+      \draw[-latex] (0,0,0) -- (0,0,1.1) node[above left=-0.1em](xx){$\vv{x_0}$};
+
+      \foreach \aa in {10,15,20,...,105}{
+          \pgfmathsetmacro{\bb}{\aa+5}
+          \fill[fill=black!30,opacity=0.3] (A\aa) -- (A\bb) -- (B\bb) -- (B\aa) -- cycle;
+        }
+
+      \foreach \aa in {30,32,34,...,40}{
+          \pgfmathsetmacro{\bb}{\aa+2}
+          \fill[fill=blue,opacity=0.3] (C\aa) -- (C\bb) -- (D\bb) -- (D\aa) -- cycle;
+        }
+
+      \draw[-latex] (Z0) -- (Z4) node[left,pos=0.5]{$z$};
+      \draw[latex-latex] (Z4) -- (Z6) node[left,pos=0.5]{$\mathrm{d}\,z$};
+
+      \node[fit=(xx) (yy) (zz)](cadre){};
+      \node[below=0.5em of cadre]{ $\mathrm{d}F=r\cdot \mathrm{d}\varphi\cdot \mathrm{d} z $};
+    \end{tikzpicture}
+    \subcaption{$\dF$ in Zylinderkoordinaten}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.45\textwidth}
+
+    \tdplotsetmaincoords{60}{110}
+
+    \pgfmathsetmacro{\rvec}{.8}
+    \pgfmathsetmacro{\thetavec}{30}
+    \pgfmathsetmacro{\phivec}{55}
+    \pgfmathsetmacro{\dphi}{12}
+    \pgfmathsetmacro{\dtheta}{12}
+    \pgfmathsetmacro{\drvec}{0.15}
+    \pgfmathsetmacro{\Rvec}{\rvec+\drvec}
+    \pgfmathsetmacro{\Thetavec}{\thetavec+\dtheta}
+    \pgfmathsetmacro{\Phivec}{\phivec+\dphi}
+
+    \begin{tikzpicture}[scale=3.66,tdplot_main_coords]
+
+      %-----------------------
+      \coordinate (O) at (0,0,0);
+
+      \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+      \tdplotsetcoord{P3}{\rvec}{\Thetavec}{\phivec}
+
+      \tdplotsetcoord{Q}{\rvec}{\thetavec}{\Phivec}
+
+      \tdplotsetcoord{Q3}{\rvec}{\Thetavec}{\Phivec}
+
+      \tdplotsetthetaplanecoords{0}
+      \draw[red,fill=green!30,,tdplot_rotated_coords] (0,0) -- (\rvec,0,0) arc (0:90:\rvec) -- (0,0);
+
+      \tdplotsetthetaplanecoords{90}
+      \draw[red,fill=green!30,,tdplot_rotated_coords] (0,0) -- (\rvec,0,0) arc (0:90:\rvec) -- (0,0);
+      \draw (0,0) -- (30:\rvec) coordinate[pos=1.2](ff);
+      \draw[latex-] (30:\rvec) -- (ff)--++(0,0.1)node[above]{$R$};
+
+      \draw[] (\rvec,0,0) arc (0:90:\rvec);
+      \foreach \aa in {0,2,4,...,90}{
+          \coordinate (A\aa) at (\aa:\rvec);
+        }
+
+      %if you want to convince yourself that this works:
+      \draw[blue,fill=green!30,opacity=0.5] plot[variable=\x,domain=90:0]
+      (z spherical cs: radius = \rvec, phi = 0, theta= \x)
+      -- plot[variable=\x,domain=0:90]
+      (z spherical cs: radius = \rvec, phi = \x, theta= 0)
+      -- plot[variable=\x,domain=0:90]
+      (z spherical cs: radius = \rvec, phi = 90, theta= \x)
+      -- plot[variable=\x,domain=90:0]
+      (z spherical cs: radius = \rvec, phi = \x, theta= 90);
+
+      %draw figure contents
+      %--------------------
+      %draw the main coordinate system axes
+      \draw[thick,->] (0,0,0) -- (0.9,0,0) node[above left](xx){$\vv{x}$};
+      \draw[thick,->] (0,0,0) -- (0,0.9,0) node[above](yy){$\vv{y}$};
+      \draw[thick,->] (0,0,0) -- (0,0,0.9) node[right](zz){$\vv{z}$};
+
+      %draw a line from origin to point (P) 
+      \draw[,color=red] (O) -- (P)
+
+      ;
+      \draw[,color=red] (O) -- (P3);
+      \draw[color=red] (O) -- (Q3);
+
+      \draw[dashed, color=red] (O) -- (Pxy);
+      \draw[dashed, color=red] (P) -- (Pxy);
+      %
+      \draw[dashed, color=red] (O) -- (P3xy);
+      \draw[dashed, color=red] (P3) -- (P3xy);
+
+      %draw a line from origin to point (Q) 
+      \draw[,color=red] (O) -- (Q);
+      \draw[,color=red] (O) -- (Q3);
+
+      \draw[dashed, color=red] (O) -- (Qxy);
+      \draw[dashed, color=red] (Q) -- (Qxy);
+      %
+      \draw[dashed, color=red] (O) -- (Q3xy);
+      \draw[dashed, color=red] (Q3) -- (Q3xy);
+
+      \pgfmathsetmacro{\Rproj}{\Rvec*sin(\Thetavec)}
+
+      \draw[latex-latex] (P3xy) -- (Q3xy)node[below]{$\mathrm{d}\theta$};
+
+      \tdplotdrawarc[-latex]{(O)}{0.3}{0}{\phivec}{anchor=north}{$\theta$}
+
+      \tdplotsetthetaplanecoords{\phivec}
+
+      \tdplotdrawarc[tdplot_rotated_coords,-latex]{(0,0,0)}{0.5}{0}{\thetavec}{anchor=south west}{$\varphi$}
+      \tdplotdrawarc[tdplot_rotated_coords,latex-latex]{(0,0,0)}{0.55}{\thetavec}{\Thetavec}{anchor=south west}{$\mathrm{d}\phi$}
+
+      \draw[dashed,tdplot_rotated_coords] (\rvec,0,0) arc (0:90:\rvec);
+
+      \draw[dashed] (\rvec,0,0) arc (0:90:\rvec);
+
+      \tdplotsetthetaplanecoords{\Phivec}
+
+      \draw[dashed,tdplot_rotated_coords] (\rvec,0,0) arc (0:90:\rvec);
+      \begin{scope}[tdplot_main_coords]
+        \draw[blue,fill=blue!30 ] plot[variable=\x,domain=\thetavec:\Thetavec]
+        (z spherical cs: radius = \rvec, phi = \Phivec, theta= \x)
+        -- plot[variable=\x,domain=\Phivec:\phivec]
+        (z spherical cs: radius = \rvec, phi = \x, theta= \Thetavec)
+        -- plot[variable=\x,domain=\Thetavec:\thetavec]
+        (z spherical cs: radius = \rvec, phi = \phivec, theta= \x)
+        -- plot[variable=\x,domain=\phivec:\Phivec]
+        (z spherical cs: radius = \rvec, phi = \x, theta= \thetavec);
+        %
+      \end{scope}
+      \node[fit=(xx) (yy) (zz)](cadre){};
+      \node[below=0em of cadre]{$\mathrm{d} F=R\cdot  \sin\varphi \cdot \mathrm{d} \theta \cdot R\cdot \mathrm{d} \varphi$};
+    \end{tikzpicture}
+    \subcaption{$\dF$ in Kugelkoordinaten}
+  \end{subfigure}
+
+  \caption{Flächenelement $\mathrm{d}F$}
+  \label{fig:elementdesurface}
+\end{figure}
