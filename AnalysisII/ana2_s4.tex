@@ -6,6 +6,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[a4paper, top=1in, bottom=1.3in, rmargin=1.5in, left=1.4in, marginparwidth=80pt]{geometry}
+\usepackage{etoc}
+%\usepackage[tight]{minitoc}
 
 
 \begin{document}
@@ -15,10 +17,75 @@
     Analysis~II}
 
 \maketitle
+%\dosectoc
+%\sectoc
+
+%\tableofcontents % //FIXME: make small toc
 
 \section{Tipps}
 
+\begin{nexercise}{Aufgabe 1}{1}\addcontentsline{toc}{subsection}{A1}
+    Sei $T$ ein Tetraeder mit Eckpunkten $(0,0,0), (1,0,0), (0,2,0), (0,0,3)$ und $f(x,y,z)=x+y$. Berechnen Sie das Integral
+    \begin{align}
+        \iiint_T f(x,y,z)\dV
+    \end{align}
+\end{nexercise}
+
+\begin{tips}{1} Es hilft $T$ zu skizzieren um die Integrationsgrenzen intuitiver zu bestimmen können.
+
+    \emph{Recall: Die inneren Integrationsgrenzen sind Funktionen der äusseren Variablen!}
+\end{tips}\vspace*{1em}
+
+\begin{figure}[htbp!]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        \begin{axis}[
+                xlabel=$x$, ylabel=$y$,
+                small,
+                grid=major,
+            ]
+            \addplot3 [
+                surf,
+                domain=-3:3,
+                domain y=-3:3,
+            ] {exp(-(x^2+y^2)/8)-exp(-2)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Der Graph von $f(x,y)=e^{\frac{-(x^2+y^2)}{8}}-e^{-2}$ dargestellt auf dem Gebiet $B=[-2,2]\times[-2,2]\subset\R^2$.}
+\end{figure}
+
+\begin{nexercise}{Aufgabe 2}{2}
+    \begin{enumerate}[label=(\alph*)]
+        \item Die Oberfläche einer Insel sei gegeben durch
+              \begin{align}
+                  f(x,y)=e^{\frac{-(x^2+y^2)}{8}}-e^{-2}.
+              \end{align}
+              Berechnen Sie das Volumen der Insel, welches über der Wasseroberfläche (Höhe $z=0$) liegt.
+
+        \item Sei $K$ der endliche Körper, der im ersten Oktanten (d.h. $x,y,z>0$) durch den
+              Zylinder $y^2+z^2=9$ und die Ebene $x=y$ begrenzt wird. Erstellen Sie eine
+              Skizze dieser Situation und berechnen Sie das Volumen von $K$.
+    \end{enumerate}
+\end{nexercise}
+
+\begin{tips}{2}
+    \begin{enumerate}
+        \item[(b)] Das Volumendes Zylinders ist gegeben durch das (Dreifach-)integral $\iiint_K \dV$. Die Grenzen des gegebenen Zylinders werden implizit durch den Kreis und explizit durch die Linie $y=x$ und $x,y,z\geq0$ beschrieben. Richtige Wahl der \p{Integrationsreihenfolge} vereinfacht die Parametrisierung der Grenzen.
+    \end{enumerate}
+\end{tips}\vspace*{1em}
+
+\begin{nexercise}{Aufgabe 3}{3}
+    Ein gerader Kreiszylinder mit Radius $R$, $(x^2+y^2\leq R^2)$, und Höhe $H$, $(0\leq{}z\leq{}H)$, habe eine Dichte von $\rho(x,y,z)=1+x^2+y^2+z$. Berechnen Sie die Masse und das Trägheitsmoment bei Rotation um die $z$-Achse.
+\end{nexercise}
+
+\begin{tips}{3}
+    Die Masse ist gegeben durch $\iiint_V \rho \dV$. Da wir über einen Zylinder integrieren, vereinfacht eine geeignete Wahl des Koordinatensystems die Berechnung. Achtung: Der Integrand muss entsprechend angepasst werden.
+
+    Das Trägheitsmoment ergibt sich aus dem quadrierten Abstand zur Drehachse mal der Dichte über den ganzen Körper integriert: $\iiint_V r^2 \rho\,\dV$.
+\end{tips}
+
 \section{Theorie}
+%\localtableofcontents
 
 \begin{thmb}{\np{\emph{[Flächenelement in Polarkoordinaten]}}}
     Das Flächenelement $\dF$ lässt sich in Polarkoordinaten $(\rho,\varphi)$ schreiben als
@@ -112,10 +179,10 @@ Flächen-/Volumenelement unter dieser Transformation?
 \end{thmb}
 
 \begin{thm}{\r{[Volumenelement in Kugelkoordinaten]}}
-Das Volumenelement in Kugelkoordinaten ist gegeben durch
-\begin{align}
-    \dV=r^2\sin(\theta)\,\dr\,\dphi\,\dtheta
-\end{align}
+    Das Volumenelement in Kugelkoordinaten ist gegeben durch
+    \begin{align}
+        \dV=r^2\sin(\theta)\,\dr\,\dphi\,\dtheta
+    \end{align}
 \end{thm}
 
 \end{document}
