@@ -150,7 +150,7 @@
                                                                    \end{pmatrix}
     \end{align}
     \begin{rmk}{}{}
-    Falls  $\mathbf{B}\subseteq\R^2$ und $\vec{v}: \mathbf{B}\to\R^2$, ist $\vec{v}$ ein \emph{ebenes Vektorfeld}.
+        Falls  $\mathbf{B}\subseteq\R^2$ und $\vec{v}: \mathbf{B}\to\R^2$, ist $\vec{v}$ ein \emph{ebenes Vektorfeld}.
     \end{rmk}
     \begin{rmk}{}{}
         Manche Vektorfelder sind ausserdem zeitabhänging, d.h.\ $\vve\,(\vr,t)\in\R^3$. Diese Vektorfelder nennt man instationär.
@@ -164,7 +164,6 @@
 \begin{defn}{\b{[Homogenes Vektorfeld]}} Ein konstantes Vektorfeld $\vve\,(\vr\,)=\va$ heisst homogen.
 \end{defn}
 
-
 \colorlet{Ecolor}{orange!90!black}
 \colorlet{pluscolor}{red!60!black}
 \colorlet{minuscolor}{blue!60!black}
@@ -173,18 +172,18 @@
 \tikzstyle{charge+}=[very thin,top color=red!50, bottom color=red!80]
 \tikzstyle{charge-}=[very thin,top color=blue!40, bottom color=blue!70]
 \tikzset{EFieldLine/.style={
-  Ecolor, decoration={markings, mark=at position #1 with {\arrow{stealth}}}, postaction={decorate}}
+            Ecolor, decoration={markings, mark=at position #1 with {\arrow{stealth}}}, postaction={decorate}}
 }
 
 \def\dph{0.3} % dipole height
 \def\dpw{0.1} % dipole width
 \def\dipole#1{
-  \begin{scope}[shift={(#1)}]
-    \draw[charge-] (-\dph,0) to[out=90,in=180] (0,\dpw) -- (0,-\dpw) to[out=180,in=-90] cycle;
-    \draw[charge+] ( \dph,0) to[out=90,in=0] (0,\dpw) -- (0,-\dpw) to[out=  0,in=-90] cycle;
-    \node[scale=0.7] at (-\dph/2,0) {$-$};
-    \node[scale=0.7] at ( \dph/2,0) {$+$};
-  \end{scope}
+    \begin{scope}[shift={(#1)}]
+        \draw[charge-] (-\dph,0) to[out=90,in=180] (0,\dpw) -- (0,-\dpw) to[out=180,in=-90] cycle;
+        \draw[charge+] ( \dph,0) to[out=90,in=0] (0,\dpw) -- (0,-\dpw) to[out=  0,in=-90] cycle;
+        \node[scale=0.7] at (-\dph/2,0) {$-$};
+        \node[scale=0.7] at ( \dph/2,0) {$+$};
+    \end{scope}
 }
 
 \def\height{5}
@@ -195,28 +194,88 @@
 \def\ncharges{7}
 
 % capacitor with dipolar polarization
-\begin{tikzpicture}
+\begin{figure}[htbp!]
+    \centering
+    \begin{tikzpicture}
 
-  % dielectric slab
-  \draw[orange!60!black,fill=orange!80!brown!5]
-  (\dielwidth,-0.03*\height) rectangle (\width-\dielwidth,1.03*\height)
-  node[Ecolor, above=3cm, midway] {$\vec E$}
-  node[above, pluscolor] {$+Q_\text{surf}$}
-  node[above, minuscolor] at (1.3*\dielwidth,1.03*\height) {$-Q_\text{surf}$};
+        % dielectric slab
+        \draw[orange!60!black,fill=orange!80!brown!5]
+        (\dielwidth,-0.03*\height) rectangle (\width-\dielwidth,1.03*\height)
+        node[Ecolor, above=3cm, midway] {$\vec E$}
+        node[above, pluscolor] {$+Q_\text{surf}$}
+        node[above, minuscolor] at (1.3*\dielwidth,1.03*\height) {$-Q_\text{surf}$};
 
-  % electric field
-  \foreach \i [evaluate={\y=(\i-0.75)*\height/(\nfieldlines-0.5);}] in {1,...,\nfieldlines}{
-      \draw[EFieldLine={0.54},very thick] (0,\y) --++ (\width,0);
-    }
+        % electric field
+        \foreach \i [evaluate={\y=(\i-0.75)*\height/(\nfieldlines-0.5);}] in {1,...,\nfieldlines}{
+                \draw[EFieldLine={0.54},very thick] (0,\y) --++ (\width,0);
+            }
 
-  % plates
-  \draw[anode] (0,0) rectangle++ (-\platewidth,\height)
-  node[left, pluscolor] {$+Q_\text{C}$};
-  \draw[cathode] (\width,0) rectangle++ (\platewidth,\height)
-  node[right, minuscolor] {$-Q_\text{C}$};
+        % plates
+        \draw[anode] (0,0) rectangle++ (-\platewidth,\height)
+        node[left, pluscolor] {$+Q_\text{C}$};
+        \draw[cathode] (\width,0) rectangle++ (\platewidth,\height)
+        node[right, minuscolor] {$-Q_\text{C}$};
+    \end{tikzpicture}
+    \caption{Homogenes Vektorfeld eines Plattenkondensators.}
+\end{figure}
 
-\end{tikzpicture}
+\begin{defn}{\b{[Rotationsfeld]}} Bezeichnet $\vec{\omega}=\begin{pmatrix}
+            \omega_1 & \omega_2 & \omega_3
+        \end{pmatrix}\in\R^3$ ($\const.$) eine Winkelgeschwindigkeit um die Drehachse $\vec{\omega}$,
+    so ist
+    \begin{align}
+        \vve\,(\vr\,)=\vec{\omega}\times\vr=\begin{pmatrix}
+                                                \omega_2 z -\omega_3 y \\
+                                                \omega_3 x-\omega_1 z  \\
+                                                \omega_1 y-\omega_2 y
+                                            \end{pmatrix}
+    \end{align}
+\end{defn}
 
+\subsection{Differentialoperatoren}
+
+\begin{defn}{\b{[Gradientenfeld]}}
+    Sei $f$ ein Skalarfeld. Dann ist
+    \begin{align}
+        grad(f)=\grad{f(\vr\,)}=\begin{pmatrix}
+                                    \pdv{f}{x} \\[4pt]
+                                    \pdv{f}{y} \\[4pt]
+                                    \pdv{f}{z}
+                                \end{pmatrix}\in\R^3
+    \end{align} das zugehörige Gradientenfeld.
+\end{defn}
+
+\begin{rmk}{}{} Zuweisungen die Funktionen in andere Funktionen umwandeln (Funktion~$\mapsto$~Funktion) nennt man Operatoren.
+\end{rmk}\vspace*{1em}
+
+\begin{defn}{\b{[Divergenz]}} Für ein Vektorfeld $\vve$ ist der Divergenzoperator wie folgt definiert
+    \begin{align}
+        \mathrm{div}(\vve)=\nabla\cdot{\vve}=(v_1)_x+(v_2)_y+(v_2)_z=f(x,y,z)
+    \end{align} ein Skalarfeld.
+\end{defn}
+
+\begin{rmk}{}{}
+Der Laplace Operator kann auch als Divergenz des Gradientenfeldes geschrieben werden, also
+\begin{align}
+    \Delta{f}=\nabla\cdot\grad{f}=(f_x)_x+(f_y)_y+(f_z)_z
+\end{align}
+\end{rmk}
+
+\begin{defn}{\b{[Rotation]}} Sei $\vve$ ein Vektorfeld. Dann ist
+    \begin{align}
+        \mathrm{rot}(\vve)=\vec\nabla\times\vve=\begin{pmatrix}
+            v_{3,y}-v_{2,z}\\
+            v_{1,z}-v_{3,x}\\
+            v_{2,x}-v_{1,y}
+        \end{pmatrix}
+    \end{align}
+\end{defn}
+
+Es gilt also
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[scale=0.6]{imgs/skalarfeld-vektorfeld-relation.png}
+\end{figure}
 
 \end{document}
 
@@ -236,5 +295,4 @@
     \end{axis}
 
 \end{tikzpicture}
-
 
