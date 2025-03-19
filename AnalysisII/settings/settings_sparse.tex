@@ -3,11 +3,14 @@
 \usepackage{tikz-cd}
 \usepackage{relsize}
 \usepackage{tikz-3dplot}
+\usepackage{ifthen}
+\usetikzlibrary{math}
 \usetikzlibrary{matrix,positioning,fit}
 \usetikzlibrary{calc, arrows, automata, positioning}
 \usetikzlibrary{shapes}
 \usetikzlibrary{patterns,hobby}
 \usetikzlibrary{positioning}
+\usetikzlibrary{decorations.markings}
 \tikzset{>=latex} % for LaTeX arrow head
 \colorlet{myred}{red!85!black}
 \colorlet{myblue}{blue!80!black}
@@ -100,7 +103,7 @@
 \newtcbtheorem
   [use counter*=thm,crefname={Remark}{Remarks},Crefname={Remark}{Remarks}]%
   {rmk}
-  {Remark}
+  {Bemerkung}
   {%
     before skip=10pt,after skip=10pt,
     left=0.2cm,right=0.2cm,top=0cm,

@@ -1,0 +1,240 @@
+\documentclass[12pt]{article}
+
+\input{settings/settings_sparse.tex}
+\input{settings/commands.tex}
+%
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[a4paper, top=1in, bottom=1.3in, rmargin=1.5in, left=1.4in, marginparwidth=80pt]{geometry}
+\usepackage{etoc}
+\usepackage{csquotes}
+%\usepackage{emoji}
+%\usepackage[tight]{minitoc}
+
+
+\begin{document}
+\title{\vspace*{-2.5em}Problem Set 4, Summary \& Tips}
+\author{Vikram R. Damani\\
+    Analysis~II}
+
+\maketitle
+%\dosectoc
+%\sectoc
+
+%\tableofcontents % //FIXME: make small toc
+
+\section{Tipps}
+
+\begin{nexercise}{Aufgabe 1}{1}\addcontentsline{toc}{subsection}{A1}
+\end{nexercise}
+
+\begin{tips}{1}
+    lol
+\end{tips}\vspace*{1em}
+
+\begin{nexercise}{Aufgabe 2}{2}
+    d
+\end{nexercise}
+
+\begin{tips}{2}
+    d
+\end{tips}\vspace*{1em}
+
+\begin{nexercise}{Aufgabe 3}{3}
+    dooooooooooooooooo o ooo oo o ooo oooo ooooo oo oo oo oooo o o o o o o o o oo oooooooooooooooooooooooooooooooooooooo o oo oo oo oooo oooo o oo o o o o o  o o o ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+\end{nexercise}
+
+\begin{tips}{3}
+    daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa a a a a a a  a a a  a a  a  a a  a a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaa  a a  a a  a a  a a a a a a a a a
+\end{tips}
+
+\section{Theorie}
+%\localtableofcontents
+
+% \begin{displayquote}
+%     \emph{Fuck it, there's not much to say}
+% \end{displayquote}
+% \begin{flushright}
+%     Kottas, \today.
+% \end{flushright}
+
+% \begin{displayquote}
+%     \emph{Yeah, but he's dead}
+% \end{displayquote}
+% \begin{flushright}
+%     Kottas, \today.
+% \end{flushright}
+
+% \begin{displayquote}
+%     \emph{Yeah, ants dont do taxes, do they\dots}
+% \end{displayquote}
+% \begin{flushright}
+%     Kottas, \today.
+% \end{flushright}
+
+\begin{thmb}{\np{\emph{[Satz von \emph{Leibnitz} (Parameter in Integralgrenzen)].}}} Sei
+    \begin{align}
+        \Psi(x)\defeq\int_{u(x)}^{v(x)}f(x,t)\dt.
+    \end{align}
+    Dann ist die Ableitung
+    \begin{align}
+        \Psi'(x) & =\ddx \int_{u(x)}^{v(x)} f(t,x)\dt                                                                                       \\[5pt]
+                 & =\colorboxed{antiquefuchsia}{\int_{u(x)}^{v(x)}\pdv{}{x}f(x,t)\dt + f(x,\r{v(x)})\,\r{v'(x)} - f(x,\r{u(x)})\,\r{u'(x)}}
+    \end{align}
+
+    \b{\emph{Spezialfälle}}:
+    \begin{enumerate}[label=(\alph*)]
+        \item $u(x)=a, \,v(x)=b\;\;\;\const.\implies u'=v'=0$ und es gilt also
+              \begin{align}
+                  \Psi'(x) =\colorboxed{antiquefuchsia}{\int_{a}^{b}\pdv{}{x}f(x,t)\dt}
+              \end{align}
+        \item $u(x)=a\;\const.\text{ und } \,v(x)=x,\text{ sowie }f(x,t)=g(t)$ unabh.\ von $x$ $\implies u'=0,\;g_x\equiv0,\;v'=1$ und es gilt also
+              \begin{align}
+                  \ddx\int_{0}^{x}g(t)\dt=g(x),
+              \end{align}
+              der Hauptsatz der Infinitesimalrechnung.
+    \end{enumerate}
+\end{thmb}\vspace*{1em}
+
+\subsection{Vektorfelder}
+
+\begin{defn}{\b{[Vektorfelder].}} Ein Vektorfeld weist jedem Punkt im Raum einen Vektor der gleichen Dimension zu.
+
+    \textbf{Beispiele:}
+    \begin{enumerate}[label=(\roman*)]
+        \item Magnet/Elektrisches Feld
+        \item Wind/Strömung
+        \item Wärmefluss
+              %\item Anything is a vectorfield if you're brave enough % including your mom
+    \end{enumerate}
+\end{defn}
+
+\begin{figure}[htbp!]
+    \centering
+    \begin{tikzpicture}[>=latex, x=1.5cm, y=1.5cm, scale=1.5, font=\footnotesize]
+        \def\length{sqrt(1+(x+y)^2)}
+        \begin{axis}[
+                axis lines=middle,
+                view={0}{90},
+                domain=-2.5:2.5,
+                samples=18,
+                axis equal image,
+                ticklabel style={font=\tiny}
+            ]
+            \addplot3[
+                blue!40!red,
+                quiver={u={1/(\length)},
+                        v={(x+y)/(\length)},
+                        scale arrows=0.2,
+                        every arrow/.append style={-latex}},
+            ] (x,y,0);
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+\begin{defn}{\b{[Skalarfeld]}} Sei $\mathbf{B}\subseteq\R^3$. Eine Funktion
+    \begin{align}
+        f\colon\quad \mathbf{B} & \longrightarrow\R    \\
+        (x,y,z)                 & \longmapsto f(x,y,z)
+    \end{align}
+    in 3 Variablen ist ein Skalarfeld.
+\end{defn}\vspace*{1em}
+
+\begin{defn}{\b{[Vektorfeld]}} Ein Vektorfeld ist eine Funktion
+    \begin{align}
+        f\colon\quad \mathbf{B} & \longrightarrow\R^3                                \\
+        \vec{r}                 & \longmapsto \vec{v}\,(\vec{r}\,)=\begin{pmatrix}
+                                                                       v_1(x,y,z) \\[3pt]
+                                                                       v_2(x,y,z) \\[3pt]
+                                                                       v_3(x,y,z)
+                                                                   \end{pmatrix}
+    \end{align}
+    \begin{rmk}{}{}
+    Falls  $\mathbf{B}\subseteq\R^2$ und $\vec{v}: \mathbf{B}\to\R^2$, ist $\vec{v}$ ein \emph{ebenes Vektorfeld}.
+    \end{rmk}
+    \begin{rmk}{}{}
+        Manche Vektorfelder sind ausserdem zeitabhänging, d.h.\ $\vve\,(\vr,t)\in\R^3$. Diese Vektorfelder nennt man instationär.
+    \end{rmk}
+\end{defn}\vspace*{1em}
+
+\begin{defn}{\b{[Feldlinien]}}
+    Eine Kurve $K\subset{B}$, die an jedem Punkt tangential zum Vektorfeld $\vve\,(\vr\,)$ ist, heisst Feldlinie von $\vve$.
+\end{defn}\vspace*{1em}
+
+\begin{defn}{\b{[Homogenes Vektorfeld]}} Ein konstantes Vektorfeld $\vve\,(\vr\,)=\va$ heisst homogen.
+\end{defn}
+
+
+\colorlet{Ecolor}{orange!90!black}
+\colorlet{pluscolor}{red!60!black}
+\colorlet{minuscolor}{blue!60!black}
+\tikzstyle{anode}=[top color=red!20, bottom color=red!50]
+\tikzstyle{cathode}=[top color=blue!20, bottom color=blue!40]
+\tikzstyle{charge+}=[very thin,top color=red!50, bottom color=red!80]
+\tikzstyle{charge-}=[very thin,top color=blue!40, bottom color=blue!70]
+\tikzset{EFieldLine/.style={
+  Ecolor, decoration={markings, mark=at position #1 with {\arrow{stealth}}}, postaction={decorate}}
+}
+
+\def\dph{0.3} % dipole height
+\def\dpw{0.1} % dipole width
+\def\dipole#1{
+  \begin{scope}[shift={(#1)}]
+    \draw[charge-] (-\dph,0) to[out=90,in=180] (0,\dpw) -- (0,-\dpw) to[out=180,in=-90] cycle;
+    \draw[charge+] ( \dph,0) to[out=90,in=0] (0,\dpw) -- (0,-\dpw) to[out=  0,in=-90] cycle;
+    \node[scale=0.7] at (-\dph/2,0) {$-$};
+    \node[scale=0.7] at ( \dph/2,0) {$+$};
+  \end{scope}
+}
+
+\def\height{5}
+\def\width{3}
+\def\platewidth{0.5}
+\def\dielwidth{0.13*\width}
+\def\nfieldlines{20}
+\def\ncharges{7}
+
+% capacitor with dipolar polarization
+\begin{tikzpicture}
+
+  % dielectric slab
+  \draw[orange!60!black,fill=orange!80!brown!5]
+  (\dielwidth,-0.03*\height) rectangle (\width-\dielwidth,1.03*\height)
+  node[Ecolor, above=3cm, midway] {$\vec E$}
+  node[above, pluscolor] {$+Q_\text{surf}$}
+  node[above, minuscolor] at (1.3*\dielwidth,1.03*\height) {$-Q_\text{surf}$};
+
+  % electric field
+  \foreach \i [evaluate={\y=(\i-0.75)*\height/(\nfieldlines-0.5);}] in {1,...,\nfieldlines}{
+      \draw[EFieldLine={0.54},very thick] (0,\y) --++ (\width,0);
+    }
+
+  % plates
+  \draw[anode] (0,0) rectangle++ (-\platewidth,\height)
+  node[left, pluscolor] {$+Q_\text{C}$};
+  \draw[cathode] (\width,0) rectangle++ (\platewidth,\height)
+  node[right, minuscolor] {$-Q_\text{C}$};
+
+\end{tikzpicture}
+
+
+\end{document}
+
+\begin{defn}{Funktionen in mehreren Variablen}
+    Eine Funktion $f: D \to \R$ mit $D \subseteq \R^n$ ist eine Abbildung, die jedem $x \in D$ genau ein $f(x) \in \R$ zuordnet.
+\end{defn}
+
+\begin{tikzpicture}
+
+    \begin{axis}[
+            %axis background/.style={fill=green!10},
+            %3d box=complete*,
+            grid=major,
+            %colorbar % show key
+        ]
+        \addplot3[surf] {{sin(deg(x)) * y*(1-y)}};
+    \end{axis}
+
+\end{tikzpicture}
+
+
