@@ -26,27 +26,45 @@
 \section{Tipps}
 
 \begin{nexercise}{Aufgabe 1}{1}\addcontentsline{toc}{subsection}{A1}
+    Die Funktion $F:(0,\infty)\to\R$ sei durch
+    \begin{align}
+        F(\alpha):=\int_{0}^{\frac{1}{\alpha}} \frac{\arctan(\alpha t)}{t}\dt
+    \end{align}
+    gegeben. Zeigen Sie, dass die Ableitung $F'(\alpha)$
+    identisch gleich Null ist, mittels
+    \begin{enumerate}[label=\alph*.]
+        \item Substitution.
+        \item ($\heartsuit$) Ableitung unter dem Integral.
+    \end{enumerate}
 \end{nexercise}
 
 \begin{tips}{1}
-    lol
+    Es gilt $F'(x)=0\implies F = \const.$
+    \begin{enumerate}[label=\alph*.]
+        \item Wir suchen eine geeignete Substitution $g(u)\defeq{f}(t)$ um zu zeigen, dass $F$ von $\alpha$ unabhängig  ist.
+        \item Anwendung des Satz von Leibnitz.
+    \end{enumerate}
 \end{tips}\vspace*{1em}
 
-\begin{nexercise}{Aufgabe 2}{2}
-    d
+\begin{nexercise}{Aufgabe 2 c.,d.,e.}{2}
+    [Zeigen Sie, \dots]
+    \begin{enumerate}[label=\alph*.]
+        \setcounter{enumi}{2}
+        \item dass an der Oberfläche des Zylinders die Strömung tangential verläuft und
+        \item dass in grosser Entfernung vom Zylinder das Vektorfeld nahezu homogen ist.
+        \item Bestimmen Sie ausserdem die Punkte maximaler und minimaler Geschwindigkeit auf der Zylinderoberfläche.
+    \end{enumerate}
 \end{nexercise}
 
 \begin{tips}{2}
-    d
+    \begin{enumerate}[label=\alph*.]
+        \setcounter{enumi}{2}
+        \item Ein Punkt an der Oberfläche des Zylinders $(x_0,y_0,z_0)$ ist Parametrisiert durch die Gleichung $x_0^2+y_0^2=a^2$ und der Tangentialvektor in der $x-y$ Ebene entlang der Oberfläche erfüllt $\vec{T}\,\bot\,(x_0,y_0,0)$.
+        \item Man suche $\vve$ für Punkte im Abstand $R$ zu Null und $R\to\infty$.
+        \item Aus c) lässt sich die Geschwindigkeit auf der Zylinderoberfläche berechnen.
+    \end{enumerate}
 \end{tips}\vspace*{1em}
 
-\begin{nexercise}{Aufgabe 3}{3}
-    dooooooooooooooooo o ooo oo o ooo oooo ooooo oo oo oo oooo o o o o o o o o oo oooooooooooooooooooooooooooooooooooooo o oo oo oo oooo oooo o oo o o o o o  o o o ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-\end{nexercise}
-
-\begin{tips}{3}
-    daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa a a a a a a  a a a  a a  a  a a  a a aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaa  a a  a a  a a  a a a a a a a a a
-\end{tips}
 
 \section{Theorie}
 %\localtableofcontents
@@ -255,19 +273,19 @@
 \end{defn}
 
 \begin{rmk}{}{}
-Der Laplace Operator kann auch als Divergenz des Gradientenfeldes geschrieben werden, also
-\begin{align}
-    \Delta{f}=\nabla\cdot\grad{f}=(f_x)_x+(f_y)_y+(f_z)_z
-\end{align}
+    Der Laplace Operator kann auch als Divergenz des Gradientenfeldes geschrieben werden, also
+    \begin{align}
+        \Delta{f}=\nabla\cdot\grad{f}=(f_x)_x+(f_y)_y+(f_z)_z
+    \end{align}
 \end{rmk}
 
 \begin{defn}{\b{[Rotation]}} Sei $\vve$ ein Vektorfeld. Dann ist
     \begin{align}
         \mathrm{rot}(\vve)=\vec\nabla\times\vve=\begin{pmatrix}
-            v_{3,y}-v_{2,z}\\
-            v_{1,z}-v_{3,x}\\
-            v_{2,x}-v_{1,y}
-        \end{pmatrix}
+                                                    v_{3,y}-v_{2,z} \\
+                                                    v_{1,z}-v_{3,x} \\
+                                                    v_{2,x}-v_{1,y}
+                                                \end{pmatrix}
     \end{align}
 \end{defn}
 
