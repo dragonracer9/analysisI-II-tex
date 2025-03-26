@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+
+\input{settings/settings_sparse.tex}
+\input{settings/commands.tex}
+%
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[a4paper, top=1in, bottom=1.3in, rmargin=1.5in, left=1.4in, marginparwidth=80pt]{geometry}
+\usepackage{etoc}
+\usepackage{csquotes}
+%\usepackage{emoji}
+%\usepackage[tight]{minitoc}
+
+
+\begin{document}
+\title{\vspace*{-2.5em}Problem Set 6, Summary \& Tips}
+\author{Vikram R. Damani\\
+    Analysis~II}
+
+\maketitle
+%\dosectoc
+%\sectoc
+
+%\tableofcontents % //FIXME: make small toc
+
+\section{Tipps}
+
+
+\section{Theorie}
+
+\end{document}
+
+\begin{defn}{Funktionen in mehreren Variablen}
+    Eine Funktion $f: D \to \R$ mit $D \subseteq \R^n$ ist eine Abbildung, die jedem $x \in D$ genau ein $f(x) \in \R$ zuordnet.
+\end{defn}
+
+\begin{tikzpicture}
+
+    \begin{axis}[
+            %axis background/.style={fill=green!10},
+            %3d box=complete*,
+            grid=major,
+            %colorbar % show key
+        ]
+        \addplot3[surf] {{sin(deg(x)) * y*(1-y)}};
+    \end{axis}
+
+\end{tikzpicture}
+
